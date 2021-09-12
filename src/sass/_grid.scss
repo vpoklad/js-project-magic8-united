@@ -1,0 +1,135 @@
+.section-program {
+  padding-top: 61px;
+  padding-bottom: 60px;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 136px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-top: 146px;
+    padding-bottom: 80px;
+  }
+}
+
+.section-program__title {
+  display: none;
+}
+
+.cards {
+  display: grid;
+  justify-content: center;
+
+  @media screen and (min-width: $mobile) {
+    grid-template-columns: repeat(2, 128px);
+    grid-column-gap: 14px;
+    grid-row-gap: 39px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    grid-template-columns: repeat(3, 180px);
+    grid-column-gap: 27px;
+    grid-row-gap: 58px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    grid-template-columns: repeat(4, 180px);
+    grid-column-gap: 70px;
+    grid-row-gap: 63px;
+  }
+}
+
+.cards__item {
+  //   outline: 1px solid red;
+  position: relative;
+
+  .item__title {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    color: var(--accentColor);
+
+    margin-top: 5px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: var(--mainFontSize);
+      line-height: 1.25;
+    }
+  }
+
+  .item__date {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    color: var(--fontColor);
+
+    margin-top: 5px;
+
+    @media screen and (min-width: $tablet) {
+      font-size: var(--mainFontSize);
+      line-height: 1.25;
+    }
+  }
+
+  .item__location {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.25;
+    text-align: center;
+    color: var(--fontColor);
+
+    margin-top: 5px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 14px;
+      line-height: 1.21;
+    }
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    border: 1px solid rgba(220, 86, 197, 0.3);
+    border-radius: 50px 0px;
+    position: absolute;
+
+    @media screen and (min-width: $mobile) {
+      width: 108px;
+      height: 101px;
+      top: -9px;
+      right: -10px;
+    }
+
+    @media screen and (min-width: $tablet) {
+      width: 153px;
+      height: 143px;
+      top: -13px;
+      right: -14px;
+    }
+  }
+}
+
+.cards__img {
+  border-radius: 50px 0px 50px 0px;
+
+  @media screen and (max-width: $tablet) {
+    width: 128px;
+    height: 161px;
+  }
+}
+
+.item__icon {
+  margin-right: 3px;
+
+  @media screen and (max-width: $tablet) {
+    width: 6px;
+    height: 9px;
+  }
+}
