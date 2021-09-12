@@ -1,0 +1,75 @@
+.modal_main {
+  position: absolute;
+  z-index: 3;
+
+  background-color: #fff2fd;
+  color: var(--modalFontColor);
+
+  line-height: 1.25;
+  text-align: center;
+  border-radius: 150px 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%) scale(1);
+
+  max-width: 272px;
+  width: 100%;
+
+  padding: 75px 15px;
+
+  overflow-y: scroll;
+}
+
+.modal_main__thumb {
+  width: 102px;
+  height: 102px;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.modal_main__image {
+  display: none;
+}
+.modal_main__title {
+  color: var(--accentColor);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.modal__meta {
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: 25px;
+  }
+}
+
+.modal__price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  svg {
+    margin-right: 13px;
+  }
+}
+
+.button--ticket:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.button--author {
+  padding: 3px;
+  color: #4c00fe;
+  background-color: transparent;
+  border: 1px solid #4c00fe;
+  &:hover {
+    border-color: #dc56c5;
+    background-color: transparent;
+  }
+}
