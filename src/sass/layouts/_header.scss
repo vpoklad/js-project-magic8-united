@@ -1,9 +1,6 @@
 .header{
-   @media screen and (min-width: $mobile) {
-     & {
-     padding-top:78px;
-    }
-  }
+    padding-top:78px;
+  
 
 @media screen and (min-width: $tablet) {
      & {
@@ -16,14 +13,10 @@
     position:absolute;
     top:40px;
     left:40px;
-
-   @media screen and (min-width: $mobile) {
-     & {
-     max-width:60px;
-     top:24px;
-     left:24px;
-    }
-  } 
+    max-width:60px;
+    top:24px;
+    left:24px;
+  
 
    @media screen and (min-width: $tablet) {
       & {
@@ -48,12 +41,9 @@
    background-color:rgba(196, 196, 196, 0.03);
    
    border-bottom-right-radius:100%;
-   @media screen and (min-width: $mobile) {
-     & {
-     width:106px;
-     height:86px;
-    }
-  }
+   width:106px;
+   height:86px;
+   
 
     @media screen and (min-width: $tablet) {
      & {
@@ -73,19 +63,16 @@
 
 .header__title{
     font-weight: 900;
+    font-size:18px;
     text-align: center;
     text-transform:uppercase;
+    width: 212px;
     margin-left: auto;
     margin-right: auto;
     color:var(--accentColor);
-
-@media screen and (min-width: $mobile) {
-     & {
-     font-size:18px;
-     width: 212px;
-     
-    }
-  }
+         
+         
+  
 
   @media screen and (min-width: $tablet) {
      & {
