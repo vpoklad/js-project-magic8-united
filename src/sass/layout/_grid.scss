@@ -87,6 +87,15 @@
     align-items: center;
     justify-content: center;
 
+    &::before {
+      content: '';
+      display: inline-block;
+      background-image: url('../images/geopin.svg');
+      width: 7px;
+      height: 10px;
+      margin-right: 10px;
+    }
+
     @media screen and (min-width: $tablet) {
       font-size: 14px;
       line-height: 1.21;
