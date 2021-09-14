@@ -38,5 +38,5 @@ const select = new CustomSelect('#select', {
   
 
 
-
+import './js/firstPageLoad.js'
 
