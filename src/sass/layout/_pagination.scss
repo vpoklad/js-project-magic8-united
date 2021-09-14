@@ -1,0 +1,40 @@
+.tui-pagination {
+    text-align: center;
+    height: 25px;
+
+}
+
+.tui-page-btn {
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 5px;
+    padding: 8px, 0, 6px;
+    width: 30px;
+    height: 25px;
+    vertical-align: middle;
+    color: white;
+}
+
+.tui-page-btn:hover, :focus {
+    color: var(--accentColor);
+    border: 1px solid #DC56C5;
+    border-radius: 25% 10%;
+}
+.tui-is-selected {
+    color: var(--accentColor);
+    border: 1px solid #DC56C5;
+    border-radius: 25% 10%;
+}
+
+/**.tui-ico-ellip*/
+.tui-is-disabled {
+    color: pink;
+}
+.tui-ico-first, .tui-ico-next, .tui-ico-prev, .tui-ico-last {
+    width: 30px;
+    height: 23px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0px;
+    fill: white;
+}
