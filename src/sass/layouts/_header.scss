@@ -1,92 +1,86 @@
-.header{
-    padding-top:78px;
-  
-
-@media screen and (min-width: $tablet) {
-     & {
-     padding-top:40px;
-    }
-  }
-}
-
-.logo{
-    position:absolute;
-    top:40px;
-    left:40px;
-    max-width:60px;
-    top:24px;
-    left:24px;
-  
-
-   @media screen and (min-width: $tablet) {
-      & {
-      max-width:100px;
-      top:40px;
-      left:40px;
-    }
-  }
-
-   @media screen and (min-width: $desktop) {
-     & {
-      max-width:137px
-    }
-  }
-}
-
-.header__link{
-    position:absolute;
-    top:0px;
-    left:0px;
-   
-   background-color:rgba(196, 196, 196, 0.03);
-   
-   border-bottom-right-radius:100%;
-   width:106px;
-   height:86px;
-   
-
-    @media screen and (min-width: $tablet) {
-     & {
-     width:179px;
-     height:152px;
-    }
-  }
-
-    @media screen and (min-width: $desktop) {
-     & {
-     width:239px;
-     height:201px;
-    }
-  }
-
-}
-
-.header__title{
-    font-weight: 900;
-    font-size:18px;
-    text-align: center;
-    text-transform:uppercase;
-    width: 212px;
-    margin-left: auto;
-    margin-right: auto;
-    color:var(--accentColor);
-         
-         
-  
+.header {
+  padding-top: 78px;
 
   @media screen and (min-width: $tablet) {
-     & {
-     font-size:30px;
-     width: 353px;
-     
+    & {
+      padding-top: 40px;
+    }
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  max-width: 60px;
+  top: 24px;
+  left: 24px;
+
+  @media screen and (min-width: $tablet) {
+    & {
+      max-width: 100px;
+      top: 40px;
+      left: 40px;
     }
   }
 
   @media screen and (min-width: $desktop) {
-     & {
-    font-size: 50px;
-    width: 589px;
-   }
+    & {
+      max-width: 137px;
+    }
+  }
+}
+
+.header__link {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  background: radial-gradient(circle farthest-side at 10% 130%, #777777, #141212d1);
+  backdrop-filter: blur(30px);
+
+  border-bottom-right-radius: 100%;
+  width: 106px;
+  height: 86px;
+
+  @media screen and (min-width: $tablet) {
+    & {
+      width: 179px;
+      height: 152px;
+      background: radial-gradient(circle farthest-side at 150% 10%, #777777, #0a0909d1);
+    }
   }
 
+  @media screen and (min-width: $desktop) {
+    & {
+      width: 239px;
+      height: 201px;
+      background: #38313152;
+    }
+  }
+}
+
+.header__title {
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 212px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--accentColor);
+
+  @media screen and (min-width: $tablet) {
+    & {
+      font-size: 30px;
+      width: 353px;
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    & {
+      font-size: 50px;
+      width: 589px;
+    }
+  }
 }
