@@ -36,7 +36,5 @@ const select = new CustomSelect('#select', {
     console.log(`Выбранный текст опции: ${text}`);
   });
   
-
-
-import './js/firstPageLoad.js'
+  import './js/firstPageLoad.js'
 
