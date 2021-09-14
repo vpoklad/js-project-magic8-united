@@ -1,17 +1,20 @@
 .overlay {
-    position:absolute;
-    top: 0;
-    left: 0;
-    width:100%;
-    height:100%;
-    z-index:1;
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
 
-    background-color: #200d1d99;
-    backdrop-filter: blur(3px);
+  background-color: #200d1d99;
+  backdrop-filter: blur(3px);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-// .main-modal.is-open {
-//     opacity: 1;
-//     pointer-events: initial;
-// }
+.overlay.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
