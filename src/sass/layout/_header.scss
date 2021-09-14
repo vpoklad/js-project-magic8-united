@@ -15,6 +15,9 @@
   max-width: 60px;
   top: 24px;
   left: 24px;
+  background: linear-gradient(136.07deg, rgba(196, 196, 196, 0.03) 10.75%, rgba(196, 196, 196, 0) 92.33%);
+  backdrop-filter: blur(30px);
+  
 
   @media screen and (min-width: $tablet) {
     & {
@@ -35,9 +38,10 @@
   position: absolute;
   top: 0px;
   left: 0px;
-
-  background: radial-gradient(circle farthest-side at 10% 130%, #777777, #141212d1);
-  backdrop-filter: blur(30px);
+  background: linear-gradient(136.07deg, rgba(196, 196, 196, 0.03) 10.75%, rgba(196, 196, 196, 0) 92.33%);
+  backdrop-filter: blur(20px);
+  // background: radial-gradient(circle farthest-side at 10% 130%, #777777, #141212d1);
+  // backdrop-filter: blur(30px);
 
   border-bottom-right-radius: 100%;
   width: 106px;
@@ -47,7 +51,7 @@
     & {
       width: 179px;
       height: 152px;
-      background: radial-gradient(circle farthest-side at 150% 10%, #777777, #0a0909d1);
+      
     }
   }
 
@@ -55,16 +59,10 @@
     & {
       width: 239px;
       height: 201px;
-      background: #38313152;
     }
   }
 }
 
-
-
-         
-         
-  
 
 .header__title {
   font-weight: 900;
@@ -82,8 +80,7 @@
     
       font-size: 30px;
       width: 353px;
-      margin-bottom: 30px;
-    
+    margin-bottom: 30px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -124,7 +121,7 @@ display: flex;
 margin-bottom: 25px;
 width: 270px;
 height: 40px;
-background-color: rgba(255, 255, 255, 0.2);
+background-color: rgba(255, 255, 255, 0.1);
 backdrop-filter: blur(20px);
 border-radius: 20px;
 padding: 10px 30px;
