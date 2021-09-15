@@ -2,6 +2,7 @@ import './sass/main.scss';
 import CustomSelect from './js/custom-select';
 import './js/modalClose';
 import './js/firstPageLoad.js'
+import './js/pagination'
 
 
 
@@ -37,4 +38,5 @@ const select = new CustomSelect('#select', {
     const text = selected ? selected.textContent : '';
     console.log(`Выбранный текст опции: ${text}`);
   });
+
 
