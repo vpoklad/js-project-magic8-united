@@ -1,7 +1,7 @@
 import refs from './refs.js';
 
 refs.buttonClose.addEventListener("click", onCloseMainModal);
-refs.backdrop.addEventListener("click", onBackdropClick);
+refs.overlay.addEventListener("click", onBackdropClick);
 
 document.addEventListener("keydown",
 
@@ -13,6 +13,7 @@ function closeMainModalESC(e) {
 
 function onCloseMainModal() {
     refs.overlay.classList.add("is-hidden");
+    document.body.classList.remove("overlay-show")
 }
 
 function onBackdropClick(e) {

@@ -108,6 +108,10 @@ body {
   }
 }
 
+body.overlay-show {
+  overflow: hidden;
+}
+
 .list {
   list-style: none;
   padding: 0;

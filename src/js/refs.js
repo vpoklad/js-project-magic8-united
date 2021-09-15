@@ -5,4 +5,5 @@ export default {
    backdrop: document.querySelector('.backdrop'),
    searchInput: document.querySelector(".search__block"),
    
+
   }

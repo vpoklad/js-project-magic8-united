@@ -14,14 +14,13 @@
 
   transform: translate(-50%, -50%) scale(1);
 
-  max-width: 272px;
-  width: 100%;
+  width: 85%;
   max-height: 100vh;
 
-  padding: 75px 15px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 50px 15px;
+  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  //   overflow-y: scroll;
+  overflow-y: auto;
 
   @media screen and (min-width: $tablet) {
     max-width: 595px;
@@ -74,6 +73,7 @@
     display: none;
   }
   @media screen and(min-width: $desktop) {
+    max-height: 545px;
     width: 360px;
     margin-right: 60px;
   }
@@ -124,6 +124,10 @@
 }
 
 .button--author {
+  @media screen and (max-width: 400px) {
+    font-size: 13px;
+  }
+
   margin: 0 auto;
   padding: 3px;
   color: #4c00fe;
@@ -141,4 +145,14 @@
 
 .overlay.is-hidden .modal {
   transform: translate(-50%, -50%) scale(1.2);
+}
+
+.modal_main::-webkit-scrollbar {
+  width: 5px;
+}
+
+.modal_main::-webkit-scrollbar-thumb {
+  background: var(--accentColor);
+  width: 12px;
+  border-radius: 20px;
 }
