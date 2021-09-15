@@ -37,13 +37,14 @@
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: calc(100% - 10px);
+  height: 600px;
   //outline: 1px solid red;
   overflow: hidden;
-  padding: 20px 15px;
+  padding: 30px 15px;
 
   @media screen and (min-width: $desktop) {
-    padding: 25px 30px;
+    height: 900px;
+    padding: 65px 30px;
   }
 
   &:hover {
@@ -118,6 +119,22 @@
 
   .item__img {
     border-radius: 50px 0;
+    object-fit: cover;
+
+    @media screen and (min-width: $mobile) {
+      width: 130px;
+      height: 161px;
+    }
+
+    @media screen and (min-width: $tablet) {
+      width: 150px;
+      height: 227px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      width: 180px;
+      height: 227px;
+    }
   }
 
   .item__title {
@@ -153,12 +170,14 @@
   }
 
   .item__icon {
-    margin-right: 3px;
+    margin-right: 5px;
     fill: var(--fontColor);
+    width: 7px;
+    height: 10px;
 
-    @media screen and (max-width: $tablet) {
-      width: 6px;
-      height: 9px;
+    @media screen and (min-width: $tablet) {
+      width: 15px;
+      height: 15px;
     }
   }
 
