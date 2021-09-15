@@ -23,18 +23,8 @@ export default class EventServiceApi {
     }
     
     return axios.get(url).then(result => {
-      if(result.data._embedded){try {
-        // this.page += 1;
-        // console.log(result.data);
-        this.totalPages = result.data.page.totalPages;
-        // console.log(this.totalPages);
-        return result.data._embedded.events;
-      } catch (error) {
-        // Поставить Нотификашку для отлова ошибки
-        console.log(error);
-        }
-      }
-      if (!result.data._embedded) {
+     
+       if (!result.data._embedded) {
         alert({
           text: "Looks like there is no such even!",
           delay: 2000,
@@ -42,8 +32,20 @@ export default class EventServiceApi {
         // console.log("Looks like there is no such even!");
         return
       }
+      
+      try {
+        // this.page += 1;
+        // console.log(result.data);
+        this.totalPages = result.data.page.totalPages;
+        // console.log(this.totalPages);
+        return result.data._embedded.events;
+      } catch (error) {
+        // Поставить Нотификашку для отлова ошибки
+        console.log("try catch", error);
+      }
+     
     }).catch(err => {
-      console.log(err)
+      console.log('catch', err)
     }) 
   }
 
