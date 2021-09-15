@@ -1,6 +1,7 @@
 import './sass/main.scss';
 import CustomSelect from './js/custom-select';
 import './js/modalClose';
+import './js/firstPageLoad.js'
 
 
 
@@ -37,6 +38,3 @@ const select = new CustomSelect('#select', {
     console.log(`Выбранный текст опции: ${text}`);
   });
 
-
-
-import './js/firstPageLoad.js'
