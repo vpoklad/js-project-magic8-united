@@ -14,11 +14,11 @@ const options = { // below default value of options
          currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
          moveButton:
              '<a href="#" class="tui-page-btn tui-{{type}}">' +
-                 '<svg class="tui-ico-{{type}}"><use href="../images/icon-{{type}}.svg"></use></svg>' +
+                 '<svg class="tui-ico-{{type}}"><use xlink:href="./images/icon-{{type}}.svg"></use></svg>' +
              '</a>',
          disabledMoveButton:
              '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-                 '<svg class="tui-ico-{{type}}"><use href="../images/icon-{{type}}.svg"></use></use></svg>' +
+                 '<svg class="tui-ico-{{type}}"><use href="./images/icon-{{type}}.svg"></use></use></svg>' +
              '</span>',
          moreButton:
              '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
