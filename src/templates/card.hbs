@@ -1,5 +1,5 @@
 {{#each this}}
-    <li class="cards__item">
+    <li class="cards__item" data-id={{id}}>
         <img class="cards__img" src="{{images.[3].url}}" alt="" width="180" height="227" />
         <h3 class="item__title">{{name}}</h3>
         <p class="item__date">{{dates.start.localDate}}</p>
@@ -10,5 +10,5 @@
         {{_embedded.venues.[0].city.name}}
         <p class="item__location">{{_embedded.venues.[0].name}}</p>
         </p>
-        </li>
+    </li>
 {{/each}}

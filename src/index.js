@@ -1,5 +1,6 @@
 import './sass/main.scss';
-import CustomSelect from './js/custom-select'
+import CustomSelect from './js/custom-select';
+import { OnEventClick } from './js/loadEventIntoModal.js';
 
 
 
@@ -40,3 +41,6 @@ const select = new CustomSelect('#select', {
 
 import './js/firstPageLoad.js'
 
+const cards = document.querySelector(".cards");
+//console.log('cards :>> ', cards);
+cards.addEventListener('click', OnEventClick);
