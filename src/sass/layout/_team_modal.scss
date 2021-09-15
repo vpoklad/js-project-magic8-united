@@ -122,21 +122,21 @@
 
   .item__title {
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.21;
     text-align: center;
     color: #ff6b08;
     margin-top: 5px;
 
     @media screen and (min-width: $tablet) {
-      font-size: 16px;
+      font-size: 20px;
       line-height: 1.25;
     }
   }
 
   .item__location {
     font-weight: normal;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.25;
     text-align: center;
     color: var(--fontColor);
@@ -147,7 +147,7 @@
     justify-content: center;
 
     @media screen and (min-width: $tablet) {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.21;
     }
   }
@@ -159,6 +159,35 @@
     @media screen and (max-width: $tablet) {
       width: 6px;
       height: 9px;
+    }
+  }
+
+  .social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .social__link {
+      display: flex;
+      margin-top: 5px;
+
+      &:first-child {
+        margin-right: 5px;
+      }
+    }
+
+    .social__icon {
+      fill: #fff;
+      width: 30px;
+      height: 30px;
+
+      &:hover,
+      &:focus {
+        fill: #000;
+        background-color: #ff6b08;
+        border-radius: 20%;
+      }
     }
   }
 }
