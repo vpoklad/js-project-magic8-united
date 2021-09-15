@@ -1,6 +1,9 @@
 import './sass/main.scss';
 import CustomSelect from './js/custom-select';
 import { OnEventClick } from './js/loadEventIntoModal.js';
+import './js/modalClose';
+import './js/firstPageLoad.js'
+import './js/pagination'
 
 
 
@@ -36,10 +39,7 @@ const select = new CustomSelect('#select', {
     const text = selected ? selected.textContent : '';
     console.log(`Выбранный текст опции: ${text}`);
   });
-  
 
-
-import './js/firstPageLoad.js'
 
 const cards = document.querySelector(".cards");
 //console.log('cards :>> ', cards);
