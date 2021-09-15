@@ -81,12 +81,11 @@
   margin-bottom: 25px;
 
   @media screen and (min-width: $tablet) {
-
-    
-      font-size: 30px;
-      width: 353px;
-    margin-bottom: 30px;
-
+      & {
+        font-size: 30px;
+            width: 353px;
+          margin-bottom: 30px;
+      }
   }
 
   @media screen and (min-width: $desktop) {
@@ -118,9 +117,8 @@
       padding-right: 0;
     }
   }
-
   }
- }
+
 
 .search__block--input{
 display: flex;
@@ -142,6 +140,7 @@ font-style: normal;
     margin-bottom: 0;
    }
 
+}
 }
 
 .search__block--input {
