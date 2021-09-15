@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import eventSearch from './js/event-search';
+import './js/event-search';
 import CustomSelect from './js/custom-select';
 import './js/modalClose';
 import './js/firstPageLoad.js'

@@ -3,6 +3,6 @@ export default {
    buttonClose: document.querySelector('.closeButton'),
    overlay: document.querySelector('.overlay'),
    backdrop: document.querySelector('.backdrop'),
-   searchInput: document.querySelector(".search__block--input"),
+   searchInput: document.querySelector(".search__block"),
    
   }
