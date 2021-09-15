@@ -1,8 +1,10 @@
 import './sass/main.scss';
+import './js/event-search';
 import CustomSelect from './js/custom-select';
 import './js/modalClose';
 import './js/firstPageLoad.js'
 import './js/pagination'
+
 
 
 
