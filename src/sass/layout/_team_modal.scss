@@ -6,12 +6,16 @@
   height: 100%;
   background-color: rgba(32, 13, 29, 0.8);
   backdrop-filter: blur(3px);
-}
-
-.backdrop-our-team.is-hidden {
-  visibility: hidden;
   opacity: 0;
   pointer-events: none;
+}
+
+.backdrop-our-team.is-open {
+  // visibility: hidden;
+  // opacity: 0;
+  // pointer-events: none;
+  opacity: 1;
+  pointer-events: initial;
 }
 
 .modal-our-team {
