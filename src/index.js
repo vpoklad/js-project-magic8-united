@@ -41,6 +41,6 @@ const select = new CustomSelect('#select', {
   });
 
 
-const cards = document.querySelector(".cards");
+const card = document.querySelector(".cards__item");
 //console.log('cards :>> ', cards);
-cards.addEventListener('click', OnEventClick);
+card.addEventListener('click', OnEventClick);

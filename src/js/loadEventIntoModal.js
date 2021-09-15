@@ -12,7 +12,7 @@ export function OnEventClick(evt){
     evt.preventDefault();
     if (evt.target.nodeName !== "LI") return;
 
-    const id = evt.target.dataset.id;
+    const id = evt.target.dataset.eventId;
     //console.log('id :>> ', id);
     eventApiServiceById.query = id;
     
@@ -49,49 +49,11 @@ export function OnEventClick(evt){
       const priceStandardCurrency = priceStandard.currency;
       console.log('priceStandardCurrency :>> ', priceStandardCurrency);
 
-      // console.log('info :>> ', info);
-      // console.log('localDate :>> ', localDate);
-      // console.log('localTime :>> ', localTime);
-      // console.log('timeZone :>> ', timeZone);
-      // console.log('cityName :>> ', cityName);
-      // console.log('countryName :>> ', countryName);
-      // console.log('pleaseName :>> ', pleaseName);
-      // console.log('name :>> ', name);
-      // console.log('priceStandardMin :>> ', priceStandardMin);
-      // console.log('priceStandardMax :>> ', priceStandardMax);
-      // console.log('priceStandardCurrency :>> ', priceStandardCurrency);
-
       // firstLoad = true;
       // clearGalleryContainer();
       // renderGalleryContainer();
       // renderGallery(searchImages);
-
-      // watchObserver();
-
       
     })
     .catch(notifyAlert);
-}
-
-export function onLoadMoreImages () {
-    if (eventApiService.page === 2 && firstLoad) {
-        firstLoad = false;
-        return;
-     }
-
-    eventApiService.fetchImages()
-    .then(renderGallery)
-    .catch(notifyAlert);
-}
-
-export function watchObserver () {
-  const intersection = document.querySelector('#intersection');  
-  const options = {
-    //root: body,
-    rootMargin: '100px',
-  }  
-  const observer = new IntersectionObserver(onLoadMoreImages, options);
-  //if (intersection.isIntersecting){
-   observer.observe(intersection);
-  //}
 }
