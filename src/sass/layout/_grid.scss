@@ -87,6 +87,15 @@
     align-items: center;
     justify-content: center;
 
+    &::before {
+      content: '';
+      display: inline-block;
+      background-image: url('../images/geopin.svg');
+      width: 7px;
+      height: 10px;
+      margin-right: 10px;
+    }
+
     @media screen and (min-width: $tablet) {
       font-size: 14px;
       line-height: 1.21;
@@ -118,6 +127,9 @@
 
 .cards__img {
   border-radius: 50px 0px 50px 0px;
+  object-fit: cover;
+  width: 180px;
+  height: 227px;
 
   @media screen and (max-width: $tablet) {
     width: 128px;
