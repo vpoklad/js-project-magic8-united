@@ -6,17 +6,17 @@ const KEY = "y2gr3zDEoAnck6YziFkTdrHptQULpZRO";
 export default class EventServiceApi {
   constructor() {
     this.page = 1;
-    this.searchQuery = "rock";
+    this.searchQuery = "";
     // this.countryQuery = "";
-    this.eventId = "rZ7HnEZ1AoGVFg";
+    this.eventId = "";
   }
 
   async fetchEvent() {
     return await axios.get(`${ROOT_URL}events.json?&page=${this.page}&keyword=${this.searchQuery}&apikey=${KEY}`).then(result => {
       try {
-        this.page += 1;
+        // this.page += 1;
         // console.log(result);
-        console.log(result.data._embedded.events);
+        // console.log(result.data._embedded.events);
         return result.data._embedded.events;
       } catch (error) {
         // Поставить Нотификашку для отлова ошибки
@@ -39,6 +39,15 @@ export default class EventServiceApi {
   pageReset(){
       this.page = 1;
   }
+  incrementPage() {
+    this.page += 1;
+  }
+  decrementPage() {
+    if (this.page === 1) {
+      return
+    }
+    this.page -= 1;
+   }
   
   get query() {
     return this.searchQuery;
