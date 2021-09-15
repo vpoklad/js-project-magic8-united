@@ -1,4 +1,16 @@
 {{#each this}}
+    {{!-- <li class="cards__item" data-eventId={{id}}>
+        <img class="cards__img" src={{images.5.url}} alt={{name}} width="180" height="227" />
+        <h3 class="item__title">{{name}}</h3>
+        <p class="item__date">{{dates.start.localDate}}</p>
+        <p class="item__location">
+        <svg width="7" height="10" class="item__icon">
+            <use href="images/sprite.svg#icon-location"></use>
+        </svg>
+        {{dates.timezone}}
+        </p>
+        </li> --}}
+
 <li class="cards__item hvr-buzz-out" tabindex="0" data-eventId={{id}}>
   <img class="cards__img" src={{images.5.url}} alt={{name}} width="180"
     height="227" />
