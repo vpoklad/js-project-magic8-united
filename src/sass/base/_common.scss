@@ -36,12 +36,10 @@ body {
   font-size: var(--mainFontSize);
   line-height: 1.22;
 
-  @media screen and (max-width: 767px) {
-    background-image: url(../images/bg/bg_top_img_mobile@1x.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: top;
-  }
+  background-image: url(../images/bg/bg_top_img_mobile@1x.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: top;
 
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
@@ -50,6 +48,24 @@ body {
     body {
       background-image: url(../images/bg/bg_top_img_mobile@2x.jpg);
     }
+  }
+}
+
+@media screen and (min-width: 321px) {
+  body {
+    background-image: url(../images/bg/bg_top_img_tablet@1x.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: top;
+  }
+}
+
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  body {
+    background-image: url(../images/bg/bg_top_img_tablet@2x.jpg);
   }
 }
 
@@ -112,4 +128,15 @@ body {
   width: 200px;
 
   height: 600px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
 }
