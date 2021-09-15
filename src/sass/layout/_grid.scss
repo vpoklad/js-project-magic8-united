@@ -83,6 +83,15 @@
     align-items: center;
     justify-content: center;
 
+    &::before {
+      content: '';
+      display: inline-block;
+      background-image: url('../images/geopin.svg');
+      width: 7px;
+      height: 10px;
+      margin-right: 10px;
+    }
+
     @media screen and (min-width: $tablet) {
       font-size: 14px;
       line-height: 1.21;
@@ -111,24 +120,17 @@
     }
   }
 
-  .item__icon {
-    margin-right: 3px;
-    fill: #fff;
+  .cards__img {
+    border-radius: 50px 0;
+    object-fit: cover;
+    width: 180px;
+    height: 227px;
+    margin-left: auto;
+    margin-right: auto;
 
     @media screen and (max-width: $tablet) {
-      width: 6px;
-      height: 9px;
+      width: 128px;
+      height: 161px;
     }
-  }
-}
-
-.cards__img {
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 50px 0;
-
-  @media screen and (max-width: $tablet) {
-    width: 128px;
-    height: 161px;
   }
 }
