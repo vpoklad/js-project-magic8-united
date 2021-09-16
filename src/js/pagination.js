@@ -35,3 +35,4 @@ function setPagination(totalEvents) {
 }
 console.log(eventServiceApi)
 export default setPagination;
+
