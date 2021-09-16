@@ -33,5 +33,5 @@ function setPagination(totalEvents) {
         eventServiceApi.fetchEvent().then(renderEventMarkup).catch(console.log);
       });
 }
-
+console.log(eventServiceApi)
 export default setPagination;
