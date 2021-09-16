@@ -30,7 +30,7 @@ function setPagination(totalEvents) {
     pagination.on('beforeMove', function (eventData) {
         eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
-        eventServiceApi.fetchEvent().then(renderEventMarkup).catch(console.log);
+        eventServiceApi.fetchEvent().then(renderCards).catch(console.log);
       });
 }
 console.log(eventServiceApi)
