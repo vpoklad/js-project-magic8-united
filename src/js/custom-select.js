@@ -118,6 +118,7 @@ CustomSelect.template = params => {
   options.forEach((option, index) => {
     let selectedClass = '';
     if (option[0] === targetValue) {
+      console.log(option[0]);
       selectedClass = ' select__option_selected';
       selectedIndex = index;
       selectedValue = option[0];
@@ -125,9 +126,13 @@ CustomSelect.template = params => {
     }
     items.push(`<li class="select__option${selectedClass}" tabindex= "0" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
   });
-  return `<button type="button" class="select__toggle" name="${name}" value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
+  return `<button type="button" class="select__toggle" name="${name}" data-name="${selectedContent}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
   <div class="select__dropdown">
-    <ul class="select__options">${items.join('')}</ul>
+  <input class="select__input input" placeholder="Choose country" type="text"
+  <div>
+  <ul class="select__options">${items.join('')}</ul>
+  </div>
+    
   </div>`;
 };
 
