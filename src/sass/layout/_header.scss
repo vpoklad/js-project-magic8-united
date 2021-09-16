@@ -88,6 +88,8 @@
   }
 }
 
+
+
 .search__block {
   margin-left: auto;
   margin-right: auto;
@@ -110,7 +112,7 @@
   display: flex;
   margin-bottom: 25px;
   width: 270px;
-  height: 40px;
+  // height: 40px;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(30px);
   border-radius: 20px;
@@ -132,3 +134,5 @@
     background-repeat: no-repeat;
     background-position: right 30px center;  
 }
+
+::-webkit-input-placeholder {color:#cac7c7;}
