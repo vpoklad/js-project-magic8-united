@@ -37,7 +37,15 @@
         </svg>
         Standart {{this.priceRanges.0.min}}-{{this.priceRanges.0.max}} {{this.priceRanges.0.currency}}
       </p>
-      <button class="button button--ticket" data-modal_button_standart>BUY TICKETS</button>
+      <a
+              href="{{this.url}}"
+              data-eventId={{this.id}}
+              class="button button--ticket"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-modal_button_standard
+            >BUY TICKETS</a>
+      {{!-- <button class="button button--ticket" data-modal_button_standart>BUY TICKETS</button> --}}
 
       <p class="modal__price">
         <svg width="24" height="17">
@@ -45,7 +53,15 @@
         </svg>
         VIP 1000-1500 UAH
       </p>
-      <button class="button button--ticket" data-modal_button_vip>BUY TICKETS</button>
+      <a
+              href="{{this.url}}"
+              data-eventId={{this.id}}
+              class="button button--ticket"
+              target="_blank"
+              rel="noopener noreferrer"
+               data-modal_button_vip
+            >BUY TICKETS</a>
+      {{!-- <button class="button button--ticket" data-modal_button_vip>BUY TICKETS</button> --}}
     </div>
   </div>
 </div>

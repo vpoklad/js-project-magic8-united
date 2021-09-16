@@ -121,6 +121,9 @@
 
 .button--ticket:not(:last-child) {
   margin-bottom: 20px;
+  text-decoration: none;
+  width: 145px;
+  height: 40px;
 }
 
 .button--author {
