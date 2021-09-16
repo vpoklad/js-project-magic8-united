@@ -6,7 +6,8 @@ import setPagination from './pagination.js'
 
 
 function firstPageLoad() {
-  axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
+
+  axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
     .then(result => {
       renderCards(result.data._embedded.events)
       setPagination(result.data.length-1)
@@ -14,6 +15,7 @@ function firstPageLoad() {
 
     }).catch(err => console.log(err))
   
+
   }
 
 
