@@ -4,7 +4,7 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import './example';
+@import './utils/hover-animations';
 @import './utils/variables';
 @import './base/common';
 
@@ -16,4 +16,8 @@
 @import './layout/main_modal';
 @import './layout/footer';
 @import './layout/modal_overlay';
+@import './layout/team_modal';
 @import './components/custom_select.scss';
+
+@import './layout/pagination';
+@import './layout/cards_item--animation';
