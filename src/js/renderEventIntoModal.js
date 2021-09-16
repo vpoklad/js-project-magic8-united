@@ -3,9 +3,7 @@ import eventMarkup from '../templates/event.hbs';
 import {notifyAlert} from './notify.js';
 import EventApiServiceById from './apiServiceModal.js';
 
-export function renderEventIntoModal () {
-  refs.cards.addEventListener('click', OnEventClick);
-}
+refs.cards.addEventListener('click', OnEventClick);
 
 function renderEventMarkup (event) {
     refs.overlay.classList.remove("is-hidden");
