@@ -1,6 +1,6 @@
 import './sass/main.scss';
 import CustomSelect from './js/custom-select';
-import { OnEventClick } from './js/loadEventIntoModal.js';
+import { renderEventIntoModal } from './js/renderEventIntoModal.js';
 import './js/modalClose';
 import './js/firstPageLoad.js'
 import './js/pagination'
@@ -41,6 +41,4 @@ const select = new CustomSelect('#select', {
   });
 
 
-const card = document.querySelector(".cards__item");
-//console.log('cards :>> ', cards);
-card.addEventListener('click', OnEventClick);
+  renderEventIntoModal(); //Ярослав
