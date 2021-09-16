@@ -8,9 +8,9 @@ const container = document.querySelector('#tui-pagination-container');
 function setEventsOnPage() {
     const windowOuterWidth = window.outerWidth;
     if (windowOuterWidth > 768 && windowOuterWidth < 1280) {
-      apiService.size = 15;
+        eventServiceApi.size = 15;
     } else {
-      apiService.size = 16;
+        eventServiceApi.size = 16;
     }
   }
 
@@ -28,9 +28,9 @@ function setPagination(totalEvents) {
     const pagination = new Pagination(container, options);
 
     pagination.on('beforeMove', function (eventData) {
-        apiService.page = eventData.page - 1;
+        eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
-        apiService.fetchEvent().then(renderEventMarkup).catch(console.log);
+        eventServiceApi.fetchEvent().then(renderEventMarkup).catch(console.log);
       });
 }
 
