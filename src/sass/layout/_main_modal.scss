@@ -118,12 +118,15 @@
     justify-content: flex-start;
   }
 }
-
-.button--ticket:not(:last-child) {
-  margin-bottom: 20px;
+.button--ticket {
   text-decoration: none;
   width: 145px;
   height: 40px;
+}
+
+.button--ticket:not(:last-child) {
+  margin-bottom: 20px;
+
 }
 
 .button--author {
