@@ -13,10 +13,12 @@
   background-color: var(--buttonBackgroundColor);
   cursor: pointer;
   transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
   &:hover,
-  &focus {
+  &:focus {
     background-color: var(--buttonBackgroundColorHover);
   }
+
   @media screen and(max-width: 767px) {
     margin-left: auto;
     margin-right: auto;
@@ -26,7 +28,6 @@
 .closeButton {
   position: absolute;
   z-index: 5;
-
   top: 20px;
   right: 20px;
   background-color: transparent;
@@ -35,9 +36,19 @@
   padding: 5px;
   cursor: pointer;
   transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
   &:hover,
-  &focus {
+  &:focus {
     color: var(--buttonBackgroundColorHover);
     transform: scale(1.3);
+  }
+}
+
+.modal-our-team .closeButton {
+  color: #ff6b08;
+
+  &:hover,
+  &:focus {
+    color: #ff6b08;
   }
 }

@@ -6,7 +6,7 @@
   .select__toggle {
     display: flex;
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: 0;
     border-radius: 20px;
     cursor: pointer;
@@ -16,7 +16,7 @@
     line-height: 1.22;
     user-select: none;
     justify-content: space-between;
-    color: #939393;
+    color: #cac7c7;
     margin-right: 0;
   }
   
@@ -42,12 +42,11 @@
     top: 39px;
     left: 0;
     right: 0;
-    max-height: 210px;
+    max-height: 170px;
     overflow-y: auto;
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    // border-top: 1px solid #939393;
+    backdrop-filter: blur(30px);
     border: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
