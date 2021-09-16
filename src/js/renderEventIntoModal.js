@@ -7,6 +7,7 @@ refs.cards.addEventListener('click', OnEventClick);
 
 function renderEventMarkup (event) {
     refs.overlay.classList.remove("is-hidden");
+     document.body.classList.add("overlay-show");
     refs.modalContent.innerHTML = eventMarkup(event);
 }
 

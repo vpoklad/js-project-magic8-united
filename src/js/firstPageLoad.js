@@ -4,7 +4,7 @@ import card from '../templates/card.hbs';
 
 
 function firstPageLoad() {
-      axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&classificationName=music&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
+      axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
         .then(result => {
           renderCards(result.data._embedded.events);
         console.log(result.data._embedded.events)}).catch(err => console.log(err))
