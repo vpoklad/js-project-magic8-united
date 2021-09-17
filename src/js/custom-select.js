@@ -13,6 +13,7 @@ export default class CustomSelect {
     if (this._params['options']) {
       this._elRoot.classList.add(CLASS_NAME_SELECT);
       this._elRoot.innerHTML = CustomSelect.template(this._params);
+
     }
     this._elToggle = this._elRoot.querySelector(SELECTOR_DATA_TOGGLE);
     this._elRoot.addEventListener('click', this._onClick.bind(this));
@@ -30,14 +31,17 @@ export default class CustomSelect {
     }
   }
   _update(option) {
+  
     const selected = this._elRoot.querySelector(SELECTOR_OPTION_SELECTED);
     if (selected) {
       selected.classList.remove(CLASS_NAME_SELECTED);
     }
     option.classList.add(CLASS_NAME_SELECTED);
+    console.log(option);
     this._elToggle.textContent = option.textContent;
-    this._elToggle.value = option.dataset['value'];
+    this._elToggle.dataset.value = option.dataset['value'];
     this._elToggle.dataset.index = option.dataset['index'];
+    this._elToggle.value = option.textContent;
     this._elRoot.dispatchEvent(new CustomEvent('select.change'));
     this._params.onSelected ? this._params.onSelected(this, option) : null;
     return option.dataset['value'];
@@ -48,7 +52,7 @@ export default class CustomSelect {
       selected.classList.remove(CLASS_NAME_SELECTED);
     }
     this._elToggle.textContent = 'Выберите из списка';
-    this._elToggle.value = '';
+    this._elToggle.dataset.value = '';
     this._elToggle.dataset.index = -1;
     this._elRoot.dispatchEvent(new CustomEvent('select.change'));
     this._params.onSelected ? this._params.onSelected(this, null) : null;
@@ -113,12 +117,11 @@ CustomSelect.template = params => {
   const targetValue = params['targetValue'];
   let items = [];
   let selectedIndex = -1;
-  let selectedValue = 'Сhoose country';
-  let selectedContent = 'Сhoose country';
+  let selectedValue = '';
+  let selectedContent = '';
   options.forEach((option, index) => {
     let selectedClass = '';
     if (option[0] === targetValue) {
-      console.log(option[0]);
       selectedClass = ' select__option_selected';
       selectedIndex = index;
       selectedValue = option[0];
@@ -126,13 +129,13 @@ CustomSelect.template = params => {
     }
     items.push(`<li class="select__option${selectedClass}" tabindex= "0" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
   });
-  return `<button type="button" class="select__toggle" name="${name}" data-name="${selectedContent}" data-select="toggle" data-index="${selectedIndex}">${selectedContent}</button>
-  <div class="select__dropdown">
-  <input class="select__input input" placeholder="Choose country" type="text"
-  <div>
-  <ul class="select__options">${items.join('')}</ul>
-  </div>
-    
+  
+  return `
+  <input class="select__toggle input" id="select__input" name="${name}" data-value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}" placeholder="Сhoose country" type="text" value="${selectedContent}" autocomplete="off" />
+  <div class="select__dropdown" id="dropdown">
+    <div>
+      <ul class="select__options">${items.join('')}</ul>
+    </div>
   </div>`;
 };
 

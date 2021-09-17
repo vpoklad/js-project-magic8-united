@@ -18,28 +18,32 @@
     justify-content: space-between;
     color: #cac7c7;
     margin-right: 0;
+    background-image: url(../images/polygon.svg);
+    background-repeat: no-repeat;
+    background-position: right 30px center;  
   }
   
-  .select__toggle::after {
-    content: '';
-    width: 15px;
-    height: 10px;
-    background-repeat: no-repeat;
-    background-image: url(../images/polygon.svg);
-  }
+  // .select__toggle::after {
+  //   content: '';
+  //   width: 15px;
+  //   height: 10px;
+  //   background-repeat: no-repeat;
+  //   background-image: url(../images/polygon.svg);
+  // }
   
   .select__toggle:focus {
 
   }
   
-  .select_show .select__toggle::after {
-    transform: rotate(180deg);
+  .select_show .input{
+    background-image: url(../images/polygon_transform.svg);
+    outline: none;
   }
   
   .select__dropdown {
     display: none;
     position: absolute;
-    top: 0px;
+    top: 39px;
     left: 0;
     right: 0;
     // max-height: 170px;
@@ -49,9 +53,9 @@
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(30px);
     border: none;
-    border-radius: 20px;
-    // border-bottom-left-radius: 20px;
-    // border-bottom-right-radius: 20px;
+    
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
     cursor: pointer;
     align-items: center;
     width: 270px;
@@ -89,10 +93,6 @@
     width: 12px;
     border-radius: 20px;
   }
-
- 
-
-
   
   .select_show .select__dropdown {
     display: block;
