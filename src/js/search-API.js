@@ -6,7 +6,7 @@ const ROOT_URL = "https://app.ticketmaster.com/discovery/v2/";
 const KEY = "y2gr3zDEoAnck6YziFkTdrHptQULpZRO";
 
 
-export default class EventServiceApi {
+class EventServiceApi {
   constructor() {
     this.page = 1;
     this.totalPages ='';
@@ -84,4 +84,6 @@ export default class EventServiceApi {
     this.countryQuery = newSelectQuery;
   }
 
-}
+};
+const eventServiceApi = new EventServiceApi;
+export default eventServiceApi;

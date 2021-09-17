@@ -1,11 +1,11 @@
-import EventServiceApi from "./search-API";
+import eventServiceApi from "./search-API";
 import templateCard from "../templates/card.hbs";
 import refs from "./refs";
 import debounce from 'lodash.debounce';
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 
 
-const eventServiceApi = new EventServiceApi;
+
  refs.searchInput.addEventListener('input', debounce(onInput, 700));
 
 // export default eventServiceApi.searchEventById().then(res=>console.log(res.data))
@@ -25,8 +25,8 @@ function onInput(e) {
     console.log(response);
    if(response===undefined){return}
   refs.cardsContainer.innerHTML = templateCard(response);
-});
-}
+  });
+};
 
 // options.totalItems = eventServiceApi.totalPages;
   // refs.nextPage.addEventListener('click', openNextPage)
