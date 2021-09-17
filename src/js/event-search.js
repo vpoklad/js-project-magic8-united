@@ -22,7 +22,7 @@ function onInput(e) {
   eventServiceApi.query = e.target.value.trim();
 
   eventServiceApi.fetchEvent().then(response => {
-    // console.log(response);
+    console.log(response);
    if(response===undefined){return}
   refs.cardsContainer.innerHTML = templateCard(response);
 });

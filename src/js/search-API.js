@@ -16,6 +16,7 @@ export default class EventServiceApi {
   }
 
   fetchEvent() {
+
     let url = `${ROOT_URL}events.json?&page=${this.page}&keyword=${this.searchQuery}&apikey=${KEY}`;
     
     if (this.countryQuery !== '') {
@@ -75,4 +76,12 @@ export default class EventServiceApi {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+
+  get selectQuery() {
+    return this.countryQuery;
+  }
+  set selectQuery(newSelectQuery) {
+    this.countryQuery = newSelectQuery;
+  }
+
 }
