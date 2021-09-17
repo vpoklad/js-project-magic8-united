@@ -1,8 +1,10 @@
 import Pagination from 'tui-pagination'; 
+
 import eventServiceApi from "./search-API";
 import { renderCards } from './firstPageLoad';
 import card from '../templates/card.hbs';
 import refs from './refs';
+
 
 
 const container = document.querySelector('#tui-pagination-container');
@@ -35,6 +37,8 @@ function setPagination(totalEvents) {
         eventServiceApi.fetchEvent().then(response=>{refs.cardsContainer.innerHTML=card(response)}).catch(console.log);
       });
 }
+
 console.log(eventServiceApi)
 export { setEventsOnPage, setPagination };
+
 

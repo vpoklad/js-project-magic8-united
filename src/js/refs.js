@@ -8,4 +8,5 @@ export default {
   searchInput: document.querySelector('.search__block--input'),
   selectInput: document.querySelector('.select'),
   buttonMoreFromAuthor: document.querySelector('.button--author'),
+  preloader: document.querySelector('.preloader')
 };

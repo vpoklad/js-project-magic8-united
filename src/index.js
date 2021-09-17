@@ -7,3 +7,7 @@ import './js/pagination';
 import './js/modal_our_team';
 import './js/renderEventIntoModal.js';
 import './js/morefromauthor.js';
+
+
+import './js/preloader'
+
