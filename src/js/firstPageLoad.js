@@ -9,6 +9,7 @@ function firstPageLoad() {
 
   axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
     .then(result => {
+      console.log(result.data._embedded.events)
       renderCards(result.data._embedded.events)
        addClassAnimation()
       setPagination(result.data.page.totalElements)
