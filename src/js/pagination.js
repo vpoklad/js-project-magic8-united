@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination'; 
 import eventServiceApi from "./search-API"
-import {renderEventMarkup} from './renderEventIntoModal'
+import {renderCards} from './firstPageLoad'
 
 
 const container = document.querySelector('#tui-pagination-container');
@@ -33,6 +33,6 @@ function setPagination(totalEvents) {
         eventServiceApi.fetchEvent().then(renderCards).catch(console.log);
       });
 }
-console.log(eventServiceApi)
-export default setPagination;
+
+export {setPagination, setEventsOnPage};
 

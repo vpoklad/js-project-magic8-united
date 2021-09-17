@@ -2,11 +2,13 @@ import axios from "axios";
 import refs from './refs.js'
 import card from '../templates/card.hbs';
 import { debounce } from "lodash";
-import setPagination from './pagination.js';
+import {setPagination, setEventsOnPage} from './pagination.js';
 import { notifyError } from './notify.js';
-
+import eventServiceApi from "./search-API.js";
 function firstPageLoad() {
-
+  eventServiceApi.page = 0,
+  setEventsOnPage();
+  
   axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
     .then(result => {
       renderCards(result.data._embedded.events)
