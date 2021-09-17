@@ -29,6 +29,7 @@
   "dependencies": {
     "@pnotify/core": "^5.2.0",
     "axios": "^0.21.4",
+    "izitoast": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "pnotify": "^5.2.0",
     "tui-pagination": "^3.4.1"
