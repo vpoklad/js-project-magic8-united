@@ -6,16 +6,18 @@ const ROOT_URL = "https://app.ticketmaster.com/discovery/v2/";
 const KEY = "y2gr3zDEoAnck6YziFkTdrHptQULpZRO";
 
 
-export default class EventServiceApi {
+class EventServiceApi {
   constructor() {
     this.page = 1;
     this.totalPages ='';
     this.searchQuery = "";
     this.countryQuery = "";
     this.eventId = "";
+    this.totalEvents = '';
   }
 
   fetchEvent() {
+
     let url = `${ROOT_URL}events.json?&page=${this.page}&keyword=${this.searchQuery}&apikey=${KEY}`;
     
     if (this.countryQuery !== '') {
@@ -35,7 +37,8 @@ export default class EventServiceApi {
       
       try {
         // this.page += 1;
-        // console.log(result.data);
+        // console.log(result.data._embedded.events);
+        this.totalEvents = result.data.page.totalElements;
         this.totalPages = result.data.page.totalPages;
         // console.log(this.totalPages);
         return result.data._embedded.events;
@@ -43,7 +46,6 @@ export default class EventServiceApi {
         // Поставить Нотификашку для отлова ошибки
         console.log("try catch", error);
       }
-     
     }).catch(err => {
       console.log('catch', err)
     }) 
@@ -75,4 +77,14 @@ export default class EventServiceApi {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
-}
+
+  get selectQuery() {
+    return this.countryQuery;
+  }
+  set selectQuery(newSelectQuery) {
+    this.countryQuery = newSelectQuery;
+  }
+
+};
+const eventServiceApi = new EventServiceApi;
+export default eventServiceApi;
