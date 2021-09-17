@@ -13,6 +13,7 @@ class EventServiceApi {
     this.searchQuery = "";
     this.countryQuery = "";
     this.eventId = "";
+    this.totalEvents = '';
   }
 
   fetchEvent() {
@@ -36,7 +37,8 @@ class EventServiceApi {
       
       try {
         // this.page += 1;
-        // console.log(result.data);
+        // console.log(result.data._embedded.events);
+        this.totalEvents = result.data.page.totalElements;
         this.totalPages = result.data.page.totalPages;
         // console.log(this.totalPages);
         return result.data._embedded.events;
@@ -44,7 +46,6 @@ class EventServiceApi {
         // Поставить Нотификашку для отлова ошибки
         console.log("try catch", error);
       }
-     
     }).catch(err => {
       console.log('catch', err)
     }) 
