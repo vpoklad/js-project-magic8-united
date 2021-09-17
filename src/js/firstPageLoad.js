@@ -2,16 +2,20 @@ import axios from "axios";
 import refs from './refs.js'
 import card from '../templates/card.hbs';
 import { debounce } from "lodash";
-
+import setPagination from './pagination.js';
+import { notifyError } from './notify.js';
 
 function firstPageLoad() {
 
-      axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
-        .then(result => {
-          renderCards(result.data._embedded.events);
-        console.log(result.data._embedded.events)}).catch(err => console.log(err))
-
-  }
+  axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
+    .then(result => {
+      renderCards(result.data._embedded.events)
+       addClassAnimation()
+      setPagination(result.data.page.totalElements)
+     
+    }).catch(err=>notifyError('Error loading page. Please refresh the page.'))
+  
+}
 
 
 function addClassAnimation() {
@@ -24,14 +28,12 @@ function removeClassAnimation() {
   cardsItemAll.forEach(cardItem => {
   cardItem.classList.remove('cards__item--animation')
   cardItem.style.visibility = "visible"
-  })
-  
-
+ })
 }
   
 function renderCards(events) {
-    const markup = card(events)
-    refs.cardsContainer.innerHTML=markup
+  const markup = card(events)
+  refs.cardsContainer.innerHTML=markup
       
 }
 
