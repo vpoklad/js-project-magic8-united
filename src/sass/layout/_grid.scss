@@ -40,7 +40,6 @@
 }
 
 .cards__item {
-  //   outline: 1px solid red;
   position: relative;
 
   .item__title {
@@ -83,27 +82,32 @@
     align-items: center;
     justify-content: center;
 
-    &::before {
-      content: '';
-      display: inline-block;
-      background-image: url('../images/geopin.svg');
-      width: 7px;
-      height: 10px;
-      margin-right: 10px;
-    }
-
     @media screen and (min-width: $tablet) {
       font-size: 14px;
       line-height: 1.21;
     }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      background-image: url('../images/geopin.svg');
+      width: 6px;
+      height: 9px;
+      margin-right: 3px;
+
+      @media screen and (min-width: $tablet) {
+        width: 7px;
+        height: 10px;
+      }
+    }
   }
 
   &::before {
+    position: absolute;
     content: '';
     display: block;
     border: 1px solid rgba(220, 86, 197, 0.3);
     border-radius: 50px 0px;
-    position: absolute;
 
     @media screen and (min-width: $mobile) {
       width: 108px;
@@ -120,17 +124,21 @@
     }
   }
 
-  .cards__img {
+  .thumb {
+    width: 128px;
+    height: 161px;
     border-radius: 50px 0;
-    object-fit: cover;
-    width: 180px;
-    height: 227px;
-    margin-left: auto;
-    margin-right: auto;
+    overflow: hidden;
 
-    @media screen and (max-width: $tablet) {
-      width: 128px;
-      height: 161px;
+    @media screen and (min-width: $tablet) {
+      width: 180px;
+      height: 227px;
+    }
+
+    .cards__img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 }
