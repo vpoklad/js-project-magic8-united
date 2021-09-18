@@ -1,6 +1,6 @@
 import CustomSelect from './custom-select';
 
-import EventServiceApi from "./search-API";
+import eventServiceApi from "./search-API";
 import templateCard from "../templates/card.hbs";
 import refs from "./refs";
 
@@ -26,7 +26,7 @@ const select = new CustomSelect('#select', {
 console.log(select._params.options);
  
 
-  const eventServiceApi = new EventServiceApi;
+  // const eventServiceApi = new EventServiceApi;
   
   document.querySelector('.select').addEventListener('select.change', onSelect);
 

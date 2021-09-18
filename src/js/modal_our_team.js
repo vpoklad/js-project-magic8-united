@@ -12,7 +12,7 @@ backDropOurTeam.addEventListener('click', onClose);
 
 function onOpen(e) {
     e.preventDefault();
-window.addEventListener('keydown', onClose);
+    window.addEventListener('keydown', onClose);
     modalOurTeam.classList.add('is-open');
     document.body.classList.add("overlay-show")
     logo.classList.add('logo-goit-animate');
