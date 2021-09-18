@@ -1,41 +1,40 @@
 import refs from './refs.js';
 import eventMarkup from '../templates/event.hbs';
-import eventFMarkup from '../templates/eventF.hbs';
+import eventFormateMarkup from '../templates/eventFormate.hbs';
 import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
+import arrEvents from './search-API.js';
+import sortImagesByWidth from "./sortImages.js";
+import { createMarkupIntoModal } from "./createMarkup.js";
 
 refs.cards.addEventListener('click', OnEventClick);
 
 function renderEventMarkup (event) {
+    console.log('event :>> ', event);
     refs.overlay.classList.remove("is-hidden");
-     document.body.classList.add("overlay-show");
-     //console.log('event. :>> ', (event.dates.start.localTime).slice(0,5));
-    // refs.modalContent.innerHTML = eventMarkup(event);
-    //console.log('event :>> ', event);
-    refs.modalContent.innerHTML = eventFMarkup(event);
+    document.body.classList.add("overlay-show");
+    refs.modalContent.innerHTML = createMarkupIntoModal(event);
+    // refs.modalContent.innerHTML = eventFormateMarkup(event);
 }
 
 function OnEventClick(evt) {
     evt.preventDefault();
     const target = evt.target.nodeName !== 'LI' ? evt.target.parentElement : evt.target;
-    //console.log('target :>> ', target);
+    //console.log('target :>> ', arrEvents);
     if (target.nodeName !== "LI") return;
     
     eventServiceApi.queryId = target.dataset.eventid;
      
     eventServiceApi.searchEventById()
-    .then((event) => {
-        const eventF = formatEvent (event);
-        //console.log('eventF :>> ', eventF);
-        renderEventMarkup(eventF)
-    })    
+    .then((event) => renderEventMarkup(event)) 
+    // .then((event) => renderEventMarkup(formatEvent(event)))    
     .catch(notifyAlert);
 }
 
-function formatEvent (event) {
-    const eventF = {
+const formatEvent = (event) => (
+   {
         id: event.id,
-        images: event.images,
+        images: sortImagesByWidth(event.images),
         info: event.info,
         localDate: event.dates.start.localDate,
         localTime: (event.dates.start.localTime).slice(0, 5),
@@ -47,6 +46,4 @@ function formatEvent (event) {
         priceRanges: event.priceRanges,
         url: event.url
     }
-    //console.log('eventF :>> ', eventF);
-    return eventF;
-}
+)

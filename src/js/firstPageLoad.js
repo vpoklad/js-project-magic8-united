@@ -5,7 +5,7 @@ import { debounce } from "lodash";
 import {setPagination, setEventsOnPage} from './pagination.js';
 import { notifyError } from './notify.js';
 import eventServiceApi from "./search-API.js";
-import { renderGrid } from "./renderGrid.js";
+import { createMarkupGrid } from "./createMarkup.js";
 
 function firstPageLoad() {
   eventServiceApi.page = 0,
@@ -30,8 +30,8 @@ function removeClassAnimation() {
  })
 }
 function renderCards(events) {
-  const markup = card(events);
-  //const markup = renderGrid(events);
+  //const markup = card(events);
+  const markup = createMarkupGrid(events);
   refs.cardsContainer.innerHTML = markup;
 }
 document.addEventListener("DOMContentLoaded", firstPageLoad);

@@ -38,11 +38,13 @@ class EventServiceApi {
       
       try {
         // this.page += 1;
-        // console.log(result.data._embedded.events);
-        console.log('result :>> ', result);
+        console.log(result);
+        //console.log('result :>> ', result);
         this.totalEvents = result.data.page.totalElements;
         this.totalPages = result.data.page.totalPages;
         // console.log(this.totalPages);
+        // arrEvents = result.data._embedded.events;
+        // console.log('arrEvents :>> ', arrEvents);
         return result.data._embedded.events;
       } catch (error) {
         // Поставить Нотификашку для отлова ошибки
@@ -100,3 +102,4 @@ class EventServiceApi {
 };
 const eventServiceApi = new EventServiceApi;
 export default eventServiceApi;
+
