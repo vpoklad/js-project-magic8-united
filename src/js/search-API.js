@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/BrightTheme.css';
+import {notifyAlert} from './notify.js';
 
 const ROOT_URL = "https://app.ticketmaster.com/discovery/v2/";
 const KEY = "y2gr3zDEoAnck6YziFkTdrHptQULpZRO";
@@ -38,6 +39,7 @@ class EventServiceApi {
       try {
         // this.page += 1;
         // console.log(result.data._embedded.events);
+        console.log('result :>> ', result);
         this.totalEvents = result.data.page.totalElements;
         this.totalPages = result.data.page.totalPages;
         // console.log(this.totalPages);
@@ -51,11 +53,15 @@ class EventServiceApi {
     }) 
   }
 
-  searchEventById() {
-    return axios.get(`${ROOT_URL}events/${this.eventId}.json?apikey=${KEY}`).then(data => {
-      console.log(data);
-      return data
-    })
+  async searchEventById() {
+    try {
+      const result = await axios.get(`${ROOT_URL}events/${this.eventId}?apikey=${KEY}`);
+      const data = await result.data;
+      return data;
+    } 
+    catch (error) {
+      notifyAlert(error);
+    }
   }
 
   pageReset(){
@@ -85,6 +91,12 @@ class EventServiceApi {
     this.countryQuery = newSelectQuery;
   }
 
+  get queryId() {
+    return this.eventId;
+  }
+  set queryId(newId) {
+    this.eventId = newId;
+  }
 };
 const eventServiceApi = new EventServiceApi;
 export default eventServiceApi;

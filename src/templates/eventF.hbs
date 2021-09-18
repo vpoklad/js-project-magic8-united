@@ -5,7 +5,7 @@
 
 <div class="modal__flex">
   <div class="modal__flex-thumb">
-  <img class="modal_main__image" src={{this.images.2.url}} alt={{this._embedded.venues.0.name}}/>
+    <img class="modal_main__image" src={{this.images.2.url}} alt={{this.name}}/>
   </div>
 
   <div class="modal__content">
@@ -16,14 +16,14 @@
 
     <div class="modal__meta">
       <h3 class="modal_main__title">WHEN</h3>
-      <p>{{this.dates.start.localDate}}</p>
-      <p>{{this.dates.start.localTime}} ({{this.dates.timezone}})</p>
+      <p>{{this.localDate}}</p>
+      <p>{{this.localTime}} ({{this.timeZone}})</p>
     </div>
 
     <div class="modal__meta">
       <h3 class="modal_main__title">WHERE</h3>
-      <p>{{this._embedded.venues.0.city.name}}, {{this._embedded.venues.0.country.name}}</p>
-      <p>{{this._embedded.venues.0.name}}</p>
+      <p>{{this.city}}, {{this.country}}</p>
+      <p>{{this.places}}</p>
     </div>
 
     <div class="modal__meta">
