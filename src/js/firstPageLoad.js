@@ -18,6 +18,8 @@ function firstPageLoad() {
       setPagination(result.data.page.totalElements)
     }).catch(err=>notifyError('Error loading page. Please refresh the page.'))
 }
+
+
 function addClassAnimation() {
  const cardsItemAll = document.querySelectorAll('.cards__item')
   cardsItemAll.forEach(cardItem => cardItem.classList.add('cards__item--animation'))
@@ -29,9 +31,14 @@ function removeClassAnimation() {
   cardItem.style.visibility = "visible"
  })
 }
+
+
 function renderCards(events) {
   const markup = card(events);
   refs.cardsContainer.innerHTML = markup;
 }
-document.addEventListener("DOMContentLoaded", firstPageLoad);
-window.addEventListener("load",debounce(removeClassAnimation,500))
+
+
+
+window.addEventListener("load", debounce(firstPageLoad,1000));
+window.addEventListener("load",debounce(removeClassAnimation,2000))
