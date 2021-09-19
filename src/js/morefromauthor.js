@@ -2,7 +2,7 @@ import refs from './refs.js';
 import onCloseMainModal from './modalClose.js';
 import eventServiceApi from './search-API';
 import templateCard from '../templates/card.hbs';
-import { authorName } from './renderEventIntoModal.js';
+import { authorName } from './renderModal.js';
 
 refs.buttonMoreFromAuthor.addEventListener('click', searchMoreFromAuthor);
 

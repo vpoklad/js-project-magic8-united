@@ -6,6 +6,7 @@ import eventServiceApi from './search-API.js';
 import arrEvents from './search-API.js';
 import {eventModif} from "./eventModification.js";
 import { createMarkupIntoModal } from "./createMarkup.js";
+export let authorName;
 
 refs.cards.addEventListener('click', OnEventClick);
 
@@ -15,6 +16,7 @@ function renderEventMarkup (event) {
     document.body.classList.add("overlay-show");
     //refs.modalContent.innerHTML = createMarkupIntoModal(event);
     refs.modalContent.innerHTML = eventMarkup(event);
+    authorName = event.name;
 }
 
 function OnEventClick(evt) {
