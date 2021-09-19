@@ -2,7 +2,7 @@
 // Дає можливість кожній карці на сторінці присвоїти порядковий номер.
 // В перспективі це дозволить уникнути зайвого запиту при рендері модалки.
 
-import sortImagesByWidth from "./sortImages.js";
+import {sortImagesByWidth} from "./eventModification.js";
 
 export function createMarkupGrid (events) { 
   const markupCards = events.map(event => createMarkupCard (event));

@@ -34,7 +34,8 @@
     <div class="modal__meta">
       <h3 class="modal_main__title">PRICES</h3>
       <p class="modal__price">
-        Standart {{this.priceRanges.0.min}}-{{this.priceRanges.0.max}} {{this.priceRanges.0.currency}}
+        Standart {{this.priceSt.min}} - {{this.priceSt.max}} {{this.priceSt.currency}}
+      
       </p>
       <a
               href="{{this.url}}"
@@ -44,10 +45,9 @@
               rel="noopener noreferrer"
               data-modal_button_standard
             >BUY TICKETS</a>
-      {{!-- <button class="button button--ticket" data-modal_button_standart>BUY TICKETS</button> --}}
-
+      
       <p class="modal__price">
-        VIP {{this.priceRanges.1.min}}-{{this.priceRanges.1.max}} {{this.priceRanges.1.currency}}
+        VIP {{this.priceVip.min}} - {{this.priceVip.max}} {{this.priceVip.currency}}
       </p>
        <a
               href="{{this.url}}"
@@ -57,7 +57,6 @@
               rel="noopener noreferrer"
                data-modal_button_vip
             >BUY TICKETS</a>
-      {{!-- <button class="button button--ticket" data-modal_button_vip>BUY TICKETS</button> --}}
     </div>
   </div>
 </div>
