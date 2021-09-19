@@ -5,7 +5,7 @@ import { debounce } from "lodash";
 import {setPagination, setEventsOnPage} from './pagination.js';
 import { notifyError } from './notify.js';
 import eventServiceApi from "./search-API.js";
-
+import { createMarkupGrid } from "./createMarkup.js";
 
 function firstPageLoad() {
   eventServiceApi.page = 0,
@@ -18,6 +18,8 @@ function firstPageLoad() {
       setPagination(result.data.page.totalElements)
     }).catch(err=>notifyError('Error loading page. Please refresh the page.'))
 }
+
+
 function addClassAnimation() {
  const cardsItemAll = document.querySelectorAll('.cards__item')
   cardsItemAll.forEach(cardItem => cardItem.classList.add('cards__item--animation'))
@@ -29,9 +31,15 @@ function removeClassAnimation() {
   cardItem.style.visibility = "visible"
  })
 }
+
+
 function renderCards(events) {
-  const markup = card(events);
+  //const markup = card(events);
+  const markup = createMarkupGrid(events);
   refs.cardsContainer.innerHTML = markup;
 }
-document.addEventListener("DOMContentLoaded", firstPageLoad);
-window.addEventListener("load",debounce(removeClassAnimation,500))
+
+
+
+window.addEventListener("load", debounce(firstPageLoad,1000));
+window.addEventListener("load",debounce(removeClassAnimation,2000))

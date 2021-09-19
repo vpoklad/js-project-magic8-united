@@ -10,4 +10,3 @@ import './js/morefromauthor.js';
 
 
 import './js/preloader'
-

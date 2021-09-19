@@ -12,9 +12,9 @@ const container = document.querySelector('#tui-pagination-container');
 function setEventsOnPage() {
     const windowOuterWidth = window.outerWidth;
     if (windowOuterWidth > 768 && windowOuterWidth < 1280) {
-        eventServiceApi.size = 15;
+        eventServiceApi.size = 20;
     } else {
-        eventServiceApi.size = 16;
+        eventServiceApi.size = 20;
     }
   }
 
@@ -22,15 +22,15 @@ function setEventsOnPage() {
 
 function setPagination(totalEvents) {
     const options = {
-        totalItems: totalEvents > 1000 ? 1000 : totalEvents,
+        totalItems: 1000,
         itemsPerPage: eventServiceApi.size,
-        visablePages: 5,
+        visiblePages: 5,
         page: 1,
-        centerAlign: true,
-
+        centerAlign: false,
     };
     const pagination = new Pagination(container, options);
 
+    console.log(pagination)
     pagination.on('beforeMove', function (eventData) {
         eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
@@ -38,7 +38,7 @@ function setPagination(totalEvents) {
       });
 }
 
-console.log(eventServiceApi)
+
 export { setEventsOnPage, setPagination };
 
 
