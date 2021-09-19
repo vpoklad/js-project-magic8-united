@@ -126,15 +126,15 @@ CustomSelect.template = params => {
       selectedValue = option[0];
       selectedContent = option[1];
     }
-    items.push(`<li class="select__option${selectedClass} country__item" tabindex= "0" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
+    items.push(`
+    <li class="select__option${selectedClass} country__item" tabindex= "0" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>
+    `);
   });
   
   return `
   <input class="select__toggle input" id="select__input" name="${name}" data-value="${selectedValue}" data-select="toggle" data-index="${selectedIndex}" placeholder="Сhoose country" type="text" value="${selectedContent}" autocomplete="off" />
   <div class="select__dropdown" id="dropdown">
-    <div>
-      <ul class="select__options">${items.join('')}</ul>
-    </div>
+       <ul class="select__options">${items.join('')}</ul>
   </div>`;
 };
 

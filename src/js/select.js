@@ -4,13 +4,9 @@ import eventServiceApi from "./search-API";
 import templateCard from "../templates/card.hbs";
 import refs from "./refs";
 
-
-
-const select = new CustomSelect('#select', {
-    name: 'country',
     targetValue: '',
     options: [ 
-    // ['', 'All countries'],
+    
     ['US', 'United States Of America'],
     ['AD', 'Andorra'],
     ['AI', 'Anguilla'],
@@ -94,25 +90,14 @@ const select = new CustomSelect('#select', {
     ['AE', 'United Arab Emirates'],
     ['UY', 'Uruguay'],
     ['VE', 'Venezuela']],
-
-        
-    // onSelected(select, option) {
-    //   // выбранное значение
-    //   console.log(`Выбранное значение: ${select.value}`);
-    //   // индекс выбранной опции
-    //   console.log(`Индекс выбранной опции: ${select.selectedIndex}`);
-    //   // выбранный текст опции
-    //   const text = option ? option.textContent : '';
-    //   console.log(`Выбранный текст опции: ${text}`);
-    // },
   });
   
-console.log(select._params.options);
- 
 
-  // const eventServiceApi = new EventServiceApi;
-  
+ 
   document.querySelector('.select').addEventListener('select.change', onSelect);
+  const input = document.querySelector('#select__input');
+  const selectSh = document.querySelector('#select');
+  
 
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
@@ -129,75 +114,66 @@ console.log(select._params.options);
 
   }
 
+  function onEmptySelect () {
+    eventServiceApi.selectQuery = input.dataset.value
+    // eventServiceApi.selectQuery = "";
+
+    eventServiceApi.fetchEvent().then(response => {
+      console.log(response);
+    if(response===undefined){return}
+    refs.cardsContainer.innerHTML = templateCard(response);
+    setPagination(eventServiceApi.totalEvents);
+
+  });
+
+  }
 
   // фільтр країн
 
 
-  function filter(evt) {
+
+
+function filter(evt) {
     evt.preventDefault();
-    const input = document.querySelector('#select__input');
     const inputValue = input.value.toUpperCase();	
-    const cards = document.querySelectorAll('.select__options');
-  
-    cards.forEach(
-      function getMatch(info) {
-        console.log(info);
-        const heading = info.querySelector('.country__item');
-        console.log(heading);
-        const headingContent = heading.innerHTML.toUpperCase();
-        
-        if (headingContent.includes(inputValue)) {
-          info.classList.add('show');
-          info.classList.remove('hide');	
+        refs.selectItems.forEach(
+
+      function getMatch(item) {
+
+      const itemContent = item.innerHTML.toUpperCase();
+
+        if (itemContent.includes(inputValue)) {
+          selectSh.classList.add('select_show');
+          item.classList.add('select__item-show');
+          item.classList.remove('select__item-hide');	
         }
         else {
-          info.classList.add('hide');
-          info.classList.remove('show');
+          item.classList.add('select__item-hide');
+          item.classList.remove('select__item-show');
+          selectSh.classList.add('select_show');
+
+        }
+        if (inputValue === null, inputValue === "") {
+          item.classList.remove('select__item-show');
+          item.classList.remove('select__item-show');
+
         }
       }
+
     )
-  }
-  
-  function autoReset() {
-    const input = document.querySelector('#select__input');
-    const cards = document.querySelectorAll('.country__item');
-  
-    cards.forEach(
-      function getMatch(info) {
-        if (input.value === null, input.value === "") {
-          info.classList.remove('show');
-          info.classList.remove('show');
-        }
-        else {
-          return;
-        }			
-      }
-    )
+    if (inputValue === null, inputValue === "") {
+      const remClass = document.querySelector('.select__option_selected')
+      remClass.classList.remove('select__option_selected');
+      input.dataset.value = "";
+      console.log(input.dataset.value);
+      onEmptySelect();
+    }
+    else{
+      return
+    }
   }
   
   const selectFilter = document.querySelector('#select__input');
-  
   selectFilter.addEventListener('keyup', filter);
   
-  // selectFilter.addEventListener('submit', submit);
-
-
-
-
-
-
-
-
-  
-  // document.querySelector('.select').addEventListener('select.change', (e) => {
-  //   const select = e.target.querySelector('.select__toggle');
-  //   // выбранное значение
-  //   console.log(`Выбранное значение: ${select.dataset.value}`);
-  //    // индекс выбранной опции
-  //   console.log(`Индекс выбранной опции: ${select.dataset.index}`);
-  //   // выбранный текст опции
-  //   const selected = e.target.querySelector('.select__option_selected');
-  //   const text = selected ? selected.textContent : '';
-  //   console.log(`Выбранный текст опции: ${text}`);
-  // });
-
+ 
