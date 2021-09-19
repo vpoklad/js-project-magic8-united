@@ -10,7 +10,7 @@ const select = new CustomSelect('#select', {
     name: 'country',
     targetValue: '',
     options: [ 
-    ['', 'All countries'],
+    // ['', 'All countries'],
     ['US', 'United States Of America'],
     ['AD', 'Andorra'],
     ['AI', 'Anguilla'],
@@ -128,6 +128,58 @@ console.log(select._params.options);
   });
 
   }
+
+
+  // фільтр країн
+
+
+  function filter(evt) {
+    evt.preventDefault();
+    const input = document.querySelector('#select__input');
+    const inputValue = input.value.toUpperCase();	
+    const cards = document.querySelectorAll('.select__options');
+  
+    cards.forEach(
+      function getMatch(info) {
+        console.log(info);
+        const heading = info.querySelector('.country__item');
+        console.log(heading);
+        const headingContent = heading.innerHTML.toUpperCase();
+        
+        if (headingContent.includes(inputValue)) {
+          info.classList.add('show');
+          info.classList.remove('hide');	
+        }
+        else {
+          info.classList.add('hide');
+          info.classList.remove('show');
+        }
+      }
+    )
+  }
+  
+  function autoReset() {
+    const input = document.querySelector('#select__input');
+    const cards = document.querySelectorAll('.country__item');
+  
+    cards.forEach(
+      function getMatch(info) {
+        if (input.value === null, input.value === "") {
+          info.classList.remove('show');
+          info.classList.remove('show');
+        }
+        else {
+          return;
+        }			
+      }
+    )
+  }
+  
+  const selectFilter = document.querySelector('#select__input');
+  
+  selectFilter.addEventListener('keyup', filter);
+  
+  // selectFilter.addEventListener('submit', submit);
 
 
 
