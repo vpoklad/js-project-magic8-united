@@ -9,7 +9,7 @@ const KEY = "y2gr3zDEoAnck6YziFkTdrHptQULpZRO";
 
 class EventServiceApi {
   constructor() {
-    this.page = 1;
+    this.page = 0;
     this.totalPages ='';
     this.searchQuery = "";
     this.countryQuery = "";
