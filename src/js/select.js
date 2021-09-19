@@ -4,8 +4,11 @@ import eventServiceApi from "./search-API";
 import templateCard from "../templates/card.hbs";
 import refs from "./refs";
 
-    targetValue: '',
-    options: [ 
+
+const select = new CustomSelect('#select', {
+  name: 'country',
+  targetValue: '',
+  options: [ 
     
     ['US', 'United States Of America'],
     ['AD', 'Andorra'],
@@ -93,45 +96,34 @@ import refs from "./refs";
   });
   
 
- 
   document.querySelector('.select').addEventListener('select.change', onSelect);
   const input = document.querySelector('#select__input');
   const selectSh = document.querySelector('#select');
   
-
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
-    
     eventServiceApi.selectQuery = select.dataset.value
-
     eventServiceApi.fetchEvent().then(response => {
       console.log(response);
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);
-
   });
-
   }
 
   function onEmptySelect () {
     eventServiceApi.selectQuery = input.dataset.value
-    // eventServiceApi.selectQuery = "";
-
     eventServiceApi.fetchEvent().then(response => {
       console.log(response);
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);
-
   });
-
   }
 
   // фільтр країн
 
-
-
+input.addEventListener('keyup', filter);
 
 function filter(evt) {
     evt.preventDefault();
@@ -146,6 +138,7 @@ function filter(evt) {
           selectSh.classList.add('select_show');
           item.classList.add('select__item-show');
           item.classList.remove('select__item-hide');	
+          
         }
         else {
           item.classList.add('select__item-hide');
@@ -172,8 +165,6 @@ function filter(evt) {
       return
     }
   }
-  
-  const selectFilter = document.querySelector('#select__input');
-  selectFilter.addEventListener('keyup', filter);
+
   
  
