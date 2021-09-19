@@ -37,7 +37,6 @@ export default class CustomSelect {
       selected.classList.remove(CLASS_NAME_SELECTED);
     }
     option.classList.add(CLASS_NAME_SELECTED);
-    console.log(option);
     this._elToggle.textContent = option.textContent;
     this._elToggle.dataset.value = option.dataset['value'];
     this._elToggle.dataset.index = option.dataset['index'];
