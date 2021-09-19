@@ -3,7 +3,14 @@
   <div class="modal-our-team">
     <h3 class="visually-hidden">Our team</h3>
     <a href="https://goit.ua/" class="logo-goit" target="_blank" rel="noopener noreferrer">
-      <img src="/images/goit.png" alt="Go It" width="150" />
+      <picture>
+        <source
+          srcset="./images/goit.png 1x, ./images/goit@2x.png 2x"
+          media="(min-width: 320px)"
+          type="image/png"
+        />
+        <img class="item__img" src="/images/goit.png" width="100" alt="Go It" />
+      </picture>
     </a>
     <button data-modal-close class="closeButton">
       <svg class="icon" width="17" height="17">
@@ -533,7 +540,7 @@
               alt="Vladyslav Tykhomirov"
             />
           </picture>
-          <p class="item__title">Vladyslav Tykhomirov</p>
+          <p class="item__title">Vlad Tykhomirov</p>
           <p class="item__location">
             <svg class="item__icon">
               <use href="./images/sprite.svg#icon-location"></use>

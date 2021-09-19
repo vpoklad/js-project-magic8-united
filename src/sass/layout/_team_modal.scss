@@ -16,7 +16,7 @@
   z-index: 2;
 
   .modal-our-team {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateX(-50%) scale(1);
   }
 }
 
@@ -31,26 +31,57 @@
 }
 
 .modal-our-team {
-  position: absolute;
-  top: 50%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 5;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.7);
+  transform: translateX(-50%) scale(0.7);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: calc(100% - 100px);
+  height: calc(100% - 50px);
+  width: 310px;
 
-  padding: 30px 15px;
+  overflow: hidden;
+
+  @media screen and (min-width: $tablet) {
+    width: 750px;
+  }
 
   @media screen and (min-width: $desktop) {
-    padding: 65px 30px;
+    width: 820px;
   }
 }
 
 .our-team__scroll {
+  height: 100%;
   overflow: auto;
+  overscroll-behavior: container;
+  overflow: overlay;
+
   &:hover {
-    overflow: auto;
-    overscroll-behavior: container;
-    overflow: overlay;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    scrollbar-color: #9c9c9c #9c9c9c55;
+    &::-webkit-scrollbar-thumb {
+      background-color: #9c9c9c;
+
+      &:hover {
+        background-color: darken(#9c9c9c, 10%);
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f5f5f555;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
   }
 
   scrollbar-width: thin;
@@ -59,21 +90,13 @@
     height: 7px;
   }
 
-  scrollbar-color: #9c9c9c #9c9c9c55;
+  scrollbar-color: transparent;
   &::-webkit-scrollbar-thumb {
-    background-color: #9c9c9c;
-
-    &:hover {
-      background-color: darken(#9c9c9c, 10%);
-    }
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #f5f5f555;
-
-    &:hover {
-      background-color: #f5f5f5;
-    }
+    background-color: transparent;
   }
 }
 
@@ -212,16 +235,16 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0px;
+  margin-top: 50px;
   margin-bottom: 60px;
   background-color: transparent;
   width: 100px;
 
   transform-origin: center center;
 
-  @media screen and (min-width: $tablet) {
-    width: 150px;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 150px;
+  // }
 
   &-animate {
     animation: anime 2s linear;

@@ -68,12 +68,10 @@
 }
 
 .modal-our-team .closeButton {
+  position: fixed;
+  top: 50px;
+  right: 0;
   color: #ff6b08;
-  top: 30px;
-
-  @media screen and (min-width: $desktop) {
-    top: 65px;
-  }
 
   &:hover,
   &:focus {
