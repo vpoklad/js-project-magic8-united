@@ -2,7 +2,7 @@
 // Дає можливість кожній карці на сторінці присвоїти порядковий номер.
 // В перспективі це дозволить уникнути зайвого запиту при рендері модалки.
 
-import sortImagesByWidth from "./sortImages.js";
+import {sortImagesByWidth} from "./eventModification.js";
 
 export function createMarkupGrid (events) { 
   const markupCards = events.map(event => createMarkupCard (event));
@@ -37,9 +37,9 @@ export function createMarkupIntoModal (event) {
   const country = event._embedded.venues[0].country.name;
   const places = event._embedded.venues[0].name !== undefined ? event._embedded.venues[0].name : '';
   const priceRanges = event.priceRanges;
-  const priceSt = priceRanges[0] !== undefined ? priceRanges[0].min - priceRanges[0].max : '-';
+  const priceSt = priceRanges[0] !== undefined ? `${priceRanges[0].min} - ${priceRanges[0].max}` : '-';
   const priceStCurrency = priceRanges[0] !== undefined ? priceRanges[0].currency : '';
-  const priceVip = priceRanges[1] !== undefined ? priceRanges[1].min - priceRanges[1].max : '-';
+  const priceVip = priceRanges[1] !== undefined ? `${priceRanges[1].min} - ${priceRanges[1].max}` : '-';
   const priceVipCurrency = priceRanges[1] !== undefined ? priceRanges[1].currency : '';
 
   return `
