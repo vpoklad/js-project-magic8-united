@@ -68,6 +68,9 @@
 }
 
 .modal-our-team .closeButton {
+  position: fixed;
+  top: 50px;
+  right: 0;
   color: #ff6b08;
 
   &:hover,
