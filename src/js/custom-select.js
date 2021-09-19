@@ -126,9 +126,7 @@ CustomSelect.template = params => {
       selectedValue = option[0];
       selectedContent = option[1];
     }
-    items.push(`
-    <li class="select__option${selectedClass} country__item" tabindex= "0" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>
-    `);
+    items.push(`<li class="select__option${selectedClass} country__item" tabindex= "0" data-select="option" data-value="${option[0]}" data-index="${index}">${option[1]}</li>`);
   });
   
   return `

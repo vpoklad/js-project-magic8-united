@@ -8,8 +8,7 @@ import refs from "./refs";
 const select = new CustomSelect('#select', {
   name: 'country',
   targetValue: '',
-  options: [ 
-    
+  options: [
     ['US', 'United States Of America'],
     ['AD', 'Andorra'],
     ['AI', 'Anguilla'],
@@ -104,7 +103,6 @@ const select = new CustomSelect('#select', {
     const select = e.target.querySelector('.select__toggle');
     eventServiceApi.selectQuery = select.dataset.value
     eventServiceApi.fetchEvent().then(response => {
-      console.log(response);
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);
