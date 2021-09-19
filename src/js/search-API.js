@@ -25,7 +25,6 @@ export default class EventServiceApi {
 
   fetchEvent() {
     let url = `${ROOT_URL}.json?&page=${this.page}&keyword=${this.searchQuery}&apikey=${KEY}`;
-
     if (this.countryQuery !== '') {
       url = `${ROOT_URL}.json?&page=${this.page}&countryCode=${this.countryQuery}&keyword=${this.searchQuery}&apikey=${KEY}`;
     }

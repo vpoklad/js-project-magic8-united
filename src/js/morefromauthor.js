@@ -5,7 +5,6 @@ import templateCard from '../templates/card.hbs';
 import { authorName } from './renderEventIntoModal.js';
 
 refs.buttonMoreFromAuthor.addEventListener('click', searchMoreFromAuthor);
-console.log(authorName);
 
 function searchMoreFromAuthor() {
   onCloseMainModal();
@@ -13,7 +12,7 @@ function searchMoreFromAuthor() {
   refs.searchInput.value = '';
   refs.searchInput.value = authorName;
   const eventServiceApi = new EventServiceApi();
-  eventServiceApi.query = refs.searchInput.value.replace(' ', '%20');
+  eventServiceApi.query = authorName.replaceAll(' ', '%20');
   eventServiceApi.fetchEvent().then(response => {
     refs.cardsContainer.innerHTML = templateCard(response);
   });
