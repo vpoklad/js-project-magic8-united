@@ -34,8 +34,8 @@
 
 .header__link {
   position: absolute;
-  top: -78px;
-  left: -18px;
+  top: 0;
+  left: 0;
 
   background: radial-gradient(circle farthest-side at 10% 130%, #777777, #141212d1);
   backdrop-filter: blur(30px);
@@ -47,15 +47,14 @@
   @media screen and (min-width: $tablet) {
     width: 182px;
     height: 151px;
-    top: -40px;
-    left: -74px;
     background: radial-gradient(circle farthest-side at 150% 10%, #777777, #0a0909d1);
   }
 
   @media screen and (min-width: $desktop) {
     width: 239px;
     height: 201px;
-    left: -140px;
+    top: -40px;
+    left: -74px;
     background: hsla(0, 7%, 21%, 0.322);
   }
 }
@@ -128,13 +127,15 @@
   background-position: right 30px center;
 }
 
-::-webkit-input-placeholder {color:#cac7c7;}
+::-webkit-input-placeholder {
+  color: #cac7c7;
+}
 
-.select__input{
+.select__input {
   background-color: transparent;
   backdrop-filter: none;
   background-image: url(../images/polygon_transform.svg);
-    background-repeat: no-repeat;
-    background-position: right 30px center;  
-    outline: none;
+  background-repeat: no-repeat;
+  background-position: right 30px center;
+  outline: none;
 }
