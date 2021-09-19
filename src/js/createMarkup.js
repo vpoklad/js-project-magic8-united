@@ -37,9 +37,9 @@ export function createMarkupIntoModal (event) {
   const country = event._embedded.venues[0].country.name;
   const places = event._embedded.venues[0].name !== undefined ? event._embedded.venues[0].name : '';
   const priceRanges = event.priceRanges;
-  const priceSt = priceRanges[0] !== undefined ? priceRanges[0].min - priceRanges[0].max : '-';
+  const priceSt = priceRanges[0] !== undefined ? `${priceRanges[0].min} - ${priceRanges[0].max}` : '-';
   const priceStCurrency = priceRanges[0] !== undefined ? priceRanges[0].currency : '';
-  const priceVip = priceRanges[1] !== undefined ? priceRanges[1].min - priceRanges[1].max : '-';
+  const priceVip = priceRanges[1] !== undefined ? `${priceRanges[1].min} - ${priceRanges[1].max}` : '-';
   const priceVipCurrency = priceRanges[1] !== undefined ? priceRanges[1].currency : '';
 
   return `
@@ -53,7 +53,7 @@ export function createMarkupIntoModal (event) {
       </div>
 
       <div class="modal__content">
-        <div class="modal__meta">
+        <div class="modal__meta modal__meta--scroll ">
           <h3 class="modal_main__title">INFO</h3>
           <p>${info}</p>
         </div>
@@ -88,17 +88,8 @@ export function createMarkupIntoModal (event) {
                   rel="noopener noreferrer"
                   data-modal_button_standard
                 >BUY TICKETS</a>
-          <p class="modal__price">
-            VIP ${priceVip} ${priceVipCurrency}
-          </p>
-          <a
-                  href="${event.url}"
-                  data-eventId=${event.id}
-                  class="button button--ticket"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-modal_button_vip
-                >BUY TICKETS</a>
+                <div class =""> 
+          
         </div>
       </div>
     </div>
