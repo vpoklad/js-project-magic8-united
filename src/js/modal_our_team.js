@@ -8,7 +8,6 @@ const logo = modalOurTeam.querySelector('.logo-goit');
 btnOurTeamOpen.addEventListener('click', onOpen);
 btnOurTeamClose.addEventListener('click', onCloseBtn);
 backDropOurTeam.addEventListener('click', onClose);
-// window.addEventListener('keydown', onClose);
 
 function onOpen(e) {
     e.preventDefault();

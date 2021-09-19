@@ -16,7 +16,7 @@
   z-index: 2;
 
   .modal-our-team {
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -34,18 +34,19 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(0.7);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: 600px;
-  //outline: 1px solid red;
-  overflow: hidden;
+  height: calc(100% - 100px);
+
   padding: 30px 15px;
 
   @media screen and (min-width: $desktop) {
-    height: 900px;
     padding: 65px 30px;
   }
+}
 
+.our-team__scroll {
+  overflow: auto;
   &:hover {
     overflow: auto;
     overscroll-behavior: container;
@@ -76,10 +77,6 @@
   }
 }
 
-.modal-our-team__title {
-  display: none;
-}
-
 .our-team {
   display: grid;
   justify-content: center;
@@ -98,8 +95,8 @@
   }
 
   @media screen and (min-width: $desktop) {
-    grid-template-columns: repeat(4, 180px);
-    grid-gap: 60px;
+    grid-template-columns: repeat(4, 150px);
+    grid-gap: 40px;
   }
 }
 
@@ -131,29 +128,26 @@
     }
 
     @media screen and (min-width: $desktop) {
-      width: 180px;
+      width: 150px;
       height: 227px;
     }
   }
 
   .item__title {
     font-weight: bold;
-    font-size: 16px;
-    line-height: 1.21;
+    font-size: 14px;
     text-align: center;
     color: #ff6b08;
     margin-top: 5px;
 
     @media screen and (min-width: $tablet) {
-      font-size: 20px;
-      line-height: 1.25;
+      font-size: var(--mainFontSize);
     }
   }
 
   .item__location {
     font-weight: normal;
-    font-size: 14px;
-    line-height: 1.25;
+    font-size: 12px;
     text-align: center;
     color: var(--fontColor);
     margin-top: 5px;
@@ -163,20 +157,19 @@
     justify-content: center;
 
     @media screen and (min-width: $tablet) {
-      font-size: 16px;
-      line-height: 1.21;
+      font-size: 14px;
     }
   }
 
   .item__icon {
     margin-right: 5px;
     fill: var(--fontColor);
-    width: 7px;
-    height: 10px;
+    width: 6px;
+    height: 9px;
 
     @media screen and (min-width: $tablet) {
-      width: 15px;
-      height: 15px;
+      width: 7px;
+      height: 10px;
     }
   }
 
@@ -197,8 +190,13 @@
 
     .social__icon {
       fill: #fff;
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
+
+      @media screen and (min-width: $tablet) {
+        width: 30px;
+        height: 30px;
+      }
 
       &:hover,
       &:focus {
@@ -215,7 +213,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 0px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   background-color: transparent;
   width: 100px;
 
