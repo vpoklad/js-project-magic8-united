@@ -4,7 +4,7 @@ import eventMarkup from '../templates/eventModif.hbs';
 import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
 import arrEvents from './search-API.js';
-import {eventModif} from "./eventModification.js";
+import {eventModif, filterImagesByRetina, filterImagesByNotRetina} from "./eventModification.js";
 import { createMarkupIntoModal } from "./createMarkup.js";
 export let authorName;
 
@@ -28,9 +28,8 @@ function OnEventClick(evt) {
     eventServiceApi.queryId = target.dataset.eventid;
      
     eventServiceApi.searchEventById()
+    //.then(event => console.log('object :>> ',  filterImagesByNotRetina(event.images)))
     //.then((event) => renderEventMarkup(event)) 
-    .then((event) => renderEventMarkup(eventModif(event)))    
+    .then(event => renderEventMarkup(eventModif(event)))    
     .catch(notifyAlert);
 }
-
-
