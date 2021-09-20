@@ -24,13 +24,11 @@ function OnEventClick(evt) {
     const target = evt.target.nodeName !== 'LI' ? evt.target.parentElement : evt.target;
     //console.log('target :>> ', arrEvents);
     if (target.nodeName !== "LI") return;
-    
+
     eventServiceApi.queryId = target.dataset.eventid;
-     
+
     eventServiceApi.searchEventById()
-    //.then((event) => renderEventMarkup(event)) 
-    .then((event) => renderEventMarkup(eventModif(event)))    
-    .catch(notifyAlert);
+    //.then((event) => renderEventMarkup(event))
+    .then((event) => renderEventMarkup(eventModif(event)))
+    .catch(notifyAlert('No data available!'));
 }
-
-

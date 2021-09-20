@@ -1,13 +1,5 @@
 import axios from 'axios';
-import {
-  alert,
-  notice,
-  info,
-  success,
-  error,
-} from '../../node_modules/@pnotify/core/dist/PNotify.js';
-import '@pnotify/core/dist/BrightTheme.css';
-import { notifyAlert } from './notify.js';
+import { notifyAlert, notifySuccess } from './notify.js';
 
 const ROOT_URL = 'https://app.ticketmaster.com/discovery/v2/';
 const KEY = 'y2gr3zDEoAnck6YziFkTdrHptQULpZRO';
@@ -33,10 +25,7 @@ class EventServiceApi {
       .get(url)
       .then(result => {
         if (!result.data._embedded) {
-          alert({
-            text: 'Looks like there is no such even!',
-            delay: 2000,
-          });
+          notifyAlert('Looks like there is no such even!');
           // console.log("Looks like there is no such even!");
           return;
         }
@@ -50,6 +39,8 @@ class EventServiceApi {
           // console.log(this.totalPages);
           // arrEvents = result.data._embedded.events;
           // console.log('arrEvents :>> ', arrEvents);
+          notifySuccess(`Your request "${this.searchQuery}" in "${this.countryQuery}" has been successfully processed!
+          Found ${this.totalEvents} events.`);
           return result.data._embedded.events;
         } catch (error) {
           // Поставить Нотификашку для отлова ошибки
