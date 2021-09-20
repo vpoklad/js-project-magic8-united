@@ -23,14 +23,6 @@
     background-position: right 30px center;  
   }
   
-  // .select__toggle::after {
-  //   content: '';
-  //   width: 15px;
-  //   height: 10px;
-  //   background-repeat: no-repeat;
-  //   background-image: url(../images/polygon.svg);
-  // }
-  
   .select__toggle:focus {
 
   }
@@ -123,4 +115,13 @@
     background-color: #DC56C5;
     cursor: pointer;
     transition: 0.2s background-color ease-in-out;
+  }
+
+  .select__item-hide {
+    visibility: hidden;
+    position: absolute;
+  }
+  
+  .select__item-show {
+    visibility: visible;
   }
