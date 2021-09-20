@@ -4,7 +4,7 @@ import eventMarkup from '../templates/eventModif.hbs';
 import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
 import arrEvents from './search-API.js';
-import {eventModif, filterImagesByRetina, filterImagesByNotRetina} from "./eventModification.js";
+import {eventModif, filterImagesByRetina, filterImagesByNotRetina } from "./eventModification.js";
 import { createMarkupIntoModal } from "./createMarkup.js";
 export let authorName;
 
@@ -25,6 +25,9 @@ function OnEventClick(evt) {
     //console.log('target :>> ', arrEvents);
     if (target.nodeName !== "LI") return;
     
+    // eventServiceApi.searchEventByPriceRange()
+    // .then(events => console.log('vhb', events))
+
     eventServiceApi.queryId = target.dataset.eventid;
      
     eventServiceApi.searchEventById()

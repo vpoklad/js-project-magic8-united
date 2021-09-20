@@ -37,6 +37,8 @@ export const eventModif = (event) => (
 
 const sortByWidth = (imgA, imgB) => (imgB.width) - (imgA.width);
 
+const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
+
 export function sortImagesByWidth (images) {
   if (!images) {return}
   return images.sort(sortByWidth);
@@ -67,8 +69,16 @@ export function filterImagesByRetina (images) {
 export function filterImagesByNotRetina (images) {
   if (!images) {return}
   return images
-          .filter(image => !image.url.includes('RETINA'))
+          .filter(image => !(image.url.includes('RETINA')))
           .sort(sortByWidth)
+}
+
+export function filterEventsByPriceRangeVip (events) {
+  if (!events) {return}
+  return events
+          .filter(event => event.priceRanges
+          .some(priceRang => priceRang.type === "vip"))
+      
 }
 
 let card;
