@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import './js/preloader'
 import './js/event-search';
 import './js/select';
 import './js/modalClose';
@@ -9,4 +10,4 @@ import './js/renderModal.js';
 import './js/morefromauthor.js';
 
 
-import './js/preloader'
+

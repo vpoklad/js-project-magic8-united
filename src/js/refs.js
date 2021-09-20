@@ -6,7 +6,9 @@ export default {
   modalContent: document.querySelector('.js-modal__content'),
   cards: document.querySelector('.cards'),
   searchInput: document.querySelector('.search__block--input'),
-  selectInput: document.querySelector('.select'),
   buttonMoreFromAuthor: document.querySelector('.button--author'),
-  preloader: document.querySelector('.preloader')
+  preloader: document.querySelector('.preloader'),
+  selectItems: document.querySelectorAll('.country__item'),
+  select: document.querySelector('.select'),
+  
 };
