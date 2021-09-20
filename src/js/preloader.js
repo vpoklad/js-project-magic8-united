@@ -1,9 +1,10 @@
 import refs from './refs';
-
+import { debounce } from "lodash";
+import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 window.onload = function () {
     setTimeout(() => {
       hideLoader();
-    }, 1200);
+    }, 500);
   };
   
   function showLoader() {
