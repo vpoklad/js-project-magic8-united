@@ -4,7 +4,8 @@ import refs from './refs.js'
 import card from '../templates/cardModif.hbs';
 import { debounce } from "lodash";
 import {setPagination, setEventsOnPage} from './pagination.js';
-import { notifyError } from './notify.js';
+// import { notifyError } from './notify.js';
+import {notify} from './notify_sweetalert'
 import eventServiceApi from "./search-API.js";
 import { createMarkupGrid } from "./createMarkup.js";
 import { eventsModif } from './eventModification.js'
@@ -18,7 +19,10 @@ function firstPageLoad() {
       renderCards(result.data._embedded.events)
        addClassAnimation()
       setPagination(result.data.page.totalElements)
-    }).catch(err=>notifyError('Error loading page. Please refresh the page.'))
+    }).catch(err=> notify.error
+      ('Error loading page. Please refresh the page.')
+      // (notifyError('Error loading page. Please refresh the page.')
+      )
 }
 
 

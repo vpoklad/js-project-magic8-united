@@ -1,13 +1,14 @@
 import axios from 'axios';
-import {
-  alert,
-  notice,
-  info,
-  success,
-  error,
-} from '../../node_modules/@pnotify/core/dist/PNotify.js';
-import '@pnotify/core/dist/BrightTheme.css';
-import { notifyAlert } from './notify.js';
+// import {
+//   alert,
+//   notice,
+//   info,
+//   success,
+//   error,
+// } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+// import '@pnotify/core/dist/BrightTheme.css';
+// import { notifyAlert } from './notify.js';
+import {notify} from './notify_sweetalert'
 
 const ROOT_URL = 'https://app.ticketmaster.com/discovery/v2/';
 const KEY = 'y2gr3zDEoAnck6YziFkTdrHptQULpZRO';
@@ -33,10 +34,11 @@ class EventServiceApi {
       .get(url)
       .then(result => {
         if (!result.data._embedded) {
-          alert({
-            text: 'Looks like there is no such even!',
-            delay: 2000,
-          });
+          notify.error('Looks like there is no such even!')
+          // ({
+            // text: 'Looks like there is no such even!',
+            // delay: 2000,
+          // });
           // console.log("Looks like there is no such even!");
           return;
         }
@@ -67,7 +69,8 @@ class EventServiceApi {
       const data = await result.data;
       return data;
     } catch (error) {
-      notifyAlert(error);
+      notify.error ()
+      // notifyAlert(error);
     }
   }
 

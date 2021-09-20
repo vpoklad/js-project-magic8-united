@@ -3,7 +3,8 @@ import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import debounce from 'lodash.debounce';
-import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+// import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+import {notify} from './notify_sweetalert'
 import { setPagination, setEventsOnPage } from './pagination.js';
 import { eventsModif } from './eventModification.js'
 
@@ -14,10 +15,9 @@ import { eventsModif } from './eventModification.js'
 function onInput(e) {
   // console.log(refs.searchInput.value);
   if (e.target.value.trim() === '') {
-    info({
-      text: 'Please enter you request!',
-      delay: 5000
-    })
+    notify.info ('Please enter you request!')
+    // ({ text: 'Please enter you request!',
+      // delay: 5000 })
     return
   }
   eventServiceApi.query = e.target.value.trim();
@@ -38,5 +38,5 @@ function onInput(e) {
 //    eventServiceApi.fetchEvent().then(response => {
 //      refs.cardsContainer.innerHTML = templateCard(response);
 //      });
-    
+
 // }

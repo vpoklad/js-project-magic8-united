@@ -1,7 +1,8 @@
 import refs from './refs.js';
 //import eventMarkup from '../templates/event.hbs';
 import eventMarkup from '../templates/eventModif.hbs';
-import {notifyAlert} from './notify.js';
+// import {notifyAlert} from './notify.js';
+import {notify} from './notify_sweetalert'
 import eventServiceApi from './search-API.js';
 import arrEvents from './search-API.js';
 import {eventModif} from "./eventModification.js";
@@ -24,13 +25,11 @@ function OnEventClick(evt) {
     const target = evt.target.nodeName !== 'LI' ? evt.target.parentElement : evt.target;
     //console.log('target :>> ', arrEvents);
     if (target.nodeName !== "LI") return;
-    
+
     eventServiceApi.queryId = target.dataset.eventid;
-     
+
     eventServiceApi.searchEventById()
-    //.then((event) => renderEventMarkup(event)) 
-    .then((event) => renderEventMarkup(eventModif(event)))    
-    .catch(notifyAlert);
+    //.then((event) => renderEventMarkup(event))
+    .then((event) => renderEventMarkup(eventModif(event)))
+    .catch(notify.error);
 }
-
-
