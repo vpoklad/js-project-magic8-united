@@ -104,6 +104,15 @@ const select = new CustomSelect('#select', {
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
     eventServiceApi.selectQuery = select.dataset.value
+    if (eventServiceApi.searchQuery !== '') {
+      eventServiceApi.pageReset();
+      eventServiceApi.fetchEvent().then(response => {
+        if (response === undefined) { return }
+        refs.cardsContainer.innerHTML = templateCard(response);
+        setPagination(eventServiceApi.totalEvents);
+      })
+    }
+    console.log(eventServiceApi.page);
     eventServiceApi.fetchEvent().then(response => {
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
