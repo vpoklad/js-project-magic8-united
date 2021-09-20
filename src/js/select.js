@@ -3,6 +3,7 @@ import { setPagination, setEventsOnPage } from './pagination.js';
 import eventServiceApi from "./search-API";
 import templateCard from "../templates/card.hbs";
 import refs from "./refs";
+import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 
 
 const select = new CustomSelect('#select', {
@@ -127,40 +128,33 @@ input.addEventListener('keyup', filter);
 function filter(evt) {
     evt.preventDefault();
     const inputValue = input.value.toUpperCase();	
-    
         selectItems.forEach(
-
       function getMatch(item) {
-
       const itemContent = item.innerHTML.toUpperCase();
-console.log(itemContent);
         if (itemContent.includes(inputValue)) {
           selectSh.classList.add('select_show');
           item.classList.add('select__item-show');
           item.classList.remove('select__item-hide');	
-         
         }
         else {
           item.classList.add('select__item-hide');
           item.classList.remove('select__item-show');
           selectSh.classList.add('select_show');
-
         }
         if (inputValue === null, inputValue === "") {
           item.classList.remove('select__item-show');
           item.classList.remove('select__item-show');
-          
         }
       }
-
     )
     if (inputValue === null, inputValue === "") {
       
-      // const s = document.querySelector('.select__option_selected')
-      // remClass.classList.remove('select__option_selected');
-      input.dataset.value = "";
-    
-      onEmptySelect();
+      const remSelected = document.querySelector('.select__option_selected')
+      if (remSelected){
+        remSelected.classList.remove('select__option_selected');
+      }
+        input.dataset.value = "";
+       onEmptySelect();
     }
     else{
       return
