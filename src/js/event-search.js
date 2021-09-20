@@ -13,7 +13,16 @@ import { eventsModif } from './eventModification.js'
 
 function onInput(e) {
   // console.log(refs.searchInput.value);
-  if (e.target.value.trim() === '') {
+  if (e.target.value.trim() === '' && eventServiceApi.selectQuery !== "") {
+    eventServiceApi.query = "";
+      eventServiceApi.fetchEvent().then(response => {
+      if(response===undefined){return}
+      refs.cardsContainer.innerHTML = templateCard(response);
+      setPagination(eventServiceApi.totalEvents);});
+    return
+  }
+if (e.target.value.trim() === '') {
+    eventServiceApi.query = "";
     info({
       text: 'Please enter you request!',
       delay: 5000
