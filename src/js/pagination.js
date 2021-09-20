@@ -1,29 +1,53 @@
 import Pagination from 'tui-pagination'; 
+import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
+import eventServiceApi from "./search-API";
+import { renderCards } from './firstPageLoad';
+import card from '../templates/card.hbs';
+import refs from './refs';
+import { hideLoader, showLoader } from './preloader';
+import { debounce } from 'lodash';
+// export {showLoader, hideLoader} from './preloader'
+
 
 const container = document.querySelector('#tui-pagination-container');
-const options = { // below default value of options
-     totalItems: 100,
-     itemsPerPage: 16,
-     visiblePages: 5,
-     page: 1,
-     centerAlign: true,
-     firstItemClassName: 'tui-first-child',
-     lastItemClassName: 'tui-last-child',
-     template: {
-         page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-         currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-         moveButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}">' +
-                 '<svg class="tui-ico-{{type}}"><use href="../images/icon-{{type}}.svg"></use></svg>' +
-             '</a>',
-         disabledMoveButton:
-             '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-                 '<svg class="tui-ico-{{type}}"><use href="../images/icon-{{type}}.svg"></use></use></svg>' +
-             '</span>',
-         moreButton:
-             '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-                 '<span class="tui-ico-ellip">...</span>' +
-             '</a>'
-     }
-};
-const pagination = new Pagination(container, options);
+
+function setEventsOnPage() {
+    const windowOuterWidth = window.outerWidth;
+    if (windowOuterWidth > 768 && windowOuterWidth < 1280) {
+        eventServiceApi.size = 20;
+    } else {
+        eventServiceApi.size = 20;
+    }
+  }
+
+
+
+function setPagination(totalEvents,) {
+    const options = {
+        totalItems: totalEvents > 1000 ? 1000 : totalEvents,
+        itemsPerPage: eventServiceApi.size,
+        visiblePages: window.outerWidth < 768 ? 3 : 5,
+        page: 1,
+        centerAlign: true,
+    };
+
+    const pagination = new Pagination(container, options);
+    console.log(options.visiblePages)
+    pagination.on('beforeMove', function (eventData) {
+        eventServiceApi.page = eventData.page - 1;
+        setEventsOnPage();
+        showLoader();
+      eventServiceApi.fetchEvent()
+        .then(events => {
+        refs.cardsContainer.innerHTML = card(events);
+          addClassAnimation();
+          setTimeout(removeClassAnimation, 1500);
+        })
+        .catch(console.log)
+        .finally(hideLoader);
+      });
+}
+
+export { setEventsOnPage, setPagination };
+
+

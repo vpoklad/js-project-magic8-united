@@ -16,8 +16,7 @@
   z-index: 2;
 
   .modal-our-team {
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translateX(-50%) scale(1);
   }
 }
 
@@ -32,25 +31,57 @@
 }
 
 .modal-our-team {
-  position: absolute;
-  top: 50%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 5;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translateX(-50%) scale(0.9);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  height: 600px;
-  //outline: 1px solid red;
-  overflow: hidden;
-  padding: 30px 15px;
+  height: calc(100% - 50px);
+  width: 310px;
 
-  @media screen and (min-width: $desktop) {
-    height: 900px;
-    padding: 65px 30px;
+  overflow: hidden;
+
+  @media screen and (min-width: $tablet) {
+    width: 750px;
   }
 
+  @media screen and (min-width: $desktop) {
+    width: 820px;
+  }
+}
+
+.our-team__scroll {
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior: container;
+  overflow: overlay;
+
   &:hover {
-    overflow: auto;
-    overscroll-behavior: container;
-    overflow: overlay;
+    scrollbar-width: thin;
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 7px;
+    }
+
+    scrollbar-color: #9c9c9c #9c9c9c55;
+    &::-webkit-scrollbar-thumb {
+      background-color: #9c9c9c;
+
+      &:hover {
+        background-color: darken(#9c9c9c, 10%);
+      }
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f5f5f555;
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
   }
 
   scrollbar-width: thin;
@@ -59,26 +90,14 @@
     height: 7px;
   }
 
-  scrollbar-color: #9c9c9c #9c9c9c55;
+  scrollbar-color: transparent;
   &::-webkit-scrollbar-thumb {
-    background-color: #9c9c9c;
-
-    &:hover {
-      background-color: darken(#9c9c9c, 10%);
-    }
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #f5f5f555;
-
-    &:hover {
-      background-color: #f5f5f5;
-    }
+    background-color: transparent;
   }
-}
-
-.modal-our-team__title {
-  display: none;
 }
 
 .our-team {
@@ -99,8 +118,8 @@
   }
 
   @media screen and (min-width: $desktop) {
-    grid-template-columns: repeat(4, 180px);
-    grid-gap: 60px;
+    grid-template-columns: repeat(4, 150px);
+    grid-gap: 40px;
   }
 }
 
@@ -132,29 +151,26 @@
     }
 
     @media screen and (min-width: $desktop) {
-      width: 180px;
+      width: 150px;
       height: 227px;
     }
   }
 
   .item__title {
     font-weight: bold;
-    font-size: 16px;
-    line-height: 1.21;
+    font-size: 14px;
     text-align: center;
     color: #ff6b08;
     margin-top: 5px;
 
     @media screen and (min-width: $tablet) {
-      font-size: 20px;
-      line-height: 1.25;
+      font-size: var(--mainFontSize);
     }
   }
 
   .item__location {
     font-weight: normal;
-    font-size: 14px;
-    line-height: 1.25;
+    font-size: 12px;
     text-align: center;
     color: var(--fontColor);
     margin-top: 5px;
@@ -164,20 +180,19 @@
     justify-content: center;
 
     @media screen and (min-width: $tablet) {
-      font-size: 16px;
-      line-height: 1.21;
+      font-size: 14px;
     }
   }
 
   .item__icon {
     margin-right: 5px;
     fill: var(--fontColor);
-    width: 7px;
-    height: 10px;
+    width: 6px;
+    height: 9px;
 
     @media screen and (min-width: $tablet) {
-      width: 15px;
-      height: 15px;
+      width: 7px;
+      height: 10px;
     }
   }
 
@@ -198,8 +213,13 @@
 
     .social__icon {
       fill: #fff;
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
+
+      @media screen and (min-width: $tablet) {
+        width: 30px;
+        height: 30px;
+      }
 
       &:hover,
       &:focus {
@@ -215,16 +235,16 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0px;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 60px;
   background-color: transparent;
   width: 100px;
 
   transform-origin: center center;
 
-  @media screen and (min-width: $tablet) {
-    width: 150px;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 150px;
+  // }
 
   &-animate {
     animation: anime 2s linear;

@@ -4,10 +4,12 @@
 </div>
 
 <div class="modal__flex">
-  <img class="modal_main__image" src={{this.images.2.url}} alt="event"/>
+  <div class="modal__flex-thumb">
+  <img class="modal_main__image" src={{this.images.2.url}} alt={{this._embedded.venues.0.name}}/>
+  </div>
 
   <div class="modal__content">
-    <div class="modal__meta">
+    <div class="modal__meta modal__meta--scrol">
       <h3 class="modal_main__title">INFO</h3>
       <p>{{this.info}}</p>
     </div>
@@ -32,44 +34,30 @@
     <div class="modal__meta">
       <h3 class="modal_main__title">PRICES</h3>
       <p class="modal__price">
-        <svg width="24" height="17">
-          <use href="../images/sprite.svg#icon-ticket_barcode"></use>
-        </svg>
         Standart {{this.priceRanges.0.min}}-{{this.priceRanges.0.max}} {{this.priceRanges.0.currency}}
       </p>
-      <button class="button button--ticket" data-modal_button_standart>BUY TICKETS</button>
+      <a
+              href="{{this.url}}"
+              data-eventId={{this.id}}
+              class="button button--ticket"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-modal_button_standard
+            >BUY TICKETS</a>
+      {{!-- <button class="button button--ticket" data-modal_button_standart>BUY TICKETS</button> --}}
 
       <p class="modal__price">
-        <svg width="24" height="17">
-          <use href="../images/sprite.svg#icon-ticket_barcode"></use>
-        </svg>
-        VIP 1000-1500 UAH
+        VIP {{this.priceRanges.1.min}}-{{this.priceRanges.1.max}} {{this.priceRanges.1.currency}}
       </p>
-      <button class="button button--ticket" data-modal_button_vip>BUY TICKETS</button>
+       <a
+              href="{{this.url}}"
+              data-eventId={{this.id}}
+              class="button button--ticket"
+              target="_blank"
+              rel="noopener noreferrer"
+               data-modal_button_vip
+            >BUY TICKETS</a>
+      {{!-- <button class="button button--ticket" data-modal_button_vip>BUY TICKETS</button> --}}
     </div>
   </div>
 </div>
-
-{{!-- const info = event.info;
-      console.log('info :>> ', info);
-      const localDate = event.dates.start.localDate;
-      console.log('localDate :>> ', localDate);
-      const localTime = event.dates.start.localTime;
-      console.log('localTime :>> ', localTime);
-      const timeZone = event.dates.timezone;
-      console.log('timeZone :>> ', timeZone);
-      const cityName = event._embedded.venues.0.city.name;
-      console.log('cityName :>> ', cityName);
-      const countryName = event._embedded.venues.0.country.name;
-      console.log('countryName :>> ', countryName);
-      const pleaseName = event._embedded.venues.0.name;
-      console.log('pleaseName :>> ', pleaseName);
-      const name = event.name;
-      console.log('name :>> ', name);
-      const priceStandard = event.priceRanges.0;
-      const priceStandardMin = priceStandard.min;
-      console.log('priceStandardMin :>> ', priceStandardMin);
-      const priceStandardMax = priceStandard.max;
-      console.log('priceStandardMax :>> ', priceStandardMax);
-      const priceStandardCurrency = priceStandard.currency;
-      console.log('priceStandardCurrency :>> ', priceStandardCurrency); --}}

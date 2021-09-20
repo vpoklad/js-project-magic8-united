@@ -1,32 +1,55 @@
 .button {
+  display: inline-block;
   font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
   text-transform: uppercase;
-  color: #fff;
-  padding-left: 19px;
-  padding-right: 19px;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button--ticket {
+  text-decoration: none;
+  padding: 9px 19px 11px 19px;
   border-width: 0;
   border-radius: 5px;
+  color: #fff;
   background-color: var(--buttonBackgroundColor);
-  cursor: pointer;
-  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: background-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:hover,
   &:focus {
     background-color: var(--buttonBackgroundColorHover);
   }
+}
 
-  @media screen and(max-width: 767px) {
-    margin-left: auto;
-    margin-right: auto;
+.button--ticket:not(:last-child) {
+  margin-bottom: 20px;
+  @media screen and(min-width: $desktop) {
+    margin-bottom: 31px;
+  }
+}
+
+.button--author {
+  padding: 10px 3px;
+  color: #4c00fe;
+  background-color: transparent;
+  border: 1px solid #4c00fe;
+  transition: border-color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media screen and (min-width: $tablet) {
+    padding: 10px 15px;
+  }
+
+  &:hover {
+    border-color: #dc56c5;
+    background-color: transparent;
   }
 }
 
 .closeButton {
-  position: absolute;
+  position: fixed;
   z-index: 5;
   top: 20px;
   right: 20px;
@@ -35,7 +58,7 @@
   border: none;
   padding: 5px;
   cursor: pointer;
-  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: color 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   &:hover,
   &:focus {
@@ -45,6 +68,9 @@
 }
 
 .modal-our-team .closeButton {
+  position: fixed;
+  top: 50px;
+  right: 0;
   color: #ff6b08;
 
   &:hover,
