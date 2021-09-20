@@ -72,7 +72,7 @@ class EventServiceApi {
   }
 
   pageReset() {
-    this.page = 1;
+    this.page = 0;
   }
   incrementPage() {
     this.page += 1;

@@ -4,6 +4,7 @@ import eventServiceApi from "./search-API";
 // import templateCard from "../templates/card.hbs";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
+import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 
 
 const select = new CustomSelect('#select', {
@@ -99,10 +100,20 @@ const select = new CustomSelect('#select', {
   document.querySelector('.select').addEventListener('select.change', onSelect);
   const input = document.querySelector('#select__input');
   const selectSh = document.querySelector('#select');
+  const selectItems = document.querySelectorAll('.country__item');
   
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
     eventServiceApi.selectQuery = select.dataset.value
+    if (eventServiceApi.searchQuery !== '') {
+      eventServiceApi.pageReset();
+      eventServiceApi.fetchEvent().then(response => {
+        if (response === undefined) { return }
+        refs.cardsContainer.innerHTML = templateCard(response);
+        setPagination(eventServiceApi.totalEvents);
+      })
+    }
+    console.log(eventServiceApi.page);
     eventServiceApi.fetchEvent().then(response => {
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
@@ -113,7 +124,7 @@ const select = new CustomSelect('#select', {
   function onEmptySelect () {
     eventServiceApi.selectQuery = input.dataset.value
     eventServiceApi.fetchEvent().then(response => {
-      console.log(response);
+    
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);
@@ -127,43 +138,35 @@ input.addEventListener('keyup', filter);
 function filter(evt) {
     evt.preventDefault();
     const inputValue = input.value.toUpperCase();	
-        refs.selectItems.forEach(
-
+        selectItems.forEach(
       function getMatch(item) {
-
       const itemContent = item.innerHTML.toUpperCase();
-
         if (itemContent.includes(inputValue)) {
           selectSh.classList.add('select_show');
           item.classList.add('select__item-show');
           item.classList.remove('select__item-hide');	
-          
         }
         else {
           item.classList.add('select__item-hide');
           item.classList.remove('select__item-show');
           selectSh.classList.add('select_show');
-
         }
         if (inputValue === null, inputValue === "") {
           item.classList.remove('select__item-show');
           item.classList.remove('select__item-show');
-
         }
       }
-
     )
     if (inputValue === null, inputValue === "") {
-      const remClass = document.querySelector('.select__option_selected')
-      remClass.classList.remove('select__option_selected');
-      input.dataset.value = "";
-      console.log(input.dataset.value);
-      onEmptySelect();
+      
+      const remSelected = document.querySelector('.select__option_selected')
+      if (remSelected){
+        remSelected.classList.remove('select__option_selected');
+      }
+        input.dataset.value = "";
+       onEmptySelect();
     }
     else{
       return
     }
   }
-
-  
- 
