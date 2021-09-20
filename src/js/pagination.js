@@ -28,8 +28,9 @@ function setPagination(totalEvents,) {
         itemsPerPage: eventServiceApi.size,
         visiblePages: window.outerWidth < 768 ? 3 : 5,
         page: 1,
-        centerAlign: false,
+        centerAlign: true,
     };
+
     const pagination = new Pagination(container, options);
     console.log(options.visiblePages)
     pagination.on('beforeMove', function (eventData) {
