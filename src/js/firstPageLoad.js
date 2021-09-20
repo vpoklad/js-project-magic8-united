@@ -6,7 +6,6 @@ import { debounce } from "lodash";
 import {setPagination, setEventsOnPage} from './pagination.js';
 import { notifyError } from './notify.js';
 import eventServiceApi from "./search-API.js";
-import { createMarkupGrid } from "./createMarkup.js";
 import { eventsModif } from './eventModification.js'
 
 function firstPageLoad() {
@@ -38,7 +37,6 @@ function removeClassAnimation() {
 function renderCards(events) {
   //const markup = card(events);
   const markup = card(eventsModif(events));
-  //const markup = createMarkupGrid(events);
   refs.cardsContainer.innerHTML = markup;
 }
 

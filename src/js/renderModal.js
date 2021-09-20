@@ -5,7 +5,7 @@ import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
 import arrEvents from './search-API.js';
 import {eventModif, filterImagesByRetina, filterImagesByNotRetina } from "./eventModification.js";
-import { createMarkupIntoModal } from "./createMarkup.js";
+import { isRetina } from "./isRetina.js";
 export let authorName;
 
 refs.cards.addEventListener('click', OnEventClick);
@@ -24,7 +24,7 @@ function OnEventClick(evt) {
     const target = evt.target.nodeName !== 'LI' ? evt.target.parentElement : evt.target;
     //console.log('target :>> ', arrEvents);
     if (target.nodeName !== "LI") return;
-    
+    //console.log('isRetina :>> ', isRetina);
     // eventServiceApi.searchEventByPriceRange()
     // .then(events => console.log('vhb', events))
 
@@ -32,7 +32,7 @@ function OnEventClick(evt) {
      
     eventServiceApi.searchEventById()
     //.then(event => console.log('object :>> ',  filterImagesByNotRetina(event.images)))
-    //.then((event) => renderEventMarkup(event)) 
-    .then(event => renderEventMarkup(eventModif(event)))    
+    .then((event) => renderEventMarkup(event)) 
+    // .then(event => renderEventMarkup(eventModif(event)))    
     .catch(notifyAlert);
 }

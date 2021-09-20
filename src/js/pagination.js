@@ -35,7 +35,7 @@ function setPagination(totalEvents) {
     pagination.on('beforeMove', function (eventData) {
         eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
-        eventServiceApi.fetchEvent().then(response=>{refs.cardsContainer.innerHTML=card(eventsModif(response))}).catch(console.log);
+        eventServiceApi.fetchEvent().then(response=>{refs.cardsContainer.innerHTML=card(response)}).catch(console.log);
       });
 }
 

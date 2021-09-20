@@ -5,7 +5,6 @@ import refs from "./refs";
 import debounce from 'lodash.debounce';
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import { setPagination, setEventsOnPage } from './pagination.js';
-import { eventsModif } from './eventModification.js'
 
  refs.searchInput.addEventListener('input', debounce(onInput, 700));
 
@@ -25,8 +24,7 @@ function onInput(e) {
   eventServiceApi.fetchEvent().then(response => {
     // console.log(response);
    if(response===undefined){return}
-      // refs.cardsContainer.innerHTML = templateCard(response);
-      refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
+      refs.cardsContainer.innerHTML = templateCard(response);
       setPagination(eventServiceApi.totalEvents);
   });
 };

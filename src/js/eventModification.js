@@ -1,5 +1,10 @@
+import { isRetina } from './isRetina.js';
+
+let card;
+const increment = () => card += 1;  
+
 export const eventsModif = (events) => {
-  card = -1;
+  card = -1; 
   return events.map(event => (
     {
       idCard: increment(),     
@@ -42,7 +47,12 @@ const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
 export function sortImagesByWidth (images) {
   if (!images) {return}
   return images.sort(sortByWidth);
-  }
+}
+
+export function sortImagesByHeight (images) {
+  if (!images) {return}
+  return images.sort(sortByHeight);
+}
 
 function findPricesBySt (prices) {
   if (!prices) {return}
@@ -80,6 +90,3 @@ export function filterEventsByPriceRangeVip (events) {
           .some(priceRang => priceRang.type === "vip"))
       
 }
-
-let card;
-const increment = () => card += 1;  
