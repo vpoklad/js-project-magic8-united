@@ -98,6 +98,7 @@ const select = new CustomSelect('#select', {
   document.querySelector('.select').addEventListener('select.change', onSelect);
   const input = document.querySelector('#select__input');
   const selectSh = document.querySelector('#select');
+  const selectItems = document.querySelectorAll('.country__item');
   
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
@@ -112,7 +113,7 @@ const select = new CustomSelect('#select', {
   function onEmptySelect () {
     eventServiceApi.selectQuery = input.dataset.value
     eventServiceApi.fetchEvent().then(response => {
-      console.log(response);
+    
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);
@@ -126,17 +127,18 @@ input.addEventListener('keyup', filter);
 function filter(evt) {
     evt.preventDefault();
     const inputValue = input.value.toUpperCase();	
-        refs.selectItems.forEach(
+    
+        selectItems.forEach(
 
       function getMatch(item) {
 
       const itemContent = item.innerHTML.toUpperCase();
-
+console.log(itemContent);
         if (itemContent.includes(inputValue)) {
           selectSh.classList.add('select_show');
           item.classList.add('select__item-show');
           item.classList.remove('select__item-hide');	
-          
+         
         }
         else {
           item.classList.add('select__item-hide');
@@ -147,22 +149,20 @@ function filter(evt) {
         if (inputValue === null, inputValue === "") {
           item.classList.remove('select__item-show');
           item.classList.remove('select__item-show');
-
+          
         }
       }
 
     )
     if (inputValue === null, inputValue === "") {
-      const remClass = document.querySelector('.select__option_selected')
-      remClass.classList.remove('select__option_selected');
+      
+      // const s = document.querySelector('.select__option_selected')
+      // remClass.classList.remove('select__option_selected');
       input.dataset.value = "";
-      console.log(input.dataset.value);
+    
       onEmptySelect();
     }
     else{
       return
     }
   }
-
-  
- 
