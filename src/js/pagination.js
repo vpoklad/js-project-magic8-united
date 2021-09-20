@@ -4,7 +4,8 @@ import eventServiceApi from "./search-API";
 import { renderCards } from './firstPageLoad';
 import card from '../templates/card.hbs';
 import refs from './refs';
-
+import { hideLoader, showLoader } from './preloader';
+export {showLoader, hideLoader} from './preloader'
 
 
 const container = document.querySelector('#tui-pagination-container');
@@ -24,7 +25,7 @@ function setPagination(totalEvents) {
     const options = {
         totalItems: 1000,
         itemsPerPage: eventServiceApi.size,
-        visiblePages: 5,
+        visiblePages: window.outerWidth < 768 ? 3 : 5,
         page: 1,
         centerAlign: false,
     };
@@ -34,10 +35,10 @@ function setPagination(totalEvents) {
     pagination.on('beforeMove', function (eventData) {
         eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
-        eventServiceApi.fetchEvent().then(response=>{refs.cardsContainer.innerHTML=card(response)}).catch(console.log);
+        showLoader();
+        eventServiceApi.fetchEvent().then(response=>{refs.cardsContainer.innerHTML=card(response)}).catch(console.log).finally(hideLoader);
       });
 }
-
 
 export { setEventsOnPage, setPagination };
 
