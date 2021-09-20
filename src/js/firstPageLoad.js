@@ -1,12 +1,10 @@
 import axios from "axios";
 import refs from './refs.js'
-//import card from '../templates/card.hbs';
 import card from '../templates/cardModif.hbs';
 import { debounce } from "lodash";
 import {setPagination, setEventsOnPage} from './pagination.js';
 import { notifyError } from './notify.js';
 import eventServiceApi from "./search-API.js";
-import { eventsModif } from './eventModification.js'
 
 function firstPageLoad() {
   eventServiceApi.pageReset();
@@ -14,7 +12,7 @@ function firstPageLoad() {
 
   eventServiceApi.fetchEvent()
     .then(events => { 
-      refs.cardsContainer.innerHTML = card(eventsModif(events));
+      refs.cardsContainer.innerHTML = card(events);
       addClassAnimation();
       setPagination(eventServiceApi.totalEvents);
     }).catch(()=>notifyError('Error loading page. Please refresh the page.'))

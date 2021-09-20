@@ -9,11 +9,9 @@ export const eventsModif = (events) => {
     {
       idCard: increment(),     
       id: event.id,
-      images: sortImagesByWidth(event.images),
-      //images: filterImagesByHeight(event.images),
+      image: choseImage(event.images),
       info: event.info,
       localDate: event.dates.start.localDate,
-      // timeZone: event.dates.timezone,
       timeZone: event._embedded.venues[0].timezone,
       name: event.name,
     })
@@ -23,12 +21,10 @@ export const eventsModif = (events) => {
 export const eventModif = (event) => (
   {
     id: event.id,
-    images: sortImagesByWidth(event.images),
-    //images: filterImagesByHeight(event.images),
+    image: choseImage(event.images),
     info: event.info,
     localDate: event.dates.start.localDate,
     localTime: (event.dates.start.localTime).slice(0, 5),
-    // timeZone: event.dates.timezone,
     timeZone: event._embedded.venues[0].timezone,
     city: event._embedded.venues[0].city.name,
     country: event._embedded.venues[0].country.name,
@@ -44,14 +40,16 @@ const sortByWidth = (imgA, imgB) => (imgB.width) - (imgA.width);
 
 const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
 
+export function choseImage (images) {
+  if (!images) {return}
+  const imagesSort = images.sort(sortByHeight);
+  const img = isRetina ? imagesSort[0] : imagesSort[1];
+  return img;
+}
+
 export function sortImagesByWidth (images) {
   if (!images) {return}
   return images.sort(sortByWidth);
-}
-
-export function sortImagesByHeight (images) {
-  if (!images) {return}
-  return images.sort(sortByHeight);
 }
 
 function findPricesBySt (prices) {

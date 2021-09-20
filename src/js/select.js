@@ -1,7 +1,6 @@
 import CustomSelect from './custom-select';
 import { setPagination, setEventsOnPage } from './pagination.js';
 import eventServiceApi from "./search-API";
-// import templateCard from "../templates/card.hbs";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';

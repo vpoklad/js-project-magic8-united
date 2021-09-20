@@ -1,9 +1,7 @@
 import Pagination from 'tui-pagination'; 
-import {eventsModif} from "./eventModification.js";
 import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 import eventServiceApi from "./search-API";
-import { renderCards } from './firstPageLoad';
-// import card from '../templates/card.hbs';
+//import { renderCards } from './firstPageLoad';
 import card from '../templates/cardModif.hbs';
 import refs from './refs';
 import { hideLoader, showLoader } from './preloader';
