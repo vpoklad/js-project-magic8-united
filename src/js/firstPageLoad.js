@@ -10,24 +10,23 @@ import { createMarkupGrid } from "./createMarkup.js";
 import { eventsModif } from './eventModification.js'
 
 function firstPageLoad() {
-  eventServiceApi.page = 0,
+  eventServiceApi.pageReset();
   setEventsOnPage();
 
-  axios.get('https://app.ticketmaster.com/discovery/v2/events.json?&apikey=y2gr3zDEoAnck6YziFkTdrHptQULpZRO')
-    .then(result => {
-      renderCards(result.data._embedded.events)
-       addClassAnimation()
-      setPagination(result.data.page.totalElements)
-      console.log(result.data.page.totalElements)
-    }).catch(err=>notifyError('Error loading page. Please refresh the page.'))
-}
+  eventServiceApi.fetchEvent()
+    .then(events => { 
+      refs.cardsContainer.innerHTML = card(eventsModif(events));
+      addClassAnimation();
+      setPagination(eventServiceApi.totalEvents);
+    }).catch(()=>notifyError('Error loading page. Please refresh the page.'))
+};
 
-
-function addClassAnimation() {
+export function addClassAnimation() {
  const cardsItemAll = document.querySelectorAll('.cards__item')
   cardsItemAll.forEach(cardItem => cardItem.classList.add('cards__item--animation'))
-}
-function removeClassAnimation() {
+};
+
+export function removeClassAnimation() {
  const cardsItemAll= document.querySelectorAll('.cards__item')
   cardsItemAll.forEach(cardItem => {
   cardItem.classList.remove('cards__item--animation')
@@ -35,15 +34,5 @@ function removeClassAnimation() {
  })
 }
 
-
-function renderCards(events) {
-  //const markup = card(events);
-  const markup = card(eventsModif(events));
-  //const markup = createMarkupGrid(events);
-  refs.cardsContainer.innerHTML = markup;
-}
-
-
-
-window.addEventListener("load", debounce(firstPageLoad,1000));
-window.addEventListener("load",debounce(removeClassAnimation,2000))
+window.addEventListener("load", debounce(firstPageLoad, 400));
+window.addEventListener("load",debounce(removeClassAnimation,1500))
