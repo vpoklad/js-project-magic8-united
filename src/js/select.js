@@ -9,8 +9,8 @@ import { alert, notice, info, success, error } from '../../node_modules/@pnotify
 const select = new CustomSelect('#select', {
   name: 'country',
   targetValue: '',
-  options: [
-    ['US', 'United States Of America'],
+  options: [    
+    ['US', 'USA'],
     ['AD', 'Andorra'],
     ['AI', 'Anguilla'],
     ['AR', 'Argentina'],
@@ -114,7 +114,6 @@ const select = new CustomSelect('#select', {
   function onEmptySelect () {
     eventServiceApi.selectQuery = input.dataset.value
     eventServiceApi.fetchEvent().then(response => {
-    
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);
