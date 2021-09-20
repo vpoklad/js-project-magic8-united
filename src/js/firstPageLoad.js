@@ -18,6 +18,7 @@ function firstPageLoad() {
       renderCards(result.data._embedded.events)
        addClassAnimation()
       setPagination(result.data.page.totalElements)
+      console.log(result.data.page.totalElements)
     }).catch(err=>notifyError('Error loading page. Please refresh the page.'))
 }
 

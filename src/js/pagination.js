@@ -23,15 +23,14 @@ function setEventsOnPage() {
 
 function setPagination(totalEvents) {
     const options = {
-        totalItems: 1000,
+        totalItems: totalEvents > 1000 ? 1000 : totalEvents,
         itemsPerPage: eventServiceApi.size,
         visiblePages: window.outerWidth < 768 ? 3 : 5,
         page: 1,
         centerAlign: false,
     };
     const pagination = new Pagination(container, options);
-
-    console.log(pagination)
+    console.log(options.visiblePages)
     pagination.on('beforeMove', function (eventData) {
         eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
