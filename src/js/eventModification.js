@@ -12,7 +12,7 @@ export const eventsModif = (events) => {
       image: choseImage(event.images),
       info: event.info,
       localDate: event.dates.start.localDate,
-      timeZone: event._embedded.venues[0].timezone,
+      timeZone: event.dates.timezone?event.dates.timezone:event._embedded.venues[0].timezone,
       name: event.name,
     })
   )
