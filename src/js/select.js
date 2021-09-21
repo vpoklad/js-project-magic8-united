@@ -3,7 +3,7 @@ import { setPagination } from './pagination.js';
 import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
-import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+import {notifyAlert} from './notify.js';
 import {animationCards} from "./firstPageLoad";
 
 const select = new CustomSelect('#select', {
