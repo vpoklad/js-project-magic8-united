@@ -103,36 +103,21 @@ const select = new CustomSelect('#select', {
   
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
-    eventServiceApi.selectQuery = select.dataset.value
+    eventServiceApi.selectQuery = select.dataset.value;
     if (eventServiceApi.searchQuery !== '') {
       eventServiceApi.pageReset();
-      eventServiceApi.fetchEvent().then(events => {
-        if (events === undefined) { return }
-        refs.cardsContainer.innerHTML = templateCard(events);
-        addClassAnimation();
-        setTimeout(removeClassAnimation, 700);
-        setPagination(eventServiceApi.totalEvents);
-      })
+
+      apiService ();
     }
     console.log(eventServiceApi.page);
-    eventServiceApi.fetchEvent().then(events => {
-    if(events===undefined){return}
-    refs.cardsContainer.innerHTML = templateCard(events);
-    addClassAnimation();
-    setTimeout(removeClassAnimation, 700);
-    setPagination(eventServiceApi.totalEvents);
-  });
-  }
+  
+    apiService ();
+    }
 
-  function onEmptySelect () {
-    eventServiceApi.selectQuery = input.dataset.value
-    eventServiceApi.fetchEvent().then(events => {
-    if(events===undefined){return}
-    refs.cardsContainer.innerHTML = templateCard(events);
-    addClassAnimation();
-    setTimeout(removeClassAnimation, 700);
-    setPagination(eventServiceApi.totalEvents);
-  });
+    function onEmptySelect () {
+      eventServiceApi.selectQuery = input.dataset.value;
+    
+      apiService ();
   }
 
   // фільтр країн
@@ -151,9 +136,9 @@ function filter(evt) {
           item.classList.remove('select__item-hide');	
         }
         else {
+          selectSh.classList.add('select_show');
           item.classList.add('select__item-hide');
           item.classList.remove('select__item-show');
-          selectSh.classList.add('select_show');
         }
         if (inputValue === null, inputValue === "") {
           item.classList.remove('select__item-show');
@@ -163,7 +148,7 @@ function filter(evt) {
     )
     if (inputValue === null, inputValue === "") {
       
-      const remSelected = document.querySelector('.select__option_selected')
+      const remSelected = document.querySelector('.select__option_selected');
       if (remSelected){
         remSelected.classList.remove('select__option_selected');
       }
@@ -173,4 +158,14 @@ function filter(evt) {
     else{
       return
     }
+  }
+
+  function apiService () {
+    eventServiceApi.fetchEvent().then(events => {
+        if (events === undefined) { return }
+        refs.cardsContainer.innerHTML = templateCard(events);
+        addClassAnimation();
+        setTimeout(removeClassAnimation, 800);
+        setPagination(eventServiceApi.totalEvents);
+      });
   }
