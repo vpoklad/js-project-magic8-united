@@ -9,6 +9,6 @@ export default {
   buttonMoreFromAuthor: document.querySelector('.button--author'),
   preloader: document.querySelector('.preloader'),
   select: document.querySelector('.select'),
-  buttonUp: document.querySelector('.up_button')
-  
+  pagination: document.querySelectorAll('tui-page-btn'),
+  buttonUp: document.querySelector('.up_button')  
 };
