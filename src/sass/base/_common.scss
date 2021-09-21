@@ -35,17 +35,17 @@ body {
   font-weight: 400;
   font-size: var(--mainFontSize);
   line-height: 1.22;
-  background-position: center;
-  background-size: initial;
+}
 
+.wrapper {
+  position: relative;
   @media screen and(min-width: $tablet) {
     background-image: url(../images/bg/bg_decorlines_tablet.svg);
   }
-}
-@media screen and (min-with: 1280px) {
-  body {
-    background-color: #fff;
-    background-image: url(../images/bg/bg_decorlines_tablet.svg);
+
+  @media screen and (min-with: $desktop) {
+    max-width: 1280px;
+    background-image: url(../images/bg/bg_decorlines_desktop.svg);
   }
 }
 
