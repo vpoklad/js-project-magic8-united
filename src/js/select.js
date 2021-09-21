@@ -166,7 +166,8 @@ function filter(evt) {
  export function apiService () {
     eventServiceApi.fetchEvent().then(events => {
       if (events === undefined) {
-        console.log('167');
+        eventServiceApi.pageReset();
+        setPagination(eventServiceApi.totalEvents);
          alert({
             text: 'Looks like there is no such even!',
             delay: 2000,

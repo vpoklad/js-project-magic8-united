@@ -31,13 +31,9 @@ class EventServiceApi {
     return axios
       .get(url)
       .then(result => {
-        if (!result.data._embedded) {
-          // alert({
-          //   text: 'Looks like there is no such even!',
-          //   delay: 2000,
-          // });
-          return;
-        };
+        // if (!result.data._embedded) {
+        //   return;
+        // };
 
         try {
           this.totalEvents = result.data.page.totalElements;
