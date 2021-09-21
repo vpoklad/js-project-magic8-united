@@ -9,5 +9,6 @@ export default {
   buttonMoreFromAuthor: document.querySelector('.button--author'),
   preloader: document.querySelector('.preloader'),
   select: document.querySelector('.select'),
+  buttonUp: document.querySelector('.up_button')
   
 };
