@@ -47,7 +47,7 @@ class EventServiceApi {
           //console.log('result :>> ', result);
           this.totalEvents = result.data.page.totalElements;
           this.totalPages = result.data.page.totalPages;
-          // console.log(this.totalPages);
+          console.log(result.data._embedded.events);
           // arrEvents = result.data._embedded.events;
           // console.log('arrEvents :>> ', arrEvents);
           return eventsModif(result.data._embedded.events);
