@@ -1,6 +1,6 @@
 import refs from './refs.js';
 import eventMarkup from '../templates/eventModif.hbs';
-import {notifyAlert} from './notify.js';
+// import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
 
 export let authorName;
@@ -19,10 +19,10 @@ function OnEventClick(evt) {
     evt.preventDefault();
     const target = evt.target.nodeName !== 'LI' ? evt.target.parentElement : evt.target;
     if (target.nodeName !== "LI") return;
-    
+
     eventServiceApi.queryId = target.dataset.eventid;
-     
+
     eventServiceApi.searchEventById()
-    .then((event) => renderEventMarkup(event))   
-    .catch(notifyAlert);
+    .then((event) => renderEventMarkup(event))
+    // .catch(notifyAlert('No data available!'));
 }

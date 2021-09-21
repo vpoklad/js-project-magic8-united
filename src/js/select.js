@@ -6,10 +6,11 @@ import refs from "./refs";
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import {animationCards} from "./firstPageLoad";
 
+
 const select = new CustomSelect('#select', {
   name: 'country',
   targetValue: '',
-  options: [    
+  options: [
     ['US', 'USA'],
     ['AD', 'Andorra'],
     ['AI', 'Anguilla'],
@@ -94,7 +95,8 @@ const select = new CustomSelect('#select', {
     ['UY', 'Uruguay'],
     ['VE', 'Venezuela']],
   });
-  
+
+
 
 document.querySelector('.select').addEventListener('select.change', onSelect);
   
@@ -113,9 +115,11 @@ function onSelect (e) {
   }
     if (eventServiceApi.searchQuery !== '') {
       eventServiceApi.pageReset();
+
       apiService();
       return
    } 
+
     apiService ();
 };
 
@@ -125,18 +129,19 @@ function onEmptySelect () {
 }
 
 
+
 input.addEventListener('keyup', filter);
 
 function filter(evt) {
     evt.preventDefault();
-    const inputValue = input.value.toUpperCase();	
+    const inputValue = input.value.toUpperCase();
         selectItems.forEach(
       function getMatch(item) {
       const itemContent = item.innerHTML.toUpperCase();
         if (itemContent.includes(inputValue)) {
           selectSh.classList.add('select_show');
           item.classList.add('select__item-show');
-          item.classList.remove('select__item-hide');	
+          item.classList.remove('select__item-hide');
         }
         else {
           selectSh.classList.add('select_show');
@@ -150,9 +155,11 @@ function filter(evt) {
       }
     )
     if (inputValue === null, inputValue === "") {
+
       
         const remSelected = document.querySelector('.select__option_selected');
         if (remSelected){
+
         remSelected.classList.remove('select__option_selected');
        }
           input.dataset.value = "";
@@ -178,4 +185,4 @@ function filter(evt) {
         animationCards();
         setPagination(eventServiceApi.totalEvents);
       });
-};
+

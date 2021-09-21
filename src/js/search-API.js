@@ -1,13 +1,13 @@
 import axios from 'axios';
-import {
-  alert,
-  notice,
-  info,
-  success,
-  error,
-} from '../../node_modules/@pnotify/core/dist/PNotify.js';
-import '@pnotify/core/dist/BrightTheme.css';
-import { notifyAlert } from './notify.js';
+// import {
+//   alert,
+//   notice,
+//   info,
+//   success,
+//   error,
+// } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+// import '@pnotify/core/dist/BrightTheme.css';
+import { notifyAlert, notifyError, notifyInfo, notifySuccess} from './notify.js';
 import { eventsModif, eventModif } from './eventModification.js';
 
 const ROOT_URL = 'https://app.ticketmaster.com/discovery/v2/';
@@ -31,19 +31,19 @@ class EventServiceApi {
     return axios
       .get(url)
       .then(result => {
-        // if (!result.data._embedded) {
-        //   return;
-        // };
 
         try {
           this.totalEvents = result.data.page.totalElements;
           this.totalPages = result.data.page.totalPages;
           return eventsModif(result.data._embedded.events);
         } catch (error) {
+
           // console.log('try catch', error);
+
         }
       })
       .catch(err => {
+        notifyError(err);
         console.log('catch', err);
       });
   }
@@ -54,7 +54,7 @@ class EventServiceApi {
       const data = await result.data;
       return eventModif(data);
     } catch (error) {
-      notifyAlert(error);
+      notifyError(error);
     }
   }
 

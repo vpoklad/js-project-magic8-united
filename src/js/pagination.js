@@ -14,7 +14,14 @@ function setEventsOnPage() {
     } else {
         eventServiceApi.size = 20;
     }
+
 };
+
+
+function scrollPagination() {
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+}
+
 
 function setPagination(totalEvents,) {
     const options = {
@@ -35,6 +42,7 @@ function setPagination(totalEvents,) {
         refs.cardsContainer.innerHTML = card(events);
           animationCards();
         })
+        .then(scrollPagination)
         .catch(console.log)
         .finally(hideLoader);
       });

@@ -7,6 +7,7 @@ import { setPagination } from './pagination.js';
 import { animationCards } from "./firstPageLoad";
 import { apiService } from "./select";
 
+
 refs.searchInput.addEventListener('input', debounce(onInput, 600));
 
 function onInput(e) {
@@ -17,12 +18,12 @@ function onInput(e) {
     };
     if (e.target.value.trim() === '') {
     eventServiceApi.query = "";
-    info({
-      text: 'Please enter you request!',
-      delay: 5000
-    })
+    notifyInfo('Please enter you request!');
+      // { text: 'Please enter you request!',
+      // delay: 5000})
     return
     };
+
 
     eventServiceApi.query = e.target.value.trim();
     apiService();
