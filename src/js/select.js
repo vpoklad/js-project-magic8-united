@@ -4,7 +4,7 @@ import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
-
+import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 
 const select = new CustomSelect('#select', {
   name: 'country',
@@ -109,6 +109,8 @@ const select = new CustomSelect('#select', {
       eventServiceApi.fetchEvent().then(response => {
         if (response === undefined) { return }
         refs.cardsContainer.innerHTML = templateCard(response);
+        addClassAnimation();
+        setTimeout(removeClassAnimation, 700);
         setPagination(eventServiceApi.totalEvents);
       })
     }
@@ -116,6 +118,8 @@ const select = new CustomSelect('#select', {
     eventServiceApi.fetchEvent().then(response => {
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
+    addClassAnimation();
+        setTimeout(removeClassAnimation, 700);
     setPagination(eventServiceApi.totalEvents);
   });
   }
@@ -125,6 +129,8 @@ const select = new CustomSelect('#select', {
     eventServiceApi.fetchEvent().then(response => {
     if(response===undefined){return}
     refs.cardsContainer.innerHTML = templateCard(response);
+    addClassAnimation();
+        setTimeout(removeClassAnimation, 700);
     setPagination(eventServiceApi.totalEvents);
   });
   }
