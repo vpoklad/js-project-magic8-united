@@ -8,5 +8,6 @@ import './js/pagination';
 import './js/modal_our_team';
 import './js/renderModal.js';
 import './js/morefromauthor.js';
+import './js/up_button.js';
 
 
