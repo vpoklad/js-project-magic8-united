@@ -8,10 +8,10 @@ import {
 } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import '@pnotify/core/dist/BrightTheme.css';
 import { notifyAlert } from './notify.js';
+import { eventsModif, eventModif } from './eventModification.js';
 
 const ROOT_URL = 'https://app.ticketmaster.com/discovery/v2/';
 const KEY = 'y2gr3zDEoAnck6YziFkTdrHptQULpZRO';
-
 class EventServiceApi {
   constructor() {
     this.page = 0;
@@ -47,10 +47,10 @@ class EventServiceApi {
           //console.log('result :>> ', result);
           this.totalEvents = result.data.page.totalElements;
           this.totalPages = result.data.page.totalPages;
-          // console.log(this.totalPages);
+          console.log(result.data._embedded.events);
           // arrEvents = result.data._embedded.events;
           // console.log('arrEvents :>> ', arrEvents);
-          return result.data._embedded.events;
+          return eventsModif(result.data._embedded.events);
         } catch (error) {
           // Поставить Нотификашку для отлова ошибки
           console.log('try catch', error);
@@ -65,7 +65,7 @@ class EventServiceApi {
     try {
       const result = await axios.get(`${ROOT_URL}events/${this.eventId}?apikey=${KEY}`);
       const data = await result.data;
-      return data;
+      return eventModif(data);
     } catch (error) {
       notifyAlert(error);
     }

@@ -1,25 +1,24 @@
 import eventServiceApi from "./search-API";
-// import templateCard from "../templates/card.hbs";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import debounce from 'lodash.debounce';
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import { setPagination, setEventsOnPage } from './pagination.js';
-import { eventsModif } from './eventModification.js'
 import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 
 
-refs.searchInput.addEventListener('input', debounce(onInput, 700));
-refs.searchInput.addEventListener('input',debounce(removeClassAnimation,1500));
+refs.searchInput.addEventListener('input', debounce(onInput, 600));
+refs.searchInput.addEventListener('input',debounce(removeClassAnimation,1700));
 // export default eventServiceApi.searchEventById().then(res=>console.log(res.data))
 
 function onInput(e) {
   // console.log(refs.searchInput.value);
   if (e.target.value.trim() === '' && eventServiceApi.selectQuery !== "") {
       eventServiceApi.query = "";
-      eventServiceApi.fetchEvent().then(response => {
-      if(response===undefined){return}
-      refs.cardsContainer.innerHTML = templateCard(response);
+      eventServiceApi.fetchEvent().then(events => {
+      if(events===undefined){return}
+      refs.cardsContainer.innerHTML = templateCard(events);
+      addClassAnimation();
       setPagination(eventServiceApi.totalEvents);});
     return
   }
@@ -33,11 +32,11 @@ if (e.target.value.trim() === '') {
   }
   eventServiceApi.query = e.target.value.trim();
 
-  eventServiceApi.fetchEvent().then(response => {
-    // console.log(response);
-   if(response===undefined){return}
-      // refs.cardsContainer.innerHTML = templateCard(response);
-    refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
+  eventServiceApi.fetchEvent().then(events => {
+    // console.log(events);
+   if(events===undefined){return}
+      // refs.cardsContainer.innerHTML = templateCard(events);
+    refs.cardsContainer.innerHTML = templateCard(events);
     addClassAnimation();
     setPagination(eventServiceApi.totalEvents);
   });
@@ -47,8 +46,8 @@ if (e.target.value.trim() === '') {
   // refs.nextPage.addEventListener('click', openNextPage)
 // function openNextPage(e) {
 //   eventServiceApi.incrementPage();
-//    eventServiceApi.fetchEvent().then(response => {
-//      refs.cardsContainer.innerHTML = templateCard(response);
+//    eventServiceApi.fetchEvent().then(events => {
+//      refs.cardsContainer.innerHTML = templateCard(events);
 //      });
     
 // }

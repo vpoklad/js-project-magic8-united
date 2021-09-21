@@ -1,7 +1,7 @@
 import refs from './refs.js';
 import onCloseMainModal from './modalClose.js';
 import eventServiceApi from './search-API';
-import templateCard from '../templates/card.hbs';
+import templateCard from '../templates/cardModif.hbs';
 import { setPagination } from './pagination.js';
 import { authorName } from './renderModal.js';
 
