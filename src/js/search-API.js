@@ -43,7 +43,7 @@ class EventServiceApi {
 
         try {
           // this.page += 1;
-          // console.log(result);
+          console.log(result);
           //console.log('result :>> ', result);
           this.totalEvents = result.data.page.totalElements;
           this.totalPages = result.data.page.totalPages;
