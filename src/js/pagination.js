@@ -26,7 +26,6 @@ function setPagination(totalEvents,) {
     };
 
     const pagination = new Pagination(container, options);
-    console.log(options.visiblePages)
     pagination.on('beforeMove', function (eventData) {
         eventServiceApi.page = eventData.page - 1;
         setEventsOnPage();
