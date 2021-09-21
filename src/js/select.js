@@ -108,7 +108,7 @@ const select = new CustomSelect('#select', {
       eventServiceApi.pageReset();
       eventServiceApi.fetchEvent().then(response => {
         if (response === undefined) { return }
-        refs.cardsContainer.innerHTML = templateCard(response);
+        refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
         addClassAnimation();
         setTimeout(removeClassAnimation, 700);
         setPagination(eventServiceApi.totalEvents);
@@ -117,7 +117,7 @@ const select = new CustomSelect('#select', {
     console.log(eventServiceApi.page);
     eventServiceApi.fetchEvent().then(response => {
     if(response===undefined){return}
-    refs.cardsContainer.innerHTML = templateCard(response);
+    refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
     addClassAnimation();
         setTimeout(removeClassAnimation, 700);
     setPagination(eventServiceApi.totalEvents);
@@ -128,7 +128,7 @@ const select = new CustomSelect('#select', {
     eventServiceApi.selectQuery = input.dataset.value
     eventServiceApi.fetchEvent().then(response => {
     if(response===undefined){return}
-    refs.cardsContainer.innerHTML = templateCard(response);
+    refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
     addClassAnimation();
         setTimeout(removeClassAnimation, 700);
     setPagination(eventServiceApi.totalEvents);
