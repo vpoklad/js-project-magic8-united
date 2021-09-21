@@ -2,7 +2,7 @@ import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import debounce from 'lodash.debounce';
-import { info, alert } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+import { notifyInfo } from './notify';
 import { setPagination } from './pagination.js';
 import { animationCards } from "./firstPageLoad";
 import { apiService } from "./select";
