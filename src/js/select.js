@@ -106,31 +106,31 @@ const select = new CustomSelect('#select', {
     eventServiceApi.selectQuery = select.dataset.value
     if (eventServiceApi.searchQuery !== '') {
       eventServiceApi.pageReset();
-      eventServiceApi.fetchEvent().then(response => {
-        if (response === undefined) { return }
-        refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
+      eventServiceApi.fetchEvent().then(events => {
+        if (events === undefined) { return }
+        refs.cardsContainer.innerHTML = templateCard(events);
         addClassAnimation();
         setTimeout(removeClassAnimation, 700);
         setPagination(eventServiceApi.totalEvents);
       })
     }
     console.log(eventServiceApi.page);
-    eventServiceApi.fetchEvent().then(response => {
-    if(response===undefined){return}
-    refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
+    eventServiceApi.fetchEvent().then(events => {
+    if(events===undefined){return}
+    refs.cardsContainer.innerHTML = templateCard(events);
     addClassAnimation();
-        setTimeout(removeClassAnimation, 700);
+    setTimeout(removeClassAnimation, 700);
     setPagination(eventServiceApi.totalEvents);
   });
   }
 
   function onEmptySelect () {
     eventServiceApi.selectQuery = input.dataset.value
-    eventServiceApi.fetchEvent().then(response => {
-    if(response===undefined){return}
-    refs.cardsContainer.innerHTML = templateCard(eventsModif(response));
+    eventServiceApi.fetchEvent().then(events => {
+    if(events===undefined){return}
+    refs.cardsContainer.innerHTML = templateCard(events);
     addClassAnimation();
-        setTimeout(removeClassAnimation, 700);
+    setTimeout(removeClassAnimation, 700);
     setPagination(eventServiceApi.totalEvents);
   });
   }
