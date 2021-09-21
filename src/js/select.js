@@ -168,10 +168,7 @@ export function apiService() {
     if (events === undefined) {
       eventServiceApi.pageReset();
       setPagination(eventServiceApi.totalEvents);
-      alert({
-        text: 'Looks like there is no such even!',
-        delay: 2000,
-      });
+      notifyAlert('Looks like there is no such even!');
       return
     }
     refs.cardsContainer.innerHTML = templateCard(events);
