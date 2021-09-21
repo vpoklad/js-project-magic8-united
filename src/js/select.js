@@ -3,13 +3,13 @@ import { setPagination, setEventsOnPage } from './pagination.js';
 import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
-import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+// import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 
 const select = new CustomSelect('#select', {
   name: 'country',
   targetValue: '',
-  options: [    
+  options: [
     ['US', 'USA'],
     ['AD', 'Andorra'],
     ['AI', 'Anguilla'],
@@ -94,13 +94,13 @@ const select = new CustomSelect('#select', {
     ['UY', 'Uruguay'],
     ['VE', 'Venezuela']],
   });
-  
+
 
   document.querySelector('.select').addEventListener('select.change', onSelect);
   const input = document.querySelector('#select__input');
   const selectSh = document.querySelector('#select');
   const selectItems = document.querySelectorAll('.country__item');
-  
+
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
     eventServiceApi.selectQuery = select.dataset.value;
@@ -110,13 +110,13 @@ const select = new CustomSelect('#select', {
       apiService ();
     }
     console.log(eventServiceApi.page);
-  
+
     apiService ();
     }
 
     function onEmptySelect () {
       eventServiceApi.selectQuery = input.dataset.value;
-    
+
       apiService ();
   }
 
@@ -126,14 +126,14 @@ input.addEventListener('keyup', filter);
 
 function filter(evt) {
     evt.preventDefault();
-    const inputValue = input.value.toUpperCase();	
+    const inputValue = input.value.toUpperCase();
         selectItems.forEach(
       function getMatch(item) {
       const itemContent = item.innerHTML.toUpperCase();
         if (itemContent.includes(inputValue)) {
           selectSh.classList.add('select_show');
           item.classList.add('select__item-show');
-          item.classList.remove('select__item-hide');	
+          item.classList.remove('select__item-hide');
         }
         else {
           selectSh.classList.add('select_show');
@@ -147,7 +147,7 @@ function filter(evt) {
       }
     )
     if (inputValue === null, inputValue === "") {
-      
+
       const remSelected = document.querySelector('.select__option_selected');
       if (remSelected){
         remSelected.classList.remove('select__option_selected');
