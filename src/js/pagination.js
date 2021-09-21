@@ -20,7 +20,9 @@ function setEventsOnPage() {
     }
   }
 
-
+function scrollPagination() {
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+}
 
 function setPagination(totalEvents,) {
     const options = {
@@ -43,6 +45,7 @@ function setPagination(totalEvents,) {
           addClassAnimation();
           setTimeout(removeClassAnimation, 1500);
         })
+        .then(scrollPagination)
         .catch(console.log)
         .finally(hideLoader);
       });
