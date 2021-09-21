@@ -2,7 +2,8 @@ import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import debounce from 'lodash.debounce';
-import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
+import {notifyInfo, notifySuccess} from './notify'
+// import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import { setPagination, setEventsOnPage } from './pagination.js';
 import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 
@@ -24,10 +25,9 @@ function onInput(e) {
   }
 if (e.target.value.trim() === '') {
     eventServiceApi.query = "";
-    info({
-      text: 'Please enter you request!',
-      delay: 5000
-    })
+    notifyInfo('Please enter you request!');
+      // { text: 'Please enter you request!',
+      // delay: 5000})
     return
   }
   eventServiceApi.query = e.target.value.trim();
@@ -39,6 +39,7 @@ if (e.target.value.trim() === '') {
     refs.cardsContainer.innerHTML = templateCard(events);
     addClassAnimation();
     setPagination(eventServiceApi.totalEvents);
+    notifySuccess(`Your request '${eventServiceApi.searchQuery}' '${eventServiceApi.countryQuery}' has been successfully processed! Found ${eventServiceApi.totalEvents} events.`);
   });
 };
 // window.addEventListener("load",debounce(removeClassAnimation,2000))
@@ -49,5 +50,5 @@ if (e.target.value.trim() === '') {
 //    eventServiceApi.fetchEvent().then(events => {
 //      refs.cardsContainer.innerHTML = templateCard(events);
 //      });
-    
+
 // }
