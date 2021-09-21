@@ -24,10 +24,9 @@ class EventServiceApi {
 
   fetchEvent() {
     let url = `${ROOT_URL}events.json?&page=${this.page}&keyword=${this.searchQuery}&apikey=${KEY}`;
-
     if (this.countryQuery !== '') {
       url = `${ROOT_URL}events.json?&page=${this.page}&countryCode=${this.countryQuery}&keyword=${this.searchQuery}&apikey=${KEY}`;
-    }
+    };
 
     return axios
       .get(url)
@@ -37,23 +36,15 @@ class EventServiceApi {
             text: 'Looks like there is no such even!',
             delay: 2000,
           });
-          // console.log("Looks like there is no such even!");
           return;
-        }
+        };
 
         try {
-          // this.page += 1;
-          // console.log(result);
-          //console.log('result :>> ', result);
           this.totalEvents = result.data.page.totalElements;
           this.totalPages = result.data.page.totalPages;
-          console.log(result.data._embedded.events);
-          // arrEvents = result.data._embedded.events;
-          // console.log('arrEvents :>> ', arrEvents);
           return eventsModif(result.data._embedded.events);
         } catch (error) {
-          // Поставить Нотификашку для отлова ошибки
-          console.log('try catch', error);
+          // console.log('try catch', error);
         }
       })
       .catch(err => {
@@ -73,15 +64,6 @@ class EventServiceApi {
 
   pageReset() {
     this.page = 0;
-  }
-  incrementPage() {
-    this.page += 1;
-  }
-  decrementPage() {
-    if (this.page === 1) {
-      return;
-    }
-    this.page -= 1;
   }
 
   get query() {

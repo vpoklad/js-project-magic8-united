@@ -1,10 +1,10 @@
 import CustomSelect from './custom-select';
-import { setPagination, setEventsOnPage } from './pagination.js';
+import { setPagination } from './pagination.js';
 import eventServiceApi from "./search-API";
 import templateCard from "../templates/cardModif.hbs";
 import refs from "./refs";
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
-import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
+import {animationCards} from "./firstPageLoad";
 
 const select = new CustomSelect('#select', {
   name: 'country',
@@ -106,22 +106,16 @@ const select = new CustomSelect('#select', {
     eventServiceApi.selectQuery = select.dataset.value;
     if (eventServiceApi.searchQuery === '') {
       eventServiceApi.pageReset();
-
       apiService ();
     }
     if (eventServiceApi.searchQuery !== '') {
       eventServiceApi.pageReset();
-
       apiService ();
-    }
-    console.log(eventServiceApi.page);
-  
+    } 
     apiService ();
     }
-
     function onEmptySelect () {
-      eventServiceApi.selectQuery = input.dataset.value;
-    
+      eventServiceApi.selectQuery = input.dataset.value; 
       apiService ();
   }
 
@@ -169,8 +163,7 @@ function filter(evt) {
     eventServiceApi.fetchEvent().then(events => {
         if (events === undefined) { return }
         refs.cardsContainer.innerHTML = templateCard(events);
-        addClassAnimation();
-        setTimeout(removeClassAnimation, 800);
+        animationCards();
         setPagination(eventServiceApi.totalEvents);
       });
   }

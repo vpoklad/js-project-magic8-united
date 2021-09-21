@@ -1,13 +1,9 @@
 import Pagination from 'tui-pagination'; 
-import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
+import {animationCards} from "./firstPageLoad";
 import eventServiceApi from "./search-API";
-//import { renderCards } from './firstPageLoad';
 import card from '../templates/cardModif.hbs';
 import refs from './refs';
 import { hideLoader, showLoader } from './preloader';
-import { debounce } from 'lodash';
-// export {showLoader, hideLoader} from './preloader'
-
 
 const container = document.querySelector('#tui-pagination-container');
 
@@ -18,9 +14,7 @@ function setEventsOnPage() {
     } else {
         eventServiceApi.size = 20;
     }
-  }
-
-
+};
 
 function setPagination(totalEvents,) {
     const options = {
@@ -40,13 +34,12 @@ function setPagination(totalEvents,) {
       eventServiceApi.fetchEvent()
         .then(events => {
         refs.cardsContainer.innerHTML = card(events);
-          addClassAnimation();
-          setTimeout(removeClassAnimation, 1500);
+          animationCards();
         })
         .catch(console.log)
         .finally(hideLoader);
       });
-}
+};
 
 export { setEventsOnPage, setPagination };
 
