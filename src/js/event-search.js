@@ -39,7 +39,7 @@ if (e.target.value.trim() === '') {
     refs.cardsContainer.innerHTML = templateCard(events);
     addClassAnimation();
     setPagination(eventServiceApi.totalEvents);
-    notifySuccess(`Your request '${eventServiceApi.searchQuery}' '${eventServiceApi.countryQuery}' has been successfully processed! Found ${eventServiceApi.totalEvents} events.`);
+    notifySuccess(`Your request '${eventServiceApi.searchQuery}' ${eventServiceApi.countryQuery} has been successfully processed! Found ${eventServiceApi.totalEvents} events.`);
   });
 };
 // window.addEventListener("load",debounce(removeClassAnimation,2000))
