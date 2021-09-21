@@ -1,35 +1,38 @@
-
 <div class="modal_main__thumb">
-  <img src={{this.images.0.url}} alt="event" />
+  <img src={{this.image.url}} alt="event" />
 </div>
 
 <div class="modal__flex">
   <div class="modal__flex-thumb">
-    <img class="modal_main__image" src={{this.images.0.url}} alt={{this.name}}/>
+    <img class="modal_main__image" src={{this.image.url}} alt={{this.name}}/>
   </div>
 
+
   <div class="modal__content">
-    <div class="modal__meta  ">
-      <h3 class="modal_main__title">INFO</h3>
-      <p>{{this.info}}</p>
-    </div>
+    <div class="modal--wrapper">
+<div class="modal__meta  ">
+  <h3 class="modal_main__title">INFO</h3>
+  <p>{{this.info}}</p>
+</div>
 
-    <div class="modal__meta">
-      <h3 class="modal_main__title">WHEN</h3>
-      <p>{{this.localDate}}</p>
-      <p>{{this.localTime}} ({{this.timeZone}})</p>
-    </div>
+<div class="modal__meta">
+  <h3 class="modal_main__title">WHEN</h3>
+  <p>{{this.localDate}}</p>
+  <p>{{this.localTime}} ({{this.timeZone}})</p>
+</div>
 
-    <div class="modal__meta">
-      <h3 class="modal_main__title">WHERE</h3>
-      <p>{{this.city}}, {{this.country}}</p>
-      <p>{{this.places}}</p>
-    </div>
+<div class="modal__meta">
+  <h3 class="modal_main__title">WHERE</h3>
+  <p>{{this.city}}, {{this.country}}</p>
+  <p>{{this.places}}</p>
+</div>
 
-    <div class="modal__meta">
-      <h3 class="modal_main__title">WHO</h3>
-      <p>{{this.name}}</p>
+<div class="modal__meta">
+  <h3 class="modal_main__title">WHO</h3>
+  <p>{{this.name}}</p>
+</div>
     </div>
+    
 
     <div class="modal__meta">
       <h3 class="modal_main__title">PRICES</h3>

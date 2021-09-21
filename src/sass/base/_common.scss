@@ -35,11 +35,6 @@ body {
   font-weight: 400;
   font-size: var(--mainFontSize);
   line-height: 1.22;
-
-  // background-image: url(../images/bg/bg_top_img_mobile@1x.jpg);
-  // background-repeat: no-repeat;
-  // background-size: auto;
-  // background-position: top;
 }
 
 @media screen and (min-width: $mobile) and (max-width: 415px) {
@@ -62,24 +57,6 @@ body {
     background-position: top;
   }
 }
-
-// @media screen and (min-width: 375px) {
-//   body {
-//     background-image: url(../images/bg/bg_top_img_tablet@1x.jpg);
-//     background-repeat: no-repeat;
-//     background-size: contain;
-//     background-position: top;
-//   }
-// }
-
-// @media (min-device-pixel-ratio: 2),
-//   (-webkit-min-device-pixel-ratio: 2),
-//   (min-resolution: 192dpi),
-//   (min-resolution: 2dppx) {
-//   body {
-//     background-image: url(../images/bg/bg_top_img_tablet@2x.jpg);
-//   }
-// }
 
 @media screen and (min-width: 415px) and (max-width: 1279px) {
   body {
