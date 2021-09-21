@@ -7,5 +7,7 @@ export default {
   searchInput: document.querySelector('.search__block--input'),
   buttonMoreFromAuthor: document.querySelector('.button--author'),
   preloader: document.querySelector('.preloader'),
-  select: document.querySelector('.select'), 
+  select: document.querySelector('.select'),
+  pagination: document.querySelectorAll('tui-page-btn'),
+  buttonUp: document.querySelector('.up_button')  
 };

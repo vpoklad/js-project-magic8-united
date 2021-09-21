@@ -1,6 +1,6 @@
 import refs from './refs.js';
 import eventMarkup from '../templates/eventModif.hbs';
-import {notifyAlert} from './notify.js';
+// import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
 
 export let authorName;

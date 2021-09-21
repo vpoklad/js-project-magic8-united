@@ -7,12 +7,13 @@ import { authorName } from './renderModal.js';
 
 refs.buttonMoreFromAuthor.addEventListener('click', searchMoreFromAuthor);
 
-function searchMoreFromAuthor(event) {
+function searchMoreFromAuthor() {
   onCloseMainModal();
   refs.cardsContainer.innerHTML = '';
   
   refs.searchInput.value = authorName;
-  eventServiceApi.query = authorName.replaceAll(' ', '%20');
+    eventServiceApi.query = authorName.replaceAll(' ', '%20');
+    eventServiceApi.pageReset();
     eventServiceApi.fetchEvent().then(response => {
     refs.cardsContainer.innerHTML = templateCard(response);
     setPagination(eventServiceApi.totalEvents);

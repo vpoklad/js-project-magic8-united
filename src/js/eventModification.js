@@ -61,7 +61,6 @@ export const eventsModif = (events) => {
 )}
 
 const sortByWidth = (imgA, imgB) => (imgB.width) - (imgA.width);
-
 const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
 
 export function choseImage (images) {
@@ -69,41 +68,41 @@ export function choseImage (images) {
   const imagesSort = images.sort(sortByHeight);
   const img = isRetina ? imagesSort[0] : imagesSort[1];
   return img;
-}
+};
 
 export function sortImagesByWidth (images) {
   if (!images) {return}
   return images.sort(sortByWidth);
-}
+};
 
 function findPricesBySt (prices) {
   if (!prices) {return}
   return prices.find(price => price.type === "standard");
-}  
+};
 
 function findPricesByVip (prices) {
   if (!prices) {return}
   return prices.find(price => price.type === "vip");
-}  
+};
 
 function filterImagesByHeight (images) {
   if (!images) {return}
   return images.filter(image => image.height === 639);
-}  
+};
 
 export function filterImagesByRetina (images) {
   if (!images) {return}
   return images
           .filter(image => image.url.includes('RETINA'))
           .sort(sortByWidth)
-}
+};
 
 export function filterImagesByNotRetina (images) {
   if (!images) {return}
   return images
           .filter(image => !(image.url.includes('RETINA')))
           .sort(sortByWidth)
-}
+};
 
 export function filterEventsByPriceRangeVip (events) {
   if (!events) {return}
@@ -111,4 +110,4 @@ export function filterEventsByPriceRangeVip (events) {
           .filter(event => event.priceRanges
           .some(priceRang => priceRang.type === "vip"))
       
-}
+};
