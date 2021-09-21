@@ -96,30 +96,34 @@ const select = new CustomSelect('#select', {
   });
   
 
-  document.querySelector('.select').addEventListener('select.change', onSelect);
-  const input = document.querySelector('#select__input');
-  const selectSh = document.querySelector('#select');
-  const selectItems = document.querySelectorAll('.country__item');
+document.querySelector('.select').addEventListener('select.change', onSelect);
   
-  function onSelect (e) {
-    const select = e.target.querySelector('.select__toggle');
-    eventServiceApi.selectQuery = select.dataset.value;
-    if (eventServiceApi.searchQuery === '') {
+const input = document.querySelector('#select__input');
+const selectSh = document.querySelector('#select');
+const selectItems = document.querySelectorAll('.country__item');
+  
+function onSelect (e) {
+  const select = e.target.querySelector('.select__toggle');
+  eventServiceApi.selectQuery = select.dataset.value;
+
+  if (eventServiceApi.searchQuery === '') {
       eventServiceApi.pageReset();
-      apiService ();
-    }
+    apiService();
+    return
+  }
     if (eventServiceApi.searchQuery !== '') {
       eventServiceApi.pageReset();
-      apiService ();
-    } 
+      apiService();
+      return
+   } 
     apiService ();
-    }
-    function onEmptySelect () {
-      eventServiceApi.selectQuery = input.dataset.value; 
-      apiService ();
-  }
+};
 
-  // фільтр країн
+function onEmptySelect () {
+    eventServiceApi.selectQuery = input.dataset.value; 
+    apiService ();
+}
+
 
 input.addEventListener('keyup', filter);
 
@@ -147,22 +151,22 @@ function filter(evt) {
     )
     if (inputValue === null, inputValue === "") {
       
-      const remSelected = document.querySelector('.select__option_selected');
-      if (remSelected){
+        const remSelected = document.querySelector('.select__option_selected');
+        if (remSelected){
         remSelected.classList.remove('select__option_selected');
-      }
-        input.dataset.value = "";
-       onEmptySelect();
+       }
+          input.dataset.value = "";
+         onEmptySelect();
     }
     else{
       return
     }
   }
 
-export  function apiService () {
+ export function apiService () {
     eventServiceApi.fetchEvent().then(events => {
       if (events === undefined) {
-        console.log('1');
+        console.log('167');
          alert({
             text: 'Looks like there is no such even!',
             delay: 2000,
@@ -173,4 +177,4 @@ export  function apiService () {
         animationCards();
         setPagination(eventServiceApi.totalEvents);
       });
-  }
+};
