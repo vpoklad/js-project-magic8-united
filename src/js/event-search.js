@@ -7,8 +7,8 @@ import { setPagination, setEventsOnPage } from './pagination.js';
 import {addClassAnimation, removeClassAnimation} from "./firstPageLoad";
 
 
-refs.searchInput.addEventListener('input', debounce(onInput, 700));
-refs.searchInput.addEventListener('input',debounce(removeClassAnimation,1500));
+refs.searchInput.addEventListener('input', debounce(onInput, 600));
+refs.searchInput.addEventListener('input',debounce(removeClassAnimation,1700));
 // export default eventServiceApi.searchEventById().then(res=>console.log(res.data))
 
 function onInput(e) {
@@ -18,6 +18,7 @@ function onInput(e) {
       eventServiceApi.fetchEvent().then(events => {
       if(events===undefined){return}
       refs.cardsContainer.innerHTML = templateCard(events);
+      addClassAnimation();
       setPagination(eventServiceApi.totalEvents);});
     return
   }
