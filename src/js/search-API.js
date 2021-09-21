@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { notifyAlert, notifySuccess } from './notify.js';
+import { eventsModif, eventModif } from './eventModification.js';
 
 const ROOT_URL = 'https://app.ticketmaster.com/discovery/v2/';
 const KEY = 'y2gr3zDEoAnck6YziFkTdrHptQULpZRO';
-
 class EventServiceApi {
   constructor() {
     this.page = 0;
@@ -41,7 +41,10 @@ class EventServiceApi {
           // console.log('arrEvents :>> ', arrEvents);
           notifySuccess(`Your request "${this.searchQuery}" in "${this.countryQuery}" has been successfully processed!
           Found ${this.totalEvents} events.`);
+            
           return result.data._embedded.events;
+          return eventsModif(result.data._embedded.events);
+            
         } catch (error) {
           // Поставить Нотификашку для отлова ошибки
           console.log('try catch', error);
@@ -56,7 +59,7 @@ class EventServiceApi {
     try {
       const result = await axios.get(`${ROOT_URL}events/${this.eventId}?apikey=${KEY}`);
       const data = await result.data;
-      return data;
+      return eventModif(data);
     } catch (error) {
       notifyAlert(error);
     }

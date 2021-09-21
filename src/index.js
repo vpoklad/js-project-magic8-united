@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import './js/preloader'
+import './js/preloader';
 import './js/event-search';
 import './js/select';
 import './js/modalClose';
