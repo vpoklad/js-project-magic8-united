@@ -104,6 +104,11 @@ const select = new CustomSelect('#select', {
   function onSelect (e) {
     const select = e.target.querySelector('.select__toggle');
     eventServiceApi.selectQuery = select.dataset.value;
+    if (eventServiceApi.searchQuery === '') {
+      eventServiceApi.pageReset();
+
+      apiService ();
+    }
     if (eventServiceApi.searchQuery !== '') {
       eventServiceApi.pageReset();
 
