@@ -6,7 +6,6 @@ import refs from "./refs";
 import { alert, notice, info, success, error } from '../../node_modules/@pnotify/core/dist/PNotify.js';
 import {animationCards} from "./firstPageLoad";
 
-
 const select = new CustomSelect('#select', {
   name: 'country',
   targetValue: '',
@@ -96,8 +95,6 @@ const select = new CustomSelect('#select', {
     ['VE', 'Venezuela']],
   });
 
-
-
 document.querySelector('.select').addEventListener('select.change', onSelect);
   
 const input = document.querySelector('#select__input');
@@ -119,7 +116,6 @@ function onSelect (e) {
       apiService();
       return
    } 
-
     apiService ();
 };
 
@@ -155,11 +151,8 @@ function filter(evt) {
       }
     )
     if (inputValue === null, inputValue === "") {
-
-      
         const remSelected = document.querySelector('.select__option_selected');
         if (remSelected){
-
         remSelected.classList.remove('select__option_selected');
        }
           input.dataset.value = "";

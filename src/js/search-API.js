@@ -1,12 +1,4 @@
 import axios from 'axios';
-// import {
-//   alert,
-//   notice,
-//   info,
-//   success,
-//   error,
-// } from '../../node_modules/@pnotify/core/dist/PNotify.js';
-// import '@pnotify/core/dist/BrightTheme.css';
 import { notifyAlert, notifyError, notifyInfo, notifySuccess} from './notify.js';
 import { eventsModif, eventModif } from './eventModification.js';
 
@@ -31,15 +23,12 @@ class EventServiceApi {
     return axios
       .get(url)
       .then(result => {
-
         try {
           this.totalEvents = result.data.page.totalElements;
           this.totalPages = result.data.page.totalPages;
           return eventsModif(result.data._embedded.events);
         } catch (error) {
-
-          // console.log('try catch', error);
-
+          console.log(error, "search-API");
         }
       })
       .catch(err => {
