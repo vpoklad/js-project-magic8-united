@@ -9,8 +9,6 @@
 .logo {
   fill: currentColor;
   position: absolute;
-  top: 0px;
-  left: 0px;
   max-width: 60px;
   top: 24px;
   left: 24px;
@@ -53,8 +51,8 @@
   @media screen and (min-width: $desktop) {
     width: 239px;
     height: 201px;
-    top: -40px;
-    left: -140px;
+    // top: -40px;
+    // left: -140px;
     background: hsla(0, 7%, 21%, 0.322);
   }
 }
