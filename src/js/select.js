@@ -161,7 +161,7 @@ function filter(evt) {
     else{
       return
     }
-  }
+};
 
  export function apiService () {
     eventServiceApi.fetchEvent().then(events => {
