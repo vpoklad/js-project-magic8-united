@@ -20,6 +20,8 @@ export const eventsModif = (events) => {
       info: event.info,
       localDate: !evtDateStart ? '' : evtDateStart.localDate,
       timeZone: !evtEmb ? '' : evtEmb.venues[0].timezone,
+      localDate: event.dates.start.localDate,
+      timeZone: event.dates.timezone?event.dates.timezone:event._embedded.venues[0].timezone,
       name: event.name,
     })}
   )
