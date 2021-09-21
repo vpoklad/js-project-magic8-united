@@ -5,13 +5,12 @@ import eventServiceApi from './search-API.js';
 
 export let authorName;
 
-refs.cards.addEventListener('click', OnEventClick);
+refs.cardsContainer.addEventListener('click', OnEventClick);
 
 function renderEventMarkup (event) {
-    refs.overlay.classList.remove("is-hidden");
-    document.body.classList.add("overlay-show");
+    openModal();
     refs.modalContent.innerHTML = eventMarkup(event);
-
+    //refs.modalContent.insertAdjacentHTML('afterbegin',eventMarkup(event));
     authorName = event.name;
 }
 
@@ -25,4 +24,9 @@ function OnEventClick(evt) {
     eventServiceApi.searchEventById()
     .then((event) => renderEventMarkup(event))   
     .catch(notifyAlert);
+}
+
+function openModal () {
+    refs.overlay.classList.remove("is-hidden");
+    document.body.classList.add("overlay-show");
 }

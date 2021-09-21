@@ -4,37 +4,50 @@ let card;
 const increment = () => card += 1;  
 
 export const eventsModif = (events) => {
+  if (!events) {return}
+  //console.log(`events-${card} :>> `, events);
   card = -1; 
-  return events.map(event => (
+  return events.map(event => {
+    console.log(`event-${card+1} :>> `, event);
+    //console.log(`event[${card+1}]._embedded :>> `, event._embedded);
+    const evtEmb = event._embedded;
+    const evtDateStart = event.dates.start;
+    return(
     {
       idCard: increment(),     
       id: event.id,
       image: choseImage(event.images),
       info: event.info,
-      localDate: event.dates.start.localDate,
-      timeZone: event._embedded.venues[0].timezone,
+      localDate: !evtDateStart ? '' : evtDateStart.localDate,
+      timeZone: !evtEmb ? '' : evtEmb.venues[0].timezone,
       name: event.name,
-    })
+    })}
   )
 }
 
-export const eventModif = (event) => (
+// export const eventModif = (event) => (
+  export const eventModif = (event) => {
+    const evtEmb = event._embedded;
+    const evtDateStart = event.dates.start;
+    return(
   {
     id: event.id,
     image: choseImage(event.images),
     info: event.info,
-    localDate: event.dates.start.localDate,
-    localTime: (event.dates.start.localTime).slice(0, 5),
-    timeZone: event._embedded.venues[0].timezone,
-    city: event._embedded.venues[0].city.name,
-    country: event._embedded.venues[0].country.name,
+    localDate: !evtDateStart ? '' : evtDateStart.localDate,
+    localTime: !evtDateStart ? '' : (evtDateStart.localTime).slice(0, 5),
+    timeZone: !evtEmb ? '' : evtEmb.venues[0].timezone,
+    // timeZone: event._embedded.venues[0].timezone,
+    city: !evtEmb ? '' : evtEmb.venues[0].city.name,
+    country: !evtEmb ? '' : evtEmb.venues[0].country.name,
     name: event.name,
-    places: event._embedded.venues[0].name,
+    // places: !(event._embedded.venues[0].name) ? '' : event._embedded.venues[0].name,
+    places: !evtEmb ? '' : evtEmb.venues[0].name,
     priceSt: findPricesBySt(event.priceRanges),
     priceVip: findPricesByVip(event.priceRanges),
     url: event.url
   }
-)
+)}
 
 const sortByWidth = (imgA, imgB) => (imgB.width) - (imgA.width);
 
