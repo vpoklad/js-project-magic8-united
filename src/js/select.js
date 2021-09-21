@@ -159,9 +159,16 @@ function filter(evt) {
     }
   }
 
-  function apiService () {
+export  function apiService () {
     eventServiceApi.fetchEvent().then(events => {
-        if (events === undefined) { return }
+      if (events === undefined) {
+        console.log('1');
+         alert({
+            text: 'Looks like there is no such even!',
+            delay: 2000,
+          });
+        return
+      }
         refs.cardsContainer.innerHTML = templateCard(events);
         animationCards();
         setPagination(eventServiceApi.totalEvents);

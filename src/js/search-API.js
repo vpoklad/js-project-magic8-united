@@ -32,10 +32,10 @@ class EventServiceApi {
       .get(url)
       .then(result => {
         if (!result.data._embedded) {
-          alert({
-            text: 'Looks like there is no such even!',
-            delay: 2000,
-          });
+          // alert({
+          //   text: 'Looks like there is no such even!',
+          //   delay: 2000,
+          // });
           return;
         };
 
