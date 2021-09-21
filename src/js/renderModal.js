@@ -22,8 +22,8 @@ function OnEventClick(evt) {
     eventServiceApi.queryId = target.dataset.eventid;
 
     eventServiceApi.searchEventById()
-    .then((event) => renderEventMarkup(event))
-    .catch(notifyAlert('No data available!'));
+    .then((event) => {console.log('eventModal :>> ', event); renderEventMarkup(event)})
+    // .catch(notifyAlert('No data available!'));
 }
 
 function showModal () {

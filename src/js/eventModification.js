@@ -1,29 +1,38 @@
 import { isRetina } from './isRetina.js';
 
+let arrEvents = [];
 let card;
 const increment = () => card += 1;  
 
 export const eventsModif = (events) => {
   if (!events) {return}
-  //console.log(`events-${card} :>> `, events);
+  arrEvents = [];
   card = -1; 
   return events.map(event => {
     console.log(`event-${card+1} :>> `, event);
     //console.log(`event[${card+1}]._embedded :>> `, event._embedded);
     const evtEmb = event._embedded;
     const evtDateStart = event.dates.start;
-    return(
-    {
+    const evtPlace = event.place;
+    const eventNew = {
+      city: !evtEmb ? evtPlace.city.name : evtEmb.venues[0].city.name,
+      country: !evtEmb ? evtPlace.country.name : evtEmb.venues[0].country.name,
       idCard: increment(),     
       id: event.id,
       image: choseImage(event.images),
       info: event.info,
       localDate: !evtDateStart ? '' : evtDateStart.localDate,
-      timeZone: !evtEmb ? '' : evtEmb.venues[0].timezone,
-      localDate: event.dates.start.localDate,
-      timeZone: event.dates.timezone?event.dates.timezone:event._embedded.venues[0].timezone,
+      localTime: !evtDateStart ? '' : (evtDateStart.localTime).slice(0, 5),
       name: event.name,
-    })}
+      place: !evtEmb ? '' : evtEmb.venues[0].name,
+      priceSt: findPricesBySt(event.priceRanges),
+      priceVip: findPricesByVip(event.priceRanges),
+      timeZone: !evtEmb ? event.dates.timezone : evtEmb.venues[0].timezone,
+      url: event.url
+    }
+    arrEvents.push(eventNew);
+    return eventNew;
+  }
   )
 }
 
@@ -44,7 +53,7 @@ export const eventsModif = (events) => {
     country: !evtEmb ? '' : evtEmb.venues[0].country.name,
     name: event.name,
     // places: !(event._embedded.venues[0].name) ? '' : event._embedded.venues[0].name,
-    places: !evtEmb ? '' : evtEmb.venues[0].name,
+    place: !evtEmb ? '' : evtEmb.venues[0].name,
     priceSt: findPricesBySt(event.priceRanges),
     priceVip: findPricesByVip(event.priceRanges),
     url: event.url

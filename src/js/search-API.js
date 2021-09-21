@@ -65,8 +65,10 @@ class EventServiceApi {
   async searchEventById() {
     try {
       const result = await axios.get(`${ROOT_URL}events/${this.eventId}?apikey=${KEY}`);
-      const data = await result.data;
-      return eventModif(data);
+      const data = await result.data; 
+      const arrEvt = await eventsModif([data]); 
+      return (arrEvt[0]);
+      //return ...eventsModif([data]);
     } catch (error) {
       notifyError(error);
     }
