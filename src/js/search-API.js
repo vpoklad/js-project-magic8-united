@@ -25,16 +25,11 @@ class EventServiceApi {
       .then(result => {
         try {
           this.totalEvents = result.data.page.totalElements;
-          this.totalPages = result.data.page.totalPages; console.log('result.data :>> ', result.data);
+          this.totalPages = result.data.page.totalPages; 
           return eventsModif(result.data._embedded.events);
-        } catch (error) {
-          console.log(error, "search-API");
-        }
+        } catch (e) {}
       })
-      .catch(err => {
-        notifyError(err);
-        console.log('catch', err);
-      });
+      .catch(err => notifyError(err));
   }
 
   async searchEventById() {
