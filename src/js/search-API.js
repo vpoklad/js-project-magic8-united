@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { notifyAlert, notifyError, notifyInfo, notifySuccess} from './notify.js';
-import { eventsModif, eventModif } from './eventModification.js';
+import { eventsModif } from './eventModification.js';
 
 const ROOT_URL = 'https://app.ticketmaster.com/discovery/v2/';
 const KEY = 'y2gr3zDEoAnck6YziFkTdrHptQULpZRO';
@@ -43,7 +43,6 @@ class EventServiceApi {
       const data = await result.data; 
       const arrEvt = await eventsModif([data]); 
       return (arrEvt[0]);
-      //return ...eventsModif([data]);
     } catch (error) {
       notifyError(error);
     }

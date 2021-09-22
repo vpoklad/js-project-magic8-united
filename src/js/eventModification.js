@@ -1,6 +1,6 @@
 import { isRetina } from './isRetina.js';
 
-let arrEvents = [];
+export let arrEvents;
 let card;
 const increment = () => card += 1;  
 
@@ -10,70 +10,46 @@ export const eventsModif = (events) => {
   card = -1; 
   return events.map(event => {
     console.log(`event-${card+1} :>> `, event);
-    //console.log(`event[${card+1}]._embedded :>> `, event._embedded);
-    const evtEmb = event._embedded;
-    const evtDateStart = event.dates.start;
-    const evtPlace = event.place;
+
     const eventNew = {
-      city: !evtEmb ? evtPlace.city.name : evtEmb.venues[0].city.name,
-      country: !evtEmb ? evtPlace.country.name : evtEmb.venues[0].country.name,
+      city: findCity(event),
+      country: findCountry(event),
       idCard: increment(),     
       id: event.id,
-      image: choseImage(event.images),
+      image: findImage(event.images),
       info: event.info,
-      localDate: !evtDateStart ? '' : evtDateStart.localDate,
-      localTime: !evtDateStart ? '' : (evtDateStart.localTime).slice(0, 5),
-      name: event.name,
-      place: !evtEmb ? '' : evtEmb.venues[0].name,
+      localDate: findLocalDate(event),
+      localTime: findLocalTime(event),
+      name: !(event.name) ? '' : event.name,
+      place: findPlace(event),
       priceSt: findPricesBySt(event.priceRanges),
       priceVip: findPricesByVip(event.priceRanges),
-      timeZone: !evtEmb ? event.dates.timezone : evtEmb.venues[0].timezone,
-      url: event.url
+      timeZone: findTimeZone(event),
+      url: !(event.url) ? '' : event.url
     }
+
     arrEvents.push(eventNew);
     return eventNew;
   }
   )
 }
+const findCity = (event) => event._embedded ? event._embedded.venues[0].city.name : event.place ? evtPlace.city.name : '';
 
-// export const eventModif = (event) => (
-  export const eventModif = (event) => {
-    const evtEmb = event._embedded;
-    const evtDateStart = event.dates.start;
-    return(
-  {
-    id: event.id,
-    image: choseImage(event.images),
-    info: event.info,
-    localDate: !evtDateStart ? '' : evtDateStart.localDate,
-    localTime: !evtDateStart ? '' : (evtDateStart.localTime).slice(0, 5),
-    timeZone: !evtEmb ? '' : evtEmb.venues[0].timezone,
-    // timeZone: event._embedded.venues[0].timezone,
-    city: !evtEmb ? '' : evtEmb.venues[0].city.name,
-    country: !evtEmb ? '' : evtEmb.venues[0].country.name,
-    name: event.name,
-    // places: !(event._embedded.venues[0].name) ? '' : event._embedded.venues[0].name,
-    place: !evtEmb ? '' : evtEmb.venues[0].name,
-    priceSt: findPricesBySt(event.priceRanges),
-    priceVip: findPricesByVip(event.priceRanges),
-    url: event.url
-  }
-)}
+const findCountry = (event) => event._embedded ? event._embedded.venues[0].country.name : event.place ? evtPlace.country.name : '';
 
-const sortByWidth = (imgA, imgB) => (imgB.width) - (imgA.width);
-const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
-
-export function choseImage (images) {
+function findImage (images) {
   if (!images) {return}
+  const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
   const imagesSort = images.sort(sortByHeight);
-  const img = isRetina ? imagesSort[0] : imagesSort[1];
-  return img;
+  const chooseImg = isRetina ? imagesSort[0] : imagesSort[1];
+  return chooseImg;
 };
 
-export function sortImagesByWidth (images) {
-  if (!images) {return}
-  return images.sort(sortByWidth);
-};
+const findLocalDate = (event) => event.dates.start.localDate ? event.dates.start.localDate : event._embedded ? event._embedded.venues[0].start.localDate : '';
+
+const findLocalTime = (event) => event.dates.start.localDate ? (event.dates.start.localTime).slice(0, 5) : event._embedded ? (event._embedded.venues[0].start.localTime).slice(0, 5) : '';;
+
+const findPlace = (event) => event._embedded ? event._embedded.venues[0].name : event.place ? event.place : ''
 
 function findPricesBySt (prices) {
   if (!prices) {return}
@@ -85,26 +61,9 @@ function findPricesByVip (prices) {
   return prices.find(price => price.type === "vip");
 };
 
-function filterImagesByHeight (images) {
-  if (!images) {return}
-  return images.filter(image => image.height === 639);
-};
+const findTimeZone = (event) => event.dates.timezone ? event.dates.timezone : event._embedded ? event._embedded.venues[0].timezone : '';
 
-export function filterImagesByRetina (images) {
-  if (!images) {return}
-  return images
-          .filter(image => image.url.includes('RETINA'))
-          .sort(sortByWidth)
-};
-
-export function filterImagesByNotRetina (images) {
-  if (!images) {return}
-  return images
-          .filter(image => !(image.url.includes('RETINA')))
-          .sort(sortByWidth)
-};
-
-export function filterEventsByPriceRangeVip (events) {
+function filterEventsByPriceRangeVip (events) {
   if (!events) {return}
   return events
           .filter(event => event.priceRanges
