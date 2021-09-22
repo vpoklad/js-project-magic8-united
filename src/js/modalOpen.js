@@ -1,6 +1,5 @@
 import refs from './refs.js';
 import eventMarkup from '../templates/eventModif.hbs';
-// import {notifyAlert} from './notify.js';
 import eventServiceApi from './search-API.js';
 
 export let authorName;
@@ -22,8 +21,7 @@ function OnEventClick(evt) {
     eventServiceApi.queryId = target.dataset.eventid;
 
     eventServiceApi.searchEventById()
-    .then((event) => {console.log('eventModal :>> ', event); renderEventMarkup(event)})
-    // .catch(notifyAlert('No data available!'));
+    .then((event) => renderEventMarkup(event))
 }
 
 function showModal () {
