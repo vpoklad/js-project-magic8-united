@@ -7,11 +7,12 @@ window.onload = function () {
     }, 500);
   };
   
-  function showLoader() {
+function showLoader() {
     refs.preloader.classList.remove('visually-hidden');
-  }
-  function hideLoader() {
-    refs.preloader.classList.add('visually-hidden');
-  }
+};
 
-  export {showLoader, hideLoader}
+function hideLoader() {
+    refs.preloader.classList.add('visually-hidden');
+};
+
+export {showLoader, hideLoader}

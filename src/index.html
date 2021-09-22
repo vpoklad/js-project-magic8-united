@@ -27,16 +27,13 @@
     <meta property="og:image" content="images/eventBooster-screen.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-
     <meta name="description" content="Event search service" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap"
       rel="stylesheet"
     />
-    <link href="../node_modules/@pnotify/core/dist/PNotify.css" rel="stylesheet" type="text/css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
@@ -46,14 +43,17 @@
     <title>Event Booster</title>
   </head>
   <body>
-    <include src="./partials/header.html"></include>
-    <main>
-      <include src="./partials/grid.html"></include>
-      <include src="./partials/pagination.html"></include>
-      <include src="./partials/main_modal.html"></include>
-      <include src="./partials/team_modal.html"></include>
-    </main>
-    <include src="./partials/footer.html"></include>
+    <div class="wrapper">
+      <include src="./partials/header.html"></include>
+      <main>
+        <include src="./partials/grid.html"></include>
+        <include src="./partials/pagination.html"></include>
+      </main>
+      <include src="./partials/footer.html"></include>
+    </div>
+    <include src="./partials/main_modal.html"></include>
+    <include src="./partials/team_modal.html"></include>
+    <include src="./partials/button_up.html"></include>
     <!-- <include src="./partials/example.html"></include> -->
 
     <script src="./index.js"></script>

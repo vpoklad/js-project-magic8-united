@@ -1,4 +1,3 @@
-import axios from "axios";
 import refs from './refs.js'
 import card from '../templates/cardModif.hbs';
 import { debounce } from "lodash";
@@ -13,23 +12,27 @@ function firstPageLoad() {
   eventServiceApi.fetchEvent()
     .then(events => { 
       refs.cardsContainer.innerHTML = card(events);
-      addClassAnimation();
+      animationCards();
       setPagination(eventServiceApi.totalEvents);
     }).catch(()=>notifyError('Error loading page. Please refresh the page.'))
 };
+export function animationCards() {
+  addClassAnimation();
+  setTimeout(removeClassAnimation, 800);
+};
 
-export function addClassAnimation() {
+function addClassAnimation() {
  const cardsItemAll = document.querySelectorAll('.cards__item')
   cardsItemAll.forEach(cardItem => cardItem.classList.add('cards__item--animation'))
 };
 
-export function removeClassAnimation() {
+function removeClassAnimation() {
  const cardsItemAll= document.querySelectorAll('.cards__item')
   cardsItemAll.forEach(cardItem => {
   cardItem.classList.remove('cards__item--animation')
   cardItem.style.visibility = "visible"
  })
-}
+};
 
 window.addEventListener("load", debounce(firstPageLoad, 400));
-window.addEventListener("load",debounce(removeClassAnimation,1500))
+
