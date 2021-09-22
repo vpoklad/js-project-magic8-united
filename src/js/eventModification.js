@@ -1,55 +1,63 @@
 import { isRetina } from './isRetina.js';
 
+export let arrEvents;
 let card;
 const increment = () => card += 1;  
 
 export const eventsModif = (events) => {
+  if (!events) {return}
+  arrEvents = [];
   card = -1; 
-  return events.map(event => (
-    {
+  return events.map(event => {
+    //console.log(`event-${card+1} :>> `, event);
+
+    const eventNew = {
+      city: findCity(event),
+      country: findCountry(event),
       idCard: increment(),     
       id: event.id,
-      image: choseImage(event.images),
-      info: event.info,
-      localDate: event.dates.start.localDate,
-      timeZone: event.dates.timezone?event.dates.timezone:event._embedded.venues[0].timezone,
-      name: event.name,
-    })
+      image: findImage(event.images),
+      info: event.info ? event.info : '',
+      localDate: findLocalDate(event),
+      localTime: findLocalTime(event),
+      name: event.name ? event.name : '',
+      place: findPlace(event),
+      priceSt: findPricesBySt(event.priceRanges),
+      priceVip: findPricesByVip(event.priceRanges),
+      timeZone: findTimeZone(event),
+      url: event.url ? event.url : ''
+    }
+
+    arrEvents.push(eventNew);
+    return eventNew;
+  }
   )
 }
+const findCity = (event) => event._embedded ? 
+  event._embedded.venues[0].city.name : event.place ? evtPlace.city.name : '';
 
-export const eventModif = (event) => (
-  {
-    id: event.id,
-    image: choseImage(event.images),
-    info: event.info,
-    localDate: event.dates.start.localDate,
-    localTime: (event.dates.start.localTime).slice(0, 5),
-    timeZone: event._embedded.venues[0].timezone,
-    city: event._embedded.venues[0].city.name,
-    country: event._embedded.venues[0].country.name,
-    name: event.name,
-    places: event._embedded.venues[0].name,
-    priceSt: findPricesBySt(event.priceRanges),
-    priceVip: findPricesByVip(event.priceRanges),
-    url: event.url
-  }
-)
+const findCountry = (event) => event._embedded ? 
+  event._embedded.venues[0].country.name : event.place ? evtPlace.country.name : '';
 
-const sortByWidth = (imgA, imgB) => (imgB.width) - (imgA.width);
-const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
-
-export function choseImage (images) {
+function findImage (images) {
   if (!images) {return}
+  const sortByHeight = (imgA, imgB) => (imgB.height) - (imgA.height);
   const imagesSort = images.sort(sortByHeight);
-  const img = isRetina ? imagesSort[0] : imagesSort[1];
-  return img;
+  const chooseImg = isRetina ? imagesSort[0] : imagesSort[1];
+  return chooseImg;
 };
 
-export function sortImagesByWidth (images) {
-  if (!images) {return}
-  return images.sort(sortByWidth);
-};
+const findLocalDate = (event) => event.dates.start.localDate ? 
+  event.dates.start.localDate : event._embedded ? 
+  event._embedded.venues[0].start.localDate : '';
+
+const findLocalTime = (event) => event.dates.start.localTime ? 
+  (event.dates.start.localTime).slice(0, 5) : event._embedded.venues[0].start.localTime ? 
+  (event._embedded.venues[0].start.localTime).slice(0, 5) : '';
+
+const findPlace = (event) => event.place ? 
+  event.place.city.name : event._embedded.venues[0].name ? 
+  event._embedded.venues[0].name :''
 
 function findPricesBySt (prices) {
   if (!prices) {return}
@@ -61,26 +69,11 @@ function findPricesByVip (prices) {
   return prices.find(price => price.type === "vip");
 };
 
-function filterImagesByHeight (images) {
-  if (!images) {return}
-  return images.filter(image => image.height === 639);
-};
+const findTimeZone = (event) => event.dates.timezone ? 
+  event.dates.timezone : event._embedded.venues[0].timezone ? 
+  event._embedded.venues[0].timezone : '';
 
-export function filterImagesByRetina (images) {
-  if (!images) {return}
-  return images
-          .filter(image => image.url.includes('RETINA'))
-          .sort(sortByWidth)
-};
-
-export function filterImagesByNotRetina (images) {
-  if (!images) {return}
-  return images
-          .filter(image => !(image.url.includes('RETINA')))
-          .sort(sortByWidth)
-};
-
-export function filterEventsByPriceRangeVip (events) {
+function filterEventsByPriceRangeVip (events) {
   if (!events) {return}
   return events
           .filter(event => event.priceRanges
