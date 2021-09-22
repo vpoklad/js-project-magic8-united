@@ -5,11 +5,10 @@ import eventServiceApi from './search-API.js';
 
 export let authorName;
 
-refs.cards.addEventListener('click', OnEventClick);
+refs.cardsContainer.addEventListener('click', OnEventClick);
 
 function renderEventMarkup (event) {
-    refs.overlay.classList.remove("is-hidden");
-    document.body.classList.add("overlay-show");
+    showModal();
     refs.modalContent.innerHTML = eventMarkup(event);
 
     authorName = event.name;
@@ -23,6 +22,12 @@ function OnEventClick(evt) {
     eventServiceApi.queryId = target.dataset.eventid;
 
     eventServiceApi.searchEventById()
-    .then((event) => renderEventMarkup(event))
+    .then((event) => {console.log('eventModal :>> ', event); renderEventMarkup(event)})
     // .catch(notifyAlert('No data available!'));
 }
+
+function showModal () {
+    refs.overlay.classList.remove("is-hidden");
+    document.body.classList.add("overlay-show");
+}
+    
