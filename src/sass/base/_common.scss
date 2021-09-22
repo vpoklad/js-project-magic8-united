@@ -25,6 +25,7 @@ img {
 }
 
 body {
+  position: relative;
   min-width: $mobile;
   margin: 0;
 
@@ -38,7 +39,15 @@ body {
 }
 
 .wrapper {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1280px;
+  background-position-y: center;
+  background-size: contain;
   @media screen and(min-width: $tablet) {
     background-image: url(../images/bg/bg_decorlines_tablet.svg);
   }
