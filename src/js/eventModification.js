@@ -9,7 +9,7 @@ export const eventsModif = (events) => {
   arrEvents = [];
   card = -1; 
   return events.map(event => {
-    console.log(`event-${card+1} :>> `, event);
+    //console.log(`event-${card+1} :>> `, event);
 
     const eventNew = {
       city: findCity(event),
@@ -17,15 +17,15 @@ export const eventsModif = (events) => {
       idCard: increment(),     
       id: event.id,
       image: findImage(event.images),
-      info: event.info,
+      info: event.info ? event.info : '',
       localDate: findLocalDate(event),
       localTime: findLocalTime(event),
-      name: !(event.name) ? '' : event.name,
+      name: event.name ? event.name : '',
       place: findPlace(event),
       priceSt: findPricesBySt(event.priceRanges),
       priceVip: findPricesByVip(event.priceRanges),
       timeZone: findTimeZone(event),
-      url: !(event.url) ? '' : event.url
+      url: event.url ? event.url : ''
     }
 
     arrEvents.push(eventNew);
@@ -33,9 +33,11 @@ export const eventsModif = (events) => {
   }
   )
 }
-const findCity = (event) => event._embedded ? event._embedded.venues[0].city.name : event.place ? evtPlace.city.name : '';
+const findCity = (event) => event._embedded ? 
+  event._embedded.venues[0].city.name : event.place ? evtPlace.city.name : '';
 
-const findCountry = (event) => event._embedded ? event._embedded.venues[0].country.name : event.place ? evtPlace.country.name : '';
+const findCountry = (event) => event._embedded ? 
+  event._embedded.venues[0].country.name : event.place ? evtPlace.country.name : '';
 
 function findImage (images) {
   if (!images) {return}
@@ -45,11 +47,17 @@ function findImage (images) {
   return chooseImg;
 };
 
-const findLocalDate = (event) => event.dates.start.localDate ? event.dates.start.localDate : event._embedded ? event._embedded.venues[0].start.localDate : '';
+const findLocalDate = (event) => event.dates.start.localDate ? 
+  event.dates.start.localDate : event._embedded ? 
+  event._embedded.venues[0].start.localDate : '';
 
-const findLocalTime = (event) => event.dates.start.localDate ? (event.dates.start.localTime).slice(0, 5) : event._embedded ? (event._embedded.venues[0].start.localTime).slice(0, 5) : '';;
+const findLocalTime = (event) => event.dates.start.localTime ? 
+  (event.dates.start.localTime).slice(0, 5) : event._embedded.venues[0].start.localTime ? 
+  (event._embedded.venues[0].start.localTime).slice(0, 5) : '';
 
-const findPlace = (event) => event._embedded ? event._embedded.venues[0].name : event.place ? event.place : ''
+const findPlace = (event) => event.place ? 
+  event.place.city.name : event._embedded.venues[0].name ? 
+  event._embedded.venues[0].name :''
 
 function findPricesBySt (prices) {
   if (!prices) {return}
@@ -61,7 +69,9 @@ function findPricesByVip (prices) {
   return prices.find(price => price.type === "vip");
 };
 
-const findTimeZone = (event) => event.dates.timezone ? event.dates.timezone : event._embedded ? event._embedded.venues[0].timezone : '';
+const findTimeZone = (event) => event.dates.timezone ? 
+  event.dates.timezone : event._embedded.venues[0].timezone ? 
+  event._embedded.venues[0].timezone : '';
 
 function filterEventsByPriceRangeVip (events) {
   if (!events) {return}
