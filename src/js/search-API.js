@@ -38,9 +38,7 @@ class EventServiceApi {
       const data = await result.data; 
       const arrEvt = await eventsModif([data]); 
       return (arrEvt[0]);
-    } catch (error) {
-      notifyError(error);
-    }
+    } catch (err) {notifyError(err)}
   }
 
   pageReset() {
