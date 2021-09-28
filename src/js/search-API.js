@@ -12,7 +12,7 @@ class EventServiceApi {
     this.countryQuery = '';
     this.eventId = '';
     this.totalEvents = '';
-    this.size = "";
+    this.size = 20;
   }
 
   fetchEvent() {
