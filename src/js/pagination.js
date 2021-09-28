@@ -30,7 +30,6 @@ function setPagination(totalEvents,) {
         visiblePages: window.outerWidth < 768 ? 3 : 5,
         page: 1,
         centerAlign: true,
-        size: window.outerWidth > 768 && window.outerWidth < 1280 ? 21 : 20,
     };
 
     const pagination = new Pagination(container, options);
