@@ -12,17 +12,15 @@ class EventServiceApi {
     this.countryQuery = '';
     this.eventId = '';
     this.totalEvents = '';
-    this.size = 20;
+    this.size = "";
   }
 
   fetchEvent() {
-    if (window.outerWidth > 768 && window.outerWidth < 1280) {
+    if (window.outerWidth >= 768 && window.outerWidth < 1280) {
       this.size = 21;
+      console.log(this.size);
     }
-    let url = `${ROOT_URL}events.json?&size=${this.size}&page=${this.page}&keyword=${this.searchQuery}&apikey=${KEY}`;
-    if (this.countryQuery !== '') {
-      url = `${ROOT_URL}events.json?&page=${this.page}&countryCode=${this.countryQuery}&keyword=${this.searchQuery}&apikey=${KEY}`;
-    };
+    const url = `${ROOT_URL}events.json?&size=${this.size}&page=${this.page}&keyword=${this.searchQuery}&countryCode=${this.countryQuery}&apikey=${KEY}`;
 
     return axios
       .get(url)
